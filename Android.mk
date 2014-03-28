@@ -75,6 +75,11 @@ ifeq ($(call is-board-platform-in-list,msmnile), true)
 LOCAL_SRC_FILES += power-msmnile.c
 endif
 
+ifneq ($(TARGET_POWERHAL_SET_INTERACTIVE_EXT),)
+LOCAL_CFLAGS += -DSET_INTERACTIVE_EXT
+LOCAL_SRC_FILES += ../../../../$(TARGET_POWERHAL_SET_INTERACTIVE_EXT)
+endif
+
 ifeq ($(TARGET_USES_INTERACTION_BOOST),true)
     LOCAL_CFLAGS += -DINTERACTION_BOOST
 endif
