@@ -141,3 +141,21 @@ void set_interactive(int on)
 
     ALOGI("Got set_interactive hint");
 }
+
+void __attribute__((weak)) set_device_specific_feature(feature_t feature, int state)
+{
+}
+
+void set_feature(feature_t feature, int state)
+{
+    switch (feature) {
+#ifdef TAP_TO_WAKE_NODE
+        case POWER_FEATURE_DOUBLE_TAP_TO_WAKE:
+            sysfs_write(TAP_TO_WAKE_NODE, state ? "1" : "0");
+            break;
+#endif
+        default:
+            break;
+    }
+    set_device_specific_feature(feature, state);
+}
