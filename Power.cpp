@@ -33,6 +33,7 @@
 #include <log/log.h>
 #include "Power.h"
 #include "power-common.h"
+#include "power-feature.h"
 
 namespace android {
 namespace hardware {
@@ -74,6 +75,7 @@ Return<void> Power::setFeature(Feature feature, bool activate)  {
         default:
             break;
     }
+    set_device_specific_feature(static_cast<feature_t>(feature), activate ? 1 : 0);
     return Void();
 }
 
