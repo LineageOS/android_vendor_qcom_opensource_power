@@ -13,6 +13,10 @@ LOCAL_SRC_FILES := power-common.c metadata-parser.c utils.c list.c hint-data.c s
 LOCAL_C_INCLUDES := external/libxml2/include \
                     external/icu/icu4c/source/common
 
+ifneq ($(BOARD_POWER_CUSTOM_BOARD_LIB),)
+    LOCAL_WHOLE_STATIC_LIBRARIES += $(BOARD_POWER_CUSTOM_BOARD_LIB)
+else
+
 # Include target-specific files.
 ifeq ($(call is-board-platform-in-list, msm8974), true)
 LOCAL_SRC_FILES += power-8974.c
@@ -73,6 +77,8 @@ endif
 ifeq ($(call is-board-platform-in-list,msmnile), true)
 LOCAL_SRC_FILES += power-msmnile.c
 endif
+
+endif  #  End of board specific list
 
 ifneq ($(TARGET_POWER_SET_FEATURE_LIB),)
     LOCAL_STATIC_LIBRARIES += $(TARGET_POWER_SET_FEATURE_LIB)
