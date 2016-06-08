@@ -51,12 +51,79 @@
 static struct hint_handles handles[NUM_HINTS];
 static int handleER = 0;
 
+const int kMaxLaunchDuration = 5000;      /* ms */
+const int kMaxInteractiveDuration = 5000; /* ms */
+const int kMinInteractiveDuration = 500;  /* ms */
+
 void power_init() {
     ALOGI("Initing");
 
     for (int i = 0; i < NUM_HINTS; i++) {
         handles[i].handle = 0;
         handles[i].ref_count = 0;
+    }
+}
+
+void process_interaction_hint(void* data) {
+    static struct timespec s_previous_boost_timespec;
+    static int s_previous_duration = 0;
+    static int prev_interaction_handle = -1;
+
+    struct timespec cur_boost_timespec;
+    long long elapsed_time;
+    int duration = kMinInteractiveDuration;
+
+    if (data) {
+        int input_duration = *((int*)data);
+        if (input_duration > duration) {
+            duration = (input_duration > kMaxInteractiveDuration) ? kMaxInteractiveDuration
+                                                                  : input_duration;
+        }
+    }
+
+    clock_gettime(CLOCK_MONOTONIC, &cur_boost_timespec);
+
+    elapsed_time = calc_timespan_us(s_previous_boost_timespec, cur_boost_timespec);
+    // don't hint if it's been less than 250ms since last boost
+    // also detect if we're doing anything resembling a fling
+    // support additional boosting in case of flings
+    if (elapsed_time < 250000 && duration <= 750) {
+        return;
+    }
+    s_previous_boost_timespec = cur_boost_timespec;
+    s_previous_duration = duration;
+
+    int interaction_handle =
+            perf_hint_enable_with_type(VENDOR_HINT_SCROLL_BOOST, duration, SCROLL_VERTICAL);
+
+    if (CHECK_HANDLE(prev_interaction_handle)) {
+        release_request(prev_interaction_handle);
+    }
+    prev_interaction_handle = interaction_handle;
+}
+
+void process_activity_launch_hint(void* data) {
+    static int launch_handle = -1;
+    static int launch_mode = 0;
+
+    // release lock early if launch has finished
+    if (!data) {
+        if (CHECK_HANDLE(launch_handle)) {
+            release_request(launch_handle);
+            launch_handle = -1;
+        }
+        launch_mode = 0;
+        return;
+    }
+
+    if (!launch_mode) {
+        launch_handle = perf_hint_enable_with_type(VENDOR_HINT_FIRST_LAUNCH_BOOST,
+                                                   kMaxLaunchDuration, LAUNCH_BOOST_V1);
+        if (!CHECK_HANDLE(launch_handle)) {
+            ALOGE("Failed to perform launch boost");
+            return;
+        }
+        launch_mode = 1;
     }
 }
 
@@ -74,12 +141,6 @@ void power_hint(power_hint_t hint, void* data) {
         case POWER_HINT_VR_MODE:
             ALOGI("VR mode power hint not handled in power_hint_override");
             break;
-        case POWER_HINT_INTERACTION: {
-            int resources[] = {0x702, 0x20F, 0x30F};
-            int duration = 3000;
-
-            interaction(duration, sizeof(resources) / sizeof(resources[0]), resources);
-        } break;
         // fall through below, hints will fail if not defined in powerhint.xml
         case POWER_HINT_SUSTAINED_PERFORMANCE:
         case POWER_HINT_VIDEO_ENCODE:
@@ -98,6 +159,12 @@ void power_hint(power_hint_t hint, void* data) {
                     ALOGE("Lock for hint: %X was not acquired, cannot be released", hint);
                 }
             }
+            break;
+        case POWER_HINT_INTERACTION:
+            process_interaction_hint(data);
+            break;
+        case POWER_HINT_LAUNCH:
+            process_activity_launch_hint(data);
             break;
         default:
             break;

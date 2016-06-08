@@ -49,7 +49,6 @@
 #include "power-common.h"
 #include "utils.h"
 
-#define CHECK_HANDLE(x) ((x) > 0)
 #define NUM_PERF_MODES 3
 
 typedef enum {
@@ -189,12 +188,6 @@ int power_hint_override(power_hint_t hint, void* data) {
         case POWER_HINT_VR_MODE:
             ret_val = process_perf_hint(data, VR_MODE);
             break;
-        case POWER_HINT_INTERACTION: {
-            int resources[] = {MIN_FREQ_LITTLE_CORE_0, 0x514};
-            int duration = 100;
-            interaction(duration, ARRAY_SIZE(resources), resources);
-            ret_val = HINT_HANDLED;
-        } break;
         default:
             break;
     }
