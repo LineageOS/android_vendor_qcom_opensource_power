@@ -43,6 +43,9 @@
 #define LOG_TAG "QTI PowerHAL"
 #include <log/log.h>
 
+#define USINSEC 1000000L
+#define NSINUS 1000L
+
 #define SOC_ID_0 "/sys/devices/soc0/soc_id"
 #define SOC_ID_1 "/sys/devices/system/soc/soc0/id"
 
@@ -358,4 +361,11 @@ int get_soc_id(void) {
 
     close(fd);
     return soc_id;
+}
+
+long long calc_timespan_us(struct timespec start, struct timespec end) {
+    long long diff_in_us = 0;
+    diff_in_us += (end.tv_sec - start.tv_sec) * USINSEC;
+    diff_in_us += (end.tv_nsec - start.tv_nsec) / NSINUS;
+    return diff_in_us;
 }
