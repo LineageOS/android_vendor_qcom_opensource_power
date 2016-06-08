@@ -48,6 +48,7 @@ void interaction(int duration, int num_args, int opt_list[]);
 int interaction_with_handle(int lock_handle, int duration, int num_args, int opt_list[]);
 int perf_hint_enable(int hint_id, int duration);
 
+long long calc_timespan_us(struct timespec start, struct timespec end);
 int get_soc_id(void);
 
 PropVal perf_get_property(const char* prop, const char* def_val);
