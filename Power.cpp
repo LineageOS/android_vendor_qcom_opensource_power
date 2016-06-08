@@ -84,7 +84,6 @@ ndk::ScopedAStatus Power::setMode(Mode type, bool enabled) {
         case Mode::DOUBLE_TAP_TO_WAKE:
 #endif
         case Mode::LOW_POWER:
-        case Mode::LAUNCH:
         case Mode::DEVICE_IDLE:
         case Mode::DISPLAY_INACTIVE:
         case Mode::AUDIO_STREAMING_LOW_LATENCY:
@@ -98,9 +97,11 @@ ndk::ScopedAStatus Power::setMode(Mode type, bool enabled) {
         case Mode::EXPENSIVE_RENDERING:
             set_expensive_rendering(enabled);
             break;
+        case Mode::LAUNCH:
+            power_hint(POWER_HINT_LAUNCH, enabled ? &enabled : NULL);
+            break;
         case Mode::INTERACTIVE:
             setInteractive(enabled);
-            power_hint(POWER_HINT_INTERACTION, NULL);
             break;
         case Mode::SUSTAINED_PERFORMANCE:
         case Mode::FIXED_PERFORMANCE:
@@ -131,6 +132,7 @@ ndk::ScopedAStatus Power::isModeSupported(Mode type, bool* _aidl_return) {
 #ifdef TAP_TO_WAKE_NODE
         case Mode::DOUBLE_TAP_TO_WAKE:
 #endif
+        case Mode::LAUNCH:
         case Mode::INTERACTIVE:
         case Mode::SUSTAINED_PERFORMANCE:
         case Mode::FIXED_PERFORMANCE:
@@ -146,14 +148,30 @@ ndk::ScopedAStatus Power::isModeSupported(Mode type, bool* _aidl_return) {
 ndk::ScopedAStatus Power::setBoost(Boost type, int32_t durationMs) {
     LOG(VERBOSE) << "Power setBoost: " << static_cast<int32_t>(type)
                  << ", duration: " << durationMs;
+    switch (type) {
+        case Boost::INTERACTION:
+            power_hint(POWER_HINT_INTERACTION, &durationMs);
+            break;
+        default:
+            LOG(INFO) << "Boost " << static_cast<int32_t>(type) << "Not Supported";
+            break;
+    }
     return ndk::ScopedAStatus::ok();
 }
 
 ndk::ScopedAStatus Power::isBoostSupported(Boost type, bool* _aidl_return) {
     LOG(INFO) << "Power isBoostSupported: " << static_cast<int32_t>(type);
-    *_aidl_return = false;
+    switch (type) {
+        case Boost::INTERACTION:
+            *_aidl_return = true;
+            break;
+        default:
+            *_aidl_return = false;
+            break;
+    }
     return ndk::ScopedAStatus::ok();
 }
+
 ndk::ScopedAStatus Power::createHintSession(int32_t tgid, int32_t uid,
                                             const std::vector<int32_t>& threadIds,
                                             int64_t durationNanos,

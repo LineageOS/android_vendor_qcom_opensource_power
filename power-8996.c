@@ -47,7 +47,6 @@
 #include "power-common.h"
 #include "utils.h"
 
-#define CHECK_HANDLE(x) ((x) > 0)
 #define NUM_PERF_MODES 3
 
 static int video_encode_hint_sent;
