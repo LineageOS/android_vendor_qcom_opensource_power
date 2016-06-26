@@ -96,7 +96,7 @@ static int process_video_encode_hint(void* metadata) {
                                      0x41814000, 0x32,  0x4180C000, 0x0,  0x41820000, 0xA};
 
             perform_hint_action(video_encode_metadata.hint_id, resource_values,
-                                sizeof(resource_values) / sizeof(resource_values[0]));
+                                ARRAY_SIZE(resource_values));
             ALOGI("Video Encode hint start");
             return HINT_HANDLED;
         }
