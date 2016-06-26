@@ -100,7 +100,7 @@ static int process_video_encode_hint(void* metadata) {
             camera_hint_ref_count++;
             if (camera_hint_ref_count == 1) {
                 perform_hint_action(video_encode_metadata.hint_id, resource_values,
-                                    sizeof(resource_values) / sizeof(resource_values[0]));
+                                    ARRAY_SIZE(resource_values));
             }
             ALOGI("Video Encode hint start");
             return HINT_HANDLED;
@@ -146,7 +146,7 @@ int set_interactive_override(int on) {
         if (is_interactive_governor(governor)) {
             int resource_values[] = {}; /* dummy node */
             perform_hint_action(DISPLAY_STATE_HINT_ID, resource_values,
-                                sizeof(resource_values) / sizeof(resource_values[0]));
+                                ARRAY_SIZE(resource_values));
             ALOGI("Display Off hint start");
             return HINT_HANDLED;
         }
