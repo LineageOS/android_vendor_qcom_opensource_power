@@ -47,8 +47,6 @@
 #include "power-common.h"
 #include "utils.h"
 
-static int display_hint_sent;
-
 int power_hint_override(power_hint_t hint, void* data) {
     switch (hint) {
         case POWER_HINT_INTERACTION: {
