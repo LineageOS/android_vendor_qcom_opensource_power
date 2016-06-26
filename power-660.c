@@ -120,7 +120,7 @@ int set_interactive_override(int on) {
             if (is_target_SDM630()) {
                 int res[] = {0x41414000, 0x459, 0x41410000, 0x5F, 0x41400000, 0x4, 0x41820000, 0xA};
                 memcpy(resource_values, res, MIN_VAL(sizeof(resource_values), sizeof(res)));
-                num_resources = sizeof(res) / sizeof(res[0]);
+                num_resources = ARRAY_SIZE(res);
             }
             /*
                 1. CPUfreq params
@@ -135,7 +135,7 @@ int set_interactive_override(int on) {
                 int res[] = {0x41414100, 0x386,      0x41410100, 0x5F,       0x41400100,
                              0x4,        0x41820000, 0xA,        0x40C54000, 0x1F4};
                 memcpy(resource_values, res, MIN_VAL(sizeof(resource_values), sizeof(res)));
-                num_resources = sizeof(res) / sizeof(res[0]);
+                num_resources = ARRAY_SIZE(res);
             }
             perform_hint_action(DISPLAY_STATE_HINT_ID, resource_values, num_resources);
         }
@@ -199,8 +199,7 @@ static void process_video_encode_hint(void* metadata) {
                 int res[] = {0x41414000, 0x459, 0x41410000, 0x5F, 0x41400000, 0x4,
                              0x41420000, 0x5F,  0x40C2C000, 0X5,  0x41820000, 0xA};
                 memcpy(resource_values, res, MIN_VAL(sizeof(resource_values), sizeof(res)));
-                num_resources = sizeof(res) / sizeof(res[0]);
-
+                num_resources = ARRAY_SIZE(res);
             }
             /*
                  1. CPUfreq params
@@ -213,7 +212,7 @@ static void process_video_encode_hint(void* metadata) {
             else {
                 int res[] = {0x41414100, 0x386, 0x41410100, 0x5F, 0x41400100, 0x4, 0x41820000, 0xA};
                 memcpy(resource_values, res, MIN_VAL(sizeof(resource_values), sizeof(res)));
-                num_resources = sizeof(res) / sizeof(res[0]);
+                num_resources = ARRAY_SIZE(res);
             }
             camera_hint_ref_count++;
             if (camera_hint_ref_count == 1) {

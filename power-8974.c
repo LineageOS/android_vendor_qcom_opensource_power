@@ -92,7 +92,7 @@ int set_interactive_override(int on) {
         if (is_target_8974pro()) {
             int resource_values2[] = {CPUS_ONLINE_MIN_2};
             perform_hint_action(DISPLAY_STATE_HINT_ID_2, resource_values2,
-                                sizeof(resource_values2) / sizeof(resource_values2[0]));
+                                ARRAY_SIZE(resource_values2));
         }
     }
 
