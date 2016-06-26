@@ -47,7 +47,6 @@
 #include "power-common.h"
 #include "utils.h"
 
-static int display_hint2_sent;
 static int first_display_off_hint;
 extern int display_boost;
 
@@ -72,18 +71,14 @@ int set_interactive_override(int on) {
                 first_display_off_hint = 1;
             }
             /* used for all subsequent toggles to the display */
-            if (!display_hint2_sent) {
-                undo_hint_action(DISPLAY_STATE_HINT_ID_2);
-                display_hint2_sent = 1;
-            }
+            undo_hint_action(DISPLAY_STATE_HINT_ID_2);
         }
     } else {
         /* Display on */
-        if (display_boost && display_hint2_sent) {
+        if (display_boost) {
             int resource_values2[] = {CPUS_ONLINE_MIN_2};
             perform_hint_action(DISPLAY_STATE_HINT_ID_2, resource_values2,
                                 sizeof(resource_values2) / sizeof(resource_values2[0]));
-            display_hint2_sent = 0;
         }
     }
 

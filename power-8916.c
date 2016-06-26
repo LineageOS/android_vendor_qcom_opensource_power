@@ -57,7 +57,6 @@ char scaling_min_freq[4][80] = {"sys/devices/system/cpu/cpu0/cpufreq/scaling_min
                                 "sys/devices/system/cpu/cpu3/cpufreq/scaling_min_freq"};
 
 static int slack_node_rw_failed = 0;
-static int display_hint_sent;
 int display_boost;
 
 /**
@@ -121,11 +120,8 @@ int set_interactive_override(int on) {
             if (is_interactive_governor(governor)) {
                 int resource_values[] = {TR_MS_50, THREAD_MIGRATION_SYNC_OFF};
 
-                if (!display_hint_sent) {
-                    perform_hint_action(DISPLAY_STATE_HINT_ID, resource_values,
-                                        sizeof(resource_values) / sizeof(resource_values[0]));
-                    display_hint_sent = 1;
-                }
+                perform_hint_action(DISPLAY_STATE_HINT_ID, resource_values,
+                                    sizeof(resource_values) / sizeof(resource_values[0]));
             } /* Perf time rate set for 8916 target*/
             /* End of display hint for 8916 */
         } else {
@@ -148,11 +144,8 @@ int set_interactive_override(int on) {
                     }
                 }
 
-                if (!display_hint_sent) {
-                    perform_hint_action(DISPLAY_STATE_HINT_ID, resource_values,
-                                        sizeof(resource_values) / sizeof(resource_values[0]));
-                    display_hint_sent = 1;
-                }
+                perform_hint_action(DISPLAY_STATE_HINT_ID, resource_values,
+                                    sizeof(resource_values) / sizeof(resource_values[0]));
             } /* Perf time rate set for CORE0,CORE4 8939 target*/
             /* End of display hint for 8939 */
         }
@@ -161,7 +154,6 @@ int set_interactive_override(int on) {
         if (is_target_8916()) {
             if (is_interactive_governor(governor)) {
                 undo_hint_action(DISPLAY_STATE_HINT_ID);
-                display_hint_sent = 0;
             }
         } else {
             if (is_interactive_governor(governor)) {
@@ -180,7 +172,6 @@ int set_interactive_override(int on) {
                     }
                 }
                 undo_hint_action(DISPLAY_STATE_HINT_ID);
-                display_hint_sent = 0;
             }
         } /* End of check condition during the DISPLAY ON case */
     }

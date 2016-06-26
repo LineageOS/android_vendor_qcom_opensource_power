@@ -112,6 +112,8 @@ extern void power_set_interactive_ext(int on);
 #endif
 
 void set_interactive(int on) {
+    static int display_hint_sent;
+
     if (!on) {
         /* Send Display OFF hint to perf HAL */
         perf_hint_enable(VENDOR_HINT_DISPLAY_OFF, 0);
@@ -119,6 +121,14 @@ void set_interactive(int on) {
         /* Send Display ON hint to perf HAL */
         perf_hint_enable(VENDOR_HINT_DISPLAY_ON, 0);
     }
+
+    /**
+     * Ignore consecutive display-off hints
+     * Consecutive display-on hints are already handled
+     */
+    if (display_hint_sent && !on) return;
+
+    display_hint_sent = !on;
 
 #ifdef SET_INTERACTIVE_EXT
     power_set_interactive_ext(on);
