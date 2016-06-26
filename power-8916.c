@@ -81,7 +81,7 @@ int power_hint_override(power_hint_t hint, void* data) {
             int resources[] = {0x702, 0x20F, 0x30F};
             int duration = 3000;
 
-            interaction(duration, sizeof(resources) / sizeof(resources[0]), resources);
+            interaction(duration, ARRAY_SIZE(resources), resources);
         }
             return HINT_HANDLED;
         case POWER_HINT_VIDEO_ENCODE: /* Do nothing for encode case  */
@@ -119,7 +119,7 @@ int set_interactive_override(int on) {
                 int resource_values[] = {TR_MS_50, THREAD_MIGRATION_SYNC_OFF};
 
                 perform_hint_action(DISPLAY_STATE_HINT_ID, resource_values,
-                                    sizeof(resource_values) / sizeof(resource_values[0]));
+                                    ARRAY_SIZE(resource_values));
             } /* Perf time rate set for 8916 target*/
             /* End of display hint for 8916 */
         } else {
@@ -143,7 +143,7 @@ int set_interactive_override(int on) {
                 }
 
                 perform_hint_action(DISPLAY_STATE_HINT_ID, resource_values,
-                                    sizeof(resource_values) / sizeof(resource_values[0]));
+                                    ARRAY_SIZE(resource_values));
             } /* Perf time rate set for CORE0,CORE4 8939 target*/
             /* End of display hint for 8939 */
         }
