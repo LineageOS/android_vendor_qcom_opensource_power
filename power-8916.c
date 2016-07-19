@@ -57,7 +57,6 @@ char scaling_min_freq[4][80] = {"sys/devices/system/cpu/cpu0/cpufreq/scaling_min
                                 "sys/devices/system/cpu/cpu3/cpufreq/scaling_min_freq"};
 
 static int slack_node_rw_failed = 0;
-int display_boost;
 
 /**
  * If target is 8916:
