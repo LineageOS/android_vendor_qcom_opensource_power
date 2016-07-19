@@ -62,25 +62,20 @@ static void process_video_encode_hint(void* metadata);
 static int display_fd;
 #define SYS_DISPLAY_PWR "/sys/kernel/hbtp/display_pwr"
 
-static bool is_target_SDM632() /* Returns value=632 if target is SDM632 else value 0 */
-{
-    int fd;
-    bool is_target_SDM632 = false;
-    char buf[10] = {0};
-    fd = open("/sys/devices/soc0/soc_id", O_RDONLY);
-    if (fd >= 0) {
-        if (read(fd, buf, sizeof(buf) - 1) == -1) {
-            ALOGW("Unable to read soc_id");
-            is_target_SDM632 = false;
-        } else {
-            int soc_id = atoi(buf);
-            if (soc_id == 349 || soc_id == 350) {
-                is_target_SDM632 = true; /* Above SOCID for SDM632 */
-            }
-        }
-    }
-    close(fd);
-    return is_target_SDM632;
+/**
+ * If target is SDM632:
+ *     return true
+ * else:
+ *     return false
+ */
+static bool is_target_SDM632(void) {
+    static bool is_SDM632 = false;
+    int soc_id;
+
+    soc_id = get_soc_id();
+    if (soc_id == 349 || soc_id == 350) is_SDM632 = true;
+
+    return is_SDM632;
 }
 
 int power_hint_override(power_hint_t hint, void* data) {
