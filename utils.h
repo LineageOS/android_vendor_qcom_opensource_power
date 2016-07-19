@@ -43,3 +43,5 @@ void release_request(int lock_handle);
 void interaction(int duration, int num_args, int opt_list[]);
 int interaction_with_handle(int lock_handle, int duration, int num_args, int opt_list[]);
 int perf_hint_enable(int hint_id, int duration);
+
+int get_soc_id(void);
