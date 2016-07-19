@@ -58,25 +58,20 @@ static void process_video_encode_hint(void* metadata);
 static int display_fd;
 #define SYS_DISPLAY_PWR "/sys/kernel/hbtp/display_pwr"
 
-static bool is_target_SDM439() /* Returns value=1 if target is Hathi else value 0 */
-{
-    int fd;
-    bool is_target_SDM439 = false;
-    char buf[10] = {0};
-    fd = open("/sys/devices/soc0/soc_id", O_RDONLY);
-    if (fd >= 0) {
-        if (read(fd, buf, sizeof(buf) - 1) == -1) {
-            ALOGW("Unable to read soc_id");
-            is_target_SDM439 = false;
-        } else {
-            int soc_id = atoi(buf);
-            if (soc_id == 353 || soc_id == 363 || soc_id == 354 || soc_id == 364) {
-                is_target_SDM439 = true; /* Above SOCID for SDM439/429 */
-            }
-        }
-    }
-    close(fd);
-    return is_target_SDM439;
+/**
+ * If target is SDM439/429:
+ *     return true
+ * else:
+ *     return false
+ */
+static bool is_target_SDM439(void) {
+    static bool is_SDM439 = false;
+    int soc_id;
+
+    soc_id = get_soc_id();
+    if (soc_id == 353 || soc_id == 363 || soc_id == 354 || soc_id == 364) is_SDM439 = true;
+
+    return is_SDM439;
 }
 
 int power_hint_override(power_hint_t hint, void* data) {
