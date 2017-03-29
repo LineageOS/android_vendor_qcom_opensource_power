@@ -82,7 +82,6 @@ endif
 LOCAL_MODULE := android.hardware.power@1.2-service
 LOCAL_INIT_RC := android.hardware.power@1.2-service.rc
 LOCAL_MODULE_TAGS := optional
-LOCAL_CFLAGS += -Wno-unused-parameter -Wno-unused-variable
 LOCAL_VENDOR_MODULE := true
 include $(BUILD_EXECUTABLE)
 
