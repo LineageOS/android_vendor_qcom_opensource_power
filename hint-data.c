@@ -27,6 +27,9 @@
  * IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+#define LOG_TAG "QTI PowerHAL"
+#include <log/log.h>
+
 #include "hint-data.h"
 
 int hint_compare(struct hint_data* first_hint, struct hint_data* other_hint) {
@@ -40,5 +43,5 @@ int hint_compare(struct hint_data* first_hint, struct hint_data* other_hint) {
 }
 
 void hint_dump(struct hint_data* hint) {
-    /*ALOGI("hint_id: %lu", hint->hint_id);*/
+    ALOGV("hint_id: %lu", hint->hint_id);
 }
