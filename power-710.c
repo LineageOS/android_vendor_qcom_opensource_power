@@ -52,7 +52,7 @@
 static int display_fd;
 #define SYS_DISPLAY_PWR "/sys/kernel/hbtp/display_pwr"
 
-int set_interactive_override(struct power_module *module, int on)
+int set_interactive_override(int on)
 {
     static const char *display_on = "1";
     static const char *display_off = "0";
