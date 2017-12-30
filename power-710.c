@@ -49,7 +49,7 @@
 #include "performance.h"
 #include "power-common.h"
 
-int set_interactive_override(struct power_module *module, int on)
+int set_interactive_override(int on)
 {
     static int set_i_count = 0;
 
