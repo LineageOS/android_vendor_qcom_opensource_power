@@ -1,5 +1,6 @@
 /*
  * Copyright (c) 2019, The Linux Foundation. All rights reserved.
+ * Copyright (C) 2017-2019 The LineageOS Project
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are
@@ -28,6 +29,8 @@
  */
 
 #define LOG_TAG "android.hardware.power@1.2-service-qti"
+
+// #define LOG_NDEBUG 0
 
 #include "Power.h"
 #include <android-base/file.h>
@@ -99,6 +102,36 @@ Return<void> Power::powerHintAsync(PowerHint_1_0 hint, int32_t data) {
 
 Return<void> Power::powerHintAsync_1_2(PowerHint_1_2 hint, int32_t data) {
     return powerHint(static_cast<PowerHint_1_0>(hint), data);
+}
+
+Return<int32_t> Power::getFeature(LineageFeature feature) {
+    if (feature == LineageFeature::SUPPORTED_PROFILES) {
+        return get_number_of_profiles();
+    }
+    return -1;
+}
+
+status_t Power::registerAsSystemService() {
+    status_t ret = 0;
+
+    ret = IPower::registerAsService();
+    if (ret != 0) {
+        ALOGE("Failed to register IPower (%d)", ret);
+        goto fail;
+    } else {
+        ALOGI("Successfully registered IPower");
+    }
+
+    ret = ILineagePower::registerAsService();
+    if (ret != 0) {
+        ALOGE("Failed to register ILineagePower (%d)", ret);
+        goto fail;
+    } else {
+        ALOGI("Successfully registered ILineagePower");
+    }
+
+fail:
+    return ret;
 }
 
 }  // namespace implementation
