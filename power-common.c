@@ -1,5 +1,6 @@
 /*
  * Copyright (c) 2012-2019, The Linux Foundation. All rights reserved.
+ * Copyright (C) 2017-2021 The LineageOS Project
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are
@@ -96,6 +97,12 @@ void power_hint(power_hint_t hint, void* data) {
             break;
     }
 }
+
+int __attribute__((weak)) get_number_of_profiles() {
+    return 0;
+}
+
+void __attribute__((weak)) set_power_profile(int profile) {}
 
 int __attribute__((weak)) set_interactive_override(int on) {
     return HINT_NONE;
