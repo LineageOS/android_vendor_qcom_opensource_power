@@ -37,7 +37,6 @@
 #include <fcntl.h>
 #include <dlfcn.h>
 #include <stdlib.h>
-#include <pthread.h>
 #include <unistd.h>
 
 #define LOG_TAG "QTI PowerHAL"
@@ -74,7 +73,6 @@ perf_mode_t perf_modes[NUM_PERF_MODES] = { { SUSTAINED_MODE, SUSTAINED_PERF_HINT
                                            { VR_MODE, VR_MODE_HINT },
                                            { VR_SUSTAINED_MODE, VR_MODE_SUSTAINED_PERF_HINT } };
 
-static pthread_mutex_t perf_mode_switch_lock = PTHREAD_MUTEX_INITIALIZER;
 static int current_mode = NORMAL_MODE;
 
 static inline  int get_perfd_hint_id(perf_mode_type_t type) {
@@ -115,20 +113,16 @@ static int switch_mode(perf_mode_type_t mode) {
 
 static int process_perf_hint(void *data, perf_mode_type_t mode) {
 
-    pthread_mutex_lock(&perf_mode_switch_lock);
-
     // enable
     if (data){
         ALOGI("Enable request for mode: 0x%x", mode);
         // check if mode is current mode
         if ( current_mode & mode ) {
-            pthread_mutex_unlock(&perf_mode_switch_lock);
             ALOGD("Mode 0x%x already enabled", mode);
             return HINT_HANDLED;
         }
         // enable requested mode
         if ( 0 != switch_mode(current_mode | mode)) {
-            pthread_mutex_unlock(&perf_mode_switch_lock);
             ALOGE("Couldn't enable mode 0x%x", mode);
             return HINT_NONE;
         }
@@ -139,13 +133,11 @@ static int process_perf_hint(void *data, perf_mode_type_t mode) {
         ALOGI("Disable request for mode: 0x%x", mode);
         // check if mode is enabled
         if ( !(current_mode & mode) ) {
-            pthread_mutex_unlock(&perf_mode_switch_lock);
             ALOGD("Mode 0x%x already disabled", mode);
             return HINT_HANDLED;
         }
         //disable requested mode
         if ( 0 != switch_mode(current_mode & ~mode)) {
-            pthread_mutex_unlock(&perf_mode_switch_lock);
             ALOGE("Couldn't disable mode 0x%x", mode);
             return HINT_NONE;
         }
@@ -153,7 +145,6 @@ static int process_perf_hint(void *data, perf_mode_type_t mode) {
         ALOGI("Current mode is 0x%x", current_mode);
     }
 
-    pthread_mutex_unlock(&perf_mode_switch_lock);
     return HINT_HANDLED;
 }
 
