@@ -40,7 +40,7 @@
 #define LOG_TAG "QTI PowerHAL"
 #include <hardware/hardware.h>
 #include <hardware/power.h>
-#include <utils/Log.h>
+#include <log/log.h>
 
 #include "power-common.h"
 

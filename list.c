@@ -31,7 +31,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include <utils/Log.h>
+#include <log/log.h>
 #include "list.h"
 
 struct list_node* add_list_node(struct list_node* head, void* data) {

@@ -41,7 +41,7 @@
 #include "utils.h"
 
 #define LOG_TAG "QTI PowerHAL"
-#include <utils/Log.h>
+#include <log/log.h>
 
 char scaling_gov_path[4][80] = {"sys/devices/system/cpu/cpu0/cpufreq/scaling_governor",
                                 "sys/devices/system/cpu/cpu1/cpufreq/scaling_governor",
