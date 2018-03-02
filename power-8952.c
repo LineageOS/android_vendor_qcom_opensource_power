@@ -118,8 +118,7 @@ int set_interactive_override(int on) {
 
     if (!on) {
         /* Display off. */
-        if ((strncmp(governor, INTERACTIVE_GOVERNOR, strlen(INTERACTIVE_GOVERNOR)) == 0) &&
-            (strlen(governor) == strlen(INTERACTIVE_GOVERNOR))) {
+        if (is_interactive_governor(governor)) {
             int resource_values[] = {INT_OP_CLUSTER0_TIMER_RATE, BIG_LITTLE_TR_MS_50,
                                      INT_OP_CLUSTER1_TIMER_RATE, BIG_LITTLE_TR_MS_50,
                                      INT_OP_NOTIFY_ON_MIGRATE,   0x00};
@@ -133,8 +132,7 @@ int set_interactive_override(int on) {
 
     } else {
         /* Display on. */
-        if ((strncmp(governor, INTERACTIVE_GOVERNOR, strlen(INTERACTIVE_GOVERNOR)) == 0) &&
-            (strlen(governor) == strlen(INTERACTIVE_GOVERNOR))) {
+        if (is_interactive_governor(governor)) {
             undo_hint_action(DISPLAY_STATE_HINT_ID);
             display_hint_sent = 0;
         }
@@ -206,8 +204,7 @@ static void process_video_encode_hint(void* metadata) {
     }
 
     if (video_encode_metadata.state == 1) {
-        if ((strncmp(governor, SCHEDUTIL_GOVERNOR, strlen(SCHEDUTIL_GOVERNOR)) == 0) &&
-            (strlen(governor) == strlen(SCHEDUTIL_GOVERNOR))) {
+        if (is_schedutil_governor(governor)) {
             if (is_target_SDM439()) {
                 /* sample_ms = 10mS
                  * SLB for Core0 = -6
@@ -248,8 +245,7 @@ static void process_video_encode_hint(void* metadata) {
                     }
                 }
             }
-        } else if ((strncmp(governor, INTERACTIVE_GOVERNOR, strlen(INTERACTIVE_GOVERNOR)) == 0) &&
-                   (strlen(governor) == strlen(INTERACTIVE_GOVERNOR))) {
+        } else if (is_interactive_governor(governor)) {
             /* Sched_load and migration_notif*/
             int res[] = {INT_OP_CLUSTER0_USE_SCHED_LOAD,      0x1,
                          INT_OP_CLUSTER1_USE_SCHED_LOAD,      0x1,
@@ -266,10 +262,7 @@ static void process_video_encode_hint(void* metadata) {
             }
         }
     } else if (video_encode_metadata.state == 0) {
-        if (((strncmp(governor, INTERACTIVE_GOVERNOR, strlen(INTERACTIVE_GOVERNOR)) == 0) &&
-             (strlen(governor) == strlen(INTERACTIVE_GOVERNOR))) ||
-            ((strncmp(governor, SCHEDUTIL_GOVERNOR, strlen(SCHEDUTIL_GOVERNOR)) == 0) &&
-             (strlen(governor) == strlen(SCHEDUTIL_GOVERNOR)))) {
+        if (is_interactive_governor(governor) || is_schedutil_governor(governor)) {
             camera_hint_ref_count--;
             if (!camera_hint_ref_count) {
                 undo_hint_action(video_encode_metadata.hint_id);
