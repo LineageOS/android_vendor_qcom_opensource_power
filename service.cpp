@@ -29,7 +29,7 @@
 
 #define LOG_TAG "android.hardware.power@1.2-service"
 
-#include <android/log.h>
+#include <log/log.h>
 #include <hidl/HidlTransportSupport.h>
 #include <hardware/power.h>
 #include "Power.h"
