@@ -72,8 +72,7 @@ static int process_video_encode_hint(void* metadata) {
     }
 
     if (video_encode_metadata.state == 1) {
-        if ((strncmp(governor, INTERACTIVE_GOVERNOR, strlen(INTERACTIVE_GOVERNOR)) == 0) &&
-            (strlen(governor) == strlen(INTERACTIVE_GOVERNOR))) {
+        if (is_interactive_governor(governor)) {
             /* 1. cpufreq params
              *    -above_hispeed_delay for LVT - 40ms
              *    -go hispeed load for LVT - 95
@@ -102,8 +101,7 @@ static int process_video_encode_hint(void* metadata) {
             return HINT_HANDLED;
         }
     } else if (video_encode_metadata.state == 0) {
-        if ((strncmp(governor, INTERACTIVE_GOVERNOR, strlen(INTERACTIVE_GOVERNOR)) == 0) &&
-            (strlen(governor) == strlen(INTERACTIVE_GOVERNOR))) {
+        if (is_interactive_governor(governor)) {
             undo_hint_action(video_encode_metadata.hint_id);
 
             ALOGI("Video Encode hint stop");
