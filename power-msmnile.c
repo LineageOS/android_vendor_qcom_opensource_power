@@ -86,7 +86,7 @@ int set_interactive_override(int on) {
     return HINT_HANDLED;
 }
 
-int power_hint_override(power_hint_t hint, void* data) {
+int power_hint_override(power_hint_t hint, void* UNUSED(data)) {
     int ret_val = HINT_NONE;
     switch (hint) {
         case POWER_HINT_INTERACTION: {

@@ -52,11 +52,9 @@
 #define MIN_VAL(X, Y) ((X > Y) ? (Y) : (X))
 
 static int video_encode_hint_sent;
-static int cam_preview_hint_sent;
 
 static int camera_hint_ref_count;
 static void process_video_encode_hint(void* metadata);
-// static void process_cam_preview_hint(void *metadata);
 
 static int display_fd;
 #define SYS_DISPLAY_PWR "/sys/kernel/hbtp/display_pwr"
@@ -84,14 +82,14 @@ int power_hint_override(power_hint_t hint, void* data) {
             process_video_encode_hint(data);
             return HINT_HANDLED;
         }
+        default:
+            break;
     }
     return HINT_NONE;
 }
 
 int set_interactive_override(int on) {
     char governor[80];
-    char tmp_str[NODE_MAX];
-    struct video_encode_metadata_t video_encode_metadata;
     int rc = 0;
 
     static const char* display_on = "1";
