@@ -71,7 +71,7 @@ static bool is_target_8916(void) {
     return is_8916;
 }
 
-int power_hint_override(power_hint_t hint, void* data) {
+int power_hint_override(power_hint_t hint, void* UNUSED(data)) {
     switch (hint) {
         case POWER_HINT_VSYNC:
             break;
