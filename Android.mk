@@ -13,6 +13,8 @@ LOCAL_SRC_FILES := power-common.c metadata-parser.c utils.c list.c hint-data.c s
 LOCAL_C_INCLUDES := external/libxml2/include \
                     external/icu/icu4c/source/common
 
+LOCAL_CFLAGS += -Wall -Wextra -Werror
+
 ifneq ($(BOARD_POWER_CUSTOM_BOARD_LIB),)
     LOCAL_WHOLE_STATIC_LIBRARIES += $(BOARD_POWER_CUSTOM_BOARD_LIB)
 else
