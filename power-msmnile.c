@@ -43,6 +43,7 @@
 #include <log/log.h>
 
 #include "power-common.h"
+#include "utils.h"
 
 int set_interactive_override(int on) {
     static int set_i_count = 0;
@@ -52,8 +53,6 @@ int set_interactive_override(int on) {
 
     return HINT_HANDLED;
 }
-
-void interaction(int duration, int num_args, int opt_list[]);
 
 int power_hint_override(power_hint_t hint, void* data) {
     int ret_val = HINT_NONE;
