@@ -14,6 +14,8 @@ LOCAL_HEADER_LIBRARIES += libutils_headers
 LOCAL_HEADER_LIBRARIES += libhardware_headers
 LOCAL_SRC_FILES := power-common.c metadata-parser.c utils.c list.c hint-data.c Power.cpp main.cpp PowerHintSession.cpp
 
+LOCAL_CFLAGS += -Wall -Wextra -Werror
+
 ifneq ($(BOARD_POWER_CUSTOM_BOARD_LIB),)
     LOCAL_WHOLE_STATIC_LIBRARIES += $(BOARD_POWER_CUSTOM_BOARD_LIB)
 else
