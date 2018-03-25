@@ -43,6 +43,7 @@
 #include <log/log.h>
 
 #include "power-common.h"
+#include "utils.h"
 
 static int display_fd;
 #define SYS_DISPLAY_PWR "/sys/kernel/hbtp/display_pwr"
@@ -84,8 +85,6 @@ int set_interactive_override(int on) {
 
     return HINT_HANDLED;
 }
-
-void interaction(int duration, int num_args, int opt_list[]);
 
 int power_hint_override(power_hint_t hint, void* data) {
     int ret_val = HINT_NONE;

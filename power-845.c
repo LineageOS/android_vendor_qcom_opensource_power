@@ -183,9 +183,6 @@ static int process_video_encode_hint(void* metadata) {
     return HINT_NONE;
 }
 
-/* Declare function before use */
-void interaction(int duration, int num_args, int opt_list[]);
-
 int power_hint_override(power_hint_t hint, void* data) {
     int ret_val = HINT_NONE;
     switch (hint) {
