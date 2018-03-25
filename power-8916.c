@@ -56,8 +56,6 @@ const char* scaling_min_freq[4] = {"/sys/devices/system/cpu/cpu0/cpufreq/scaling
                                    "/sys/devices/system/cpu/cpu2/cpufreq/scaling_min_freq",
                                    "/sys/devices/system/cpu/cpu3/cpufreq/scaling_min_freq"};
 
-static int slack_node_rw_failed = 0;
-
 /**
  * Returns true if the target is MSM8916.
  */
@@ -82,11 +80,11 @@ int power_hint_override(power_hint_t hint, void* data) {
             int duration = 3000;
 
             interaction(duration, ARRAY_SIZE(resources), resources);
+            return HINT_HANDLED;
         }
+        case POWER_HINT_VIDEO_ENCODE: /* Do nothing for encode case */
             return HINT_HANDLED;
-        case POWER_HINT_VIDEO_ENCODE: /* Do nothing for encode case  */
-            return HINT_HANDLED;
-        case POWER_HINT_VIDEO_DECODE: /*Do nothing for encode case  */
+        case POWER_HINT_VIDEO_DECODE: /* Do nothing for decode case */
             return HINT_HANDLED;
         default:
             return HINT_HANDLED;
@@ -97,8 +95,6 @@ int power_hint_override(power_hint_t hint, void* data) {
 int set_interactive_override(int on) {
     char governor[80];
     char tmp_str[NODE_MAX];
-    struct video_encode_metadata_t video_encode_metadata;
-    int rc;
 
     ALOGI("Got set_interactive hint");
     if (get_scaling_governor_check_cores(governor, sizeof(governor), CPU0) == -1) {
@@ -133,10 +129,7 @@ int set_interactive_override(int on) {
                     if (sysfs_write(scaling_min_freq[1], tmp_str) != 0) {
                         if (sysfs_write(scaling_min_freq[2], tmp_str) != 0) {
                             if (sysfs_write(scaling_min_freq[3], tmp_str) != 0) {
-                                if (!slack_node_rw_failed) {
-                                    ALOGE("Failed to write to %s", SCALING_MIN_FREQ);
-                                }
-                                rc = 1;
+                                ALOGE("Failed to write to %s", SCALING_MIN_FREQ);
                             }
                         }
                     }
@@ -161,10 +154,7 @@ int set_interactive_override(int on) {
                     if (sysfs_write(scaling_min_freq[1], tmp_str) != 0) {
                         if (sysfs_write(scaling_min_freq[2], tmp_str) != 0) {
                             if (sysfs_write(scaling_min_freq[3], tmp_str) != 0) {
-                                if (!slack_node_rw_failed) {
-                                    ALOGE("Failed to write to %s", SCALING_MIN_FREQ);
-                                }
-                                rc = 1;
+                                ALOGE("Failed to write to %s", SCALING_MIN_FREQ);
                             }
                         }
                     }
