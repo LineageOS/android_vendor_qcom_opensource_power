@@ -56,6 +56,8 @@ int power_hint_override(power_hint_t hint, void* data) {
             interaction(duration, ARRAY_SIZE(resources), resources);
             return HINT_HANDLED;
         }
+        default:
+            break;
     }
     return HINT_NONE;
 }
