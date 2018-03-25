@@ -27,6 +27,8 @@ LOCAL_SRC_FILES := \
     Power.cpp \
     main.cpp
 
+LOCAL_CFLAGS += -Wall -Wextra -Werror
+
 ifneq ($(BOARD_POWER_CUSTOM_BOARD_LIB),)
     LOCAL_WHOLE_STATIC_LIBRARIES += $(BOARD_POWER_CUSTOM_BOARD_LIB)
 else

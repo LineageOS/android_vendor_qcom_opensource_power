@@ -52,11 +52,9 @@
 #define MIN_VAL(X, Y) ((X > Y) ? (Y) : (X))
 
 static int video_encode_hint_sent;
-static int cam_preview_hint_sent;
 
 static int camera_hint_ref_count;
 static void process_video_encode_hint(void* metadata);
-// static void process_cam_preview_hint(void *metadata);
 
 /**
  * Returns true if the target is SDM630/SDM455.
@@ -81,17 +79,16 @@ int power_hint_override(power_hint_t hint, void* data) {
             process_video_encode_hint(data);
             return HINT_HANDLED;
         }
+        default:
+            break;
     }
     return HINT_NONE;
 }
 
 int set_interactive_override(int on) {
     char governor[80];
-    char tmp_str[NODE_MAX];
     int resource_values[20];
     int num_resources;
-    struct video_encode_metadata_t video_encode_metadata;
-    int rc;
 
     ALOGI("Got set_interactive hint");
 
