@@ -51,10 +51,10 @@
 #define MIN_FREQ_CPU0_DISP_OFF 400000
 #define MIN_FREQ_CPU0_DISP_ON 960000
 
-char scaling_min_freq[4][80] = {"sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq",
-                                "sys/devices/system/cpu/cpu1/cpufreq/scaling_min_freq",
-                                "sys/devices/system/cpu/cpu2/cpufreq/scaling_min_freq",
-                                "sys/devices/system/cpu/cpu3/cpufreq/scaling_min_freq"};
+const char* scaling_min_freq[4] = {"/sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq",
+                                   "/sys/devices/system/cpu/cpu1/cpufreq/scaling_min_freq",
+                                   "/sys/devices/system/cpu/cpu2/cpufreq/scaling_min_freq",
+                                   "/sys/devices/system/cpu/cpu3/cpufreq/scaling_min_freq"};
 
 static int slack_node_rw_failed = 0;
 
