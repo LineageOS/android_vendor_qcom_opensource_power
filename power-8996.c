@@ -48,7 +48,6 @@
 #include "power-common.h"
 
 static int display_hint_sent;
-static int camera_hint_ref_count;
 
 static int process_video_encode_hint(void *metadata)
 {
@@ -100,21 +99,15 @@ static int process_video_encode_hint(void *metadata)
                 0x41420000, 0x5A, 0x41400100, 0x4, 0x41410100, 0x5F, 0x41414100, 0x22C, 0x41420100, 0x5A,
                 0x41810000, 0x9C4, 0x41814000, 0x32, 0x4180C000, 0x0, 0x41820000, 0xA};
 
-            camera_hint_ref_count++;
-            if (camera_hint_ref_count == 1) {
-                perform_hint_action(video_encode_metadata.hint_id,
-                        resource_values, sizeof(resource_values)/sizeof(resource_values[0]));
-            }
+            perform_hint_action(video_encode_metadata.hint_id,
+                    resource_values, sizeof(resource_values)/sizeof(resource_values[0]));
             ALOGI("Video Encode hint start");
             return HINT_HANDLED;
         }
     } else if (video_encode_metadata.state == 0) {
         if ((strncmp(governor, INTERACTIVE_GOVERNOR, strlen(INTERACTIVE_GOVERNOR)) == 0) &&
                 (strlen(governor) == strlen(INTERACTIVE_GOVERNOR))) {
-            camera_hint_ref_count--;
-            if (!camera_hint_ref_count) {
-                undo_hint_action(video_encode_metadata.hint_id);
-            }
+            undo_hint_action(video_encode_metadata.hint_id);
 
             ALOGI("Video Encode hint stop");
             return HINT_HANDLED;
