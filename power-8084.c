@@ -47,7 +47,6 @@
 #include "power-common.h"
 #include "utils.h"
 
-static int display_hint_sent;
 static int display_hint2_sent;
 static int first_display_off_hint;
 extern int display_boost;
@@ -78,20 +77,6 @@ int set_interactive_override(int on) {
                 display_hint2_sent = 1;
             }
         }
-
-        if ((strncmp(governor, ONDEMAND_GOVERNOR, strlen(ONDEMAND_GOVERNOR)) == 0) &&
-            (strlen(governor) == strlen(ONDEMAND_GOVERNOR))) {
-            int resource_values[] = {MS_500, SYNC_FREQ_600, OPTIMAL_FREQ_600,
-                                     THREAD_MIGRATION_SYNC_OFF};
-
-            if (!display_hint_sent) {
-                perform_hint_action(DISPLAY_STATE_HINT_ID, resource_values,
-                                    sizeof(resource_values) / sizeof(resource_values[0]));
-                display_hint_sent = 1;
-            }
-
-            return HINT_HANDLED;
-        }
     } else {
         /* Display on */
         if (display_boost && display_hint2_sent) {
@@ -99,14 +84,6 @@ int set_interactive_override(int on) {
             perform_hint_action(DISPLAY_STATE_HINT_ID_2, resource_values2,
                                 sizeof(resource_values2) / sizeof(resource_values2[0]));
             display_hint2_sent = 0;
-        }
-
-        if ((strncmp(governor, ONDEMAND_GOVERNOR, strlen(ONDEMAND_GOVERNOR)) == 0) &&
-            (strlen(governor) == strlen(ONDEMAND_GOVERNOR))) {
-            undo_hint_action(DISPLAY_STATE_HINT_ID);
-            display_hint_sent = 0;
-
-            return HINT_HANDLED;
         }
     }
 
