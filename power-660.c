@@ -51,7 +51,6 @@
 
 #define MIN_VAL(X, Y) ((X > Y) ? (Y) : (X))
 
-static int saved_interactive_mode = -1;
 static int display_hint_sent;
 static int video_encode_hint_sent;
 static int cam_preview_hint_sent;
@@ -160,7 +159,6 @@ int set_interactive_override(int on) {
             display_hint_sent = 0;
         }
     }
-    saved_interactive_mode = !!on;
     return HINT_HANDLED;
 }
 
