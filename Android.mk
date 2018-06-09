@@ -8,13 +8,11 @@ include $(CLEAR_VARS)
 
 LOCAL_MODULE_RELATIVE_PATH := hw
 # KEYSTONE(I1132378f14428bf511f3cea4f419e90a6e89f823,b/181709127)
-LOCAL_SHARED_LIBRARIES := liblog libcutils libdl libxml2 libbase libutils libbinder_ndk android.hardware.power-V3-ndk
+LOCAL_SHARED_LIBRARIES := liblog libcutils libdl libbase libutils libbinder_ndk android.hardware.power-V3-ndk
 
 LOCAL_HEADER_LIBRARIES += libutils_headers
 LOCAL_HEADER_LIBRARIES += libhardware_headers
-LOCAL_SRC_FILES := power-common.c metadata-parser.c utils.c list.c hint-data.c powerhintparser.c Power.cpp main.cpp PowerHintSession.cpp
-LOCAL_C_INCLUDES := external/libxml2/include \
-                    external/icu/icu4c/source/common
+LOCAL_SRC_FILES := power-common.c metadata-parser.c utils.c list.c hint-data.c Power.cpp main.cpp PowerHintSession.cpp
 
 # Include target-specific files.
 ifeq ($(call is-board-platform-in-list, msm8974), true)
