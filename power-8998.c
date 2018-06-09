@@ -48,7 +48,6 @@
 #include "hint-data.h"
 #include "performance.h"
 #include "power-common.h"
-#include "powerhintparser.h"
 
 #define CHECK_HANDLE(x) ((x)>0)
 #define NUM_PERF_MODES  3
