@@ -36,7 +36,6 @@ extern "C" {
 #define NODE_MAX (64)
 
 #define SCALING_GOVERNOR_PATH "/sys/devices/system/cpu/cpu0/cpufreq/scaling_governor"
-#define ONDEMAND_GOVERNOR "ondemand"
 #define INTERACTIVE_GOVERNOR "interactive"
 #define SCHEDUTIL_GOVERNOR "schedutil"
 
