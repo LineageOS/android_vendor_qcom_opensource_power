@@ -56,11 +56,6 @@ char scaling_min_freq[4][80] = {"sys/devices/system/cpu/cpu0/cpufreq/scaling_min
                                 "sys/devices/system/cpu/cpu2/cpufreq/scaling_min_freq",
                                 "sys/devices/system/cpu/cpu3/cpufreq/scaling_min_freq"};
 
-static int saved_dcvs_cpu0_slack_max = -1;
-static int saved_dcvs_cpu0_slack_min = -1;
-static int saved_mpdecision_slack_max = -1;
-static int saved_mpdecision_slack_min = -1;
-static int saved_interactive_mode = -1;
 static int slack_node_rw_failed = 0;
 static int display_hint_sent;
 int display_boost;
@@ -209,6 +204,5 @@ int set_interactive_override(int on) {
             } break;
         } /* End of check condition during the DISPLAY ON case */
     }
-    saved_interactive_mode = !!on;
     return HINT_HANDLED;
 }
