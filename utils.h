@@ -35,7 +35,7 @@ int get_scaling_governor(char governor[], int size);
 int is_interactive_governor(char*);
 int is_schedutil_governor(char*);
 
-void perform_hint_action(int hint_id, int resource_values[], int num_resources);
+int perform_hint_action(int hint_id, int resource_values[], int num_resources);
 void undo_hint_action(int hint_id);
 void undo_initial_hint_action();
 void release_request(int lock_handle);
