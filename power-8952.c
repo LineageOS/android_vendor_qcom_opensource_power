@@ -58,17 +58,16 @@ static int display_fd;
 #define SYS_DISPLAY_PWR "/sys/kernel/hbtp/display_pwr"
 
 /**
- * If target is SDM439/429:
- *     return true
- * else:
- *     return false
+ * Returns true if the target is SDM439/SDM429.
  */
 static bool is_target_SDM439(void) {
-    static bool is_SDM439 = false;
+    static int is_SDM439 = -1;
     int soc_id;
 
+    if (is_SDM439 >= 0) return is_SDM439;
+
     soc_id = get_soc_id();
-    if (soc_id == 353 || soc_id == 363 || soc_id == 354 || soc_id == 364) is_SDM439 = true;
+    is_SDM439 = soc_id == 353 || soc_id == 363 || soc_id == 354 || soc_id == 364;
 
     return is_SDM439;
 }
