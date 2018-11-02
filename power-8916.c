@@ -59,17 +59,16 @@ char scaling_min_freq[4][80] = {"sys/devices/system/cpu/cpu0/cpufreq/scaling_min
 static int slack_node_rw_failed = 0;
 
 /**
- * If target is 8916:
- *     return true
- * else:
- *     return false
+ * Returns true if the target is MSM8916.
  */
 static bool is_target_8916(void) {
-    static bool is_8916 = false;
+    static int is_8916 = -1;
     int soc_id;
 
+    if (is_8916 >= 0) return is_8916;
+
     soc_id = get_soc_id();
-    if (soc_id == 206 || (soc_id >= 247 && soc_id <= 250)) is_8916 = true;
+    is_8916 = soc_id == 206 || (soc_id >= 247 && soc_id <= 250);
 
     return is_8916;
 }
