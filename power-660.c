@@ -59,17 +59,16 @@ static void process_video_encode_hint(void* metadata);
 // static void process_cam_preview_hint(void *metadata);
 
 /**
- * If target is SDM630/SDM455:
- *     return true
- * else:
- *     return false
+ * Returns true if the target is SDM630/SDM455.
  */
 static bool is_target_SDM630(void) {
-    static bool is_SDM630 = false;
+    static int is_SDM630 = -1;
     int soc_id;
 
+    if (is_SDM630 >= 0) return is_SDM630;
+
     soc_id = get_soc_id();
-    if (soc_id == 318 || soc_id == 327 || soc_id == 385) is_SDM630 = true;
+    is_SDM630 = soc_id == 318 || soc_id == 327 || soc_id == 385;
 
     return is_SDM630;
 }
