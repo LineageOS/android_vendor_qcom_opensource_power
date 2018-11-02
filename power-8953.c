@@ -57,17 +57,16 @@ static int video_encode_hint_sent;
 static void process_video_encode_hint(void* metadata);
 
 /**
- * If target is SDM632:
- *     return true
- * else:
- *     return false
+ * Returns true if the target is SDM632.
  */
 static bool is_target_SDM632(void) {
-    static bool is_SDM632 = false;
+    static int is_SDM632 = -1;
     int soc_id;
 
+    if (is_SDM632 >= 0) return is_SDM632;
+
     soc_id = get_soc_id();
-    if (soc_id == 349 || soc_id == 350) is_SDM632 = true;
+    is_SDM632 = soc_id == 349 || soc_id == 350;
 
     return is_SDM632;
 }
