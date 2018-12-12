@@ -53,6 +53,7 @@ void set_interactive(int on);
 void set_feature(feature_t feature, int state);
 
 #define ARRAY_SIZE(x) (sizeof((x)) / sizeof((x)[0]))
+#define CHECK_HANDLE(x) ((x) > 0)
 #define UNUSED(x) UNUSED_##x __attribute__((__unused__))
 
 #ifdef __cplusplus
