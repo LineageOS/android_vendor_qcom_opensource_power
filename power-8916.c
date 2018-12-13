@@ -49,14 +49,6 @@
 #include "power-common.h"
 #include "utils.h"
 
-#define MIN_FREQ_CPU0_DISP_OFF 400000
-#define MIN_FREQ_CPU0_DISP_ON 960000
-
-const char* scaling_min_freq[4] = {"/sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq",
-                                   "/sys/devices/system/cpu/cpu1/cpufreq/scaling_min_freq",
-                                   "/sys/devices/system/cpu/cpu2/cpufreq/scaling_min_freq",
-                                   "/sys/devices/system/cpu/cpu3/cpufreq/scaling_min_freq"};
-
 /**
  * Returns true if the target is MSM8916.
  */
@@ -184,7 +176,6 @@ int power_hint_override(power_hint_t hint, void* data) {
 
 int set_interactive_override(int on) {
     char governor[80];
-    char tmp_str[NODE_MAX];
 
     if (get_scaling_governor(governor, sizeof(governor)) == -1) {
         ALOGE("Can't obtain scaling governor.");
@@ -202,43 +193,14 @@ int set_interactive_override(int on) {
         } else {
             if (is_interactive_governor(governor)) {
                 int resource_values[] = {TR_MS_CPU0_50, TR_MS_CPU4_50, THREAD_MIGRATION_SYNC_OFF};
-                /* Set CPU0 MIN FREQ to 400Mhz avoid extra peak power
-                   impact in volume key press  */
-                snprintf(tmp_str, NODE_MAX, "%d", MIN_FREQ_CPU0_DISP_OFF);
-                if (sysfs_write(scaling_min_freq[0], tmp_str) != 0) {
-                    if (sysfs_write(scaling_min_freq[1], tmp_str) != 0) {
-                        if (sysfs_write(scaling_min_freq[2], tmp_str) != 0) {
-                            if (sysfs_write(scaling_min_freq[3], tmp_str) != 0) {
-                                ALOGE("Failed to write to %s", SCALING_MIN_FREQ);
-                            }
-                        }
-                    }
-                }
                 perform_hint_action(DISPLAY_STATE_HINT_ID, resource_values,
                                     ARRAY_SIZE(resource_values));
             }
         }
     } else {
         /* Display on */
-        if (is_target_8916()) {
-            if (is_interactive_governor(governor)) {
-                undo_hint_action(DISPLAY_STATE_HINT_ID);
-            }
-        } else {
-            if (is_interactive_governor(governor)) {
-                /* Recovering MIN_FREQ in display ON case */
-                snprintf(tmp_str, NODE_MAX, "%d", MIN_FREQ_CPU0_DISP_ON);
-                if (sysfs_write(scaling_min_freq[0], tmp_str) != 0) {
-                    if (sysfs_write(scaling_min_freq[1], tmp_str) != 0) {
-                        if (sysfs_write(scaling_min_freq[2], tmp_str) != 0) {
-                            if (sysfs_write(scaling_min_freq[3], tmp_str) != 0) {
-                                ALOGE("Failed to write to %s", SCALING_MIN_FREQ);
-                            }
-                        }
-                    }
-                }
-                undo_hint_action(DISPLAY_STATE_HINT_ID);
-            }
+        if (is_interactive_governor(governor)) {
+            undo_hint_action(DISPLAY_STATE_HINT_ID);
         }
     }
     return HINT_HANDLED;
