@@ -33,9 +33,6 @@
 extern "C" {
 #endif
 
-#define NODE_MAX (64)
-
-#define SCALING_MIN_FREQ "/sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq"
 #define INTERACTIVE_GOVERNOR "interactive"
 #define SCHEDUTIL_GOVERNOR "schedutil"
 
