@@ -33,7 +33,6 @@
 extern "C" {
 #endif
 
-#define SCALING_GOVERNOR_PATH "/sys/devices/system/cpu/cpu0/cpufreq/scaling_governor"
 #define INTERACTIVE_GOVERNOR "interactive"
 #define SCHEDUTIL_GOVERNOR "schedutil"
 
