@@ -47,6 +47,7 @@ LOCAL_SHARED_LIBRARIES := \
     vendor.lineage.power@1.0
 
 LOCAL_HEADER_LIBRARIES := \
+    generated_kernel_headers \
     libhardware_headers
 
 LOCAL_SRC_FILES := \
@@ -154,6 +155,10 @@ endif
 
 ifneq ($(TARGET_TAP_TO_WAKE_NODE),)
     LOCAL_CFLAGS += -DTAP_TO_WAKE_NODE=\"$(TARGET_TAP_TO_WAKE_NODE)\"
+endif
+
+ifneq ($(TARGET_TAP_TO_WAKE_EVENT_NODE),)
+    LOCAL_CFLAGS += -DTAP_TO_WAKE_EVENT_NODE=\"$(TARGET_TAP_TO_WAKE_EVENT_NODE)\"
 endif
 
 ifeq ($(TARGET_USES_INTERACTION_BOOST),true)

@@ -34,6 +34,7 @@
 
 #include "Power.h"
 #include <android-base/file.h>
+#include <linux/input.h>
 #include <log/log.h>
 #include "power-common.h"
 #include "power-feature.h"
@@ -73,6 +74,17 @@ Return<void> Power::setFeature(Feature feature, bool activate) {
         case Feature::POWER_FEATURE_DOUBLE_TAP_TO_WAKE:
             ::android::base::WriteStringToFile(activate ? "1" : "0", TAP_TO_WAKE_NODE, true);
             break;
+#endif
+#ifdef TAP_TO_WAKE_EVENT_NODE
+        case Feature::POWER_FEATURE_DOUBLE_TAP_TO_WAKE: {
+            int fd = open(TAP_TO_WAKE_EVENT_NODE, O_WRONLY);
+            struct input_event ev;
+            ev.type = EV_SYN;
+            ev.code = SYN_CONFIG;
+            ev.value = activate ? INPUT_EVENT_WAKUP_MODE_ON : INPUT_EVENT_WAKUP_MODE_OFF;
+            write(fd, &ev, sizeof(ev));
+            close(fd);
+            } break;
 #endif
         default:
             break;
