@@ -125,6 +125,10 @@ ifeq ($(call is-board-platform-in-list,msmnile), true)
 LOCAL_SRC_FILES += power-msmnile.c
 endif
 
+ifeq ($(call is-board-platform-in-list,$(MSMSTEPPE)), true)
+LOCAL_SRC_FILES += power-steppe.c
+endif
+
 endif  #  End of board specific list
 
 ifneq ($(TARGET_POWER_SET_FEATURE_LIB),)
