@@ -31,15 +31,15 @@
 extern "C" {
 #endif
 
-#define FAILED                  -1
-#define SUCCESS                 0
-#define INDEFINITE_DURATION     0
+#define FAILED -1
+#define SUCCESS 0
+#define INDEFINITE_DURATION 0
 
 /* Hints sent to perf HAL from power HAL
  * These have to be kept in sync with Perf HAL side definitions
  */
-#define VENDOR_HINT_DISPLAY_OFF      0x00001040
-#define VENDOR_HINT_DISPLAY_ON       0x00001041
+#define VENDOR_HINT_DISPLAY_OFF 0x00001040
+#define VENDOR_HINT_DISPLAY_ON 0x00001041
 
 enum SCREEN_DISPLAY_TYPE {
     DISPLAY_OFF = 0x00FF,
@@ -184,7 +184,7 @@ enum INTERACTIVE_OPCODES {
 
 enum INTERACTIVE_HISPEED_FREQ_LVL {
     HS_FREQ_1026 = 0xF0A,
-    HS_FREQ_800  = 0xF08,
+    HS_FREQ_800 = 0xF08,
 };
 
 enum INTERACTIVE_HISPEED_LOAD_LVL {
