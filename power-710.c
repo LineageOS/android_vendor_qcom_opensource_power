@@ -26,73 +26,63 @@
  * IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-
-
-#include <errno.h>
-#include <string.h>
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <fcntl.h>
 #include <dlfcn.h>
+#include <errno.h>
+#include <fcntl.h>
 #include <stdlib.h>
+#include <string.h>
+#include <sys/stat.h>
+#include <sys/types.h>
 #include <unistd.h>
 
 #define LOG_TAG "QTI PowerHAL"
-#include <log/log.h>
 #include <hardware/hardware.h>
 #include <hardware/power.h>
+#include <log/log.h>
 
-#include "utils.h"
-#include "metadata-defs.h"
 #include "hint-data.h"
+#include "metadata-defs.h"
 #include "performance.h"
 #include "power-common.h"
+#include "utils.h"
 
 static int display_fd;
 #define SYS_DISPLAY_PWR "/sys/kernel/hbtp/display_pwr"
 
-int set_interactive_override(int on)
-{
-    static const char *display_on = "1";
-    static const char *display_off = "0";
+int set_interactive_override(int on) {
+    static const char* display_on = "1";
+    static const char* display_off = "0";
     char err_buf[80];
     static int init_interactive_hint = 0;
     static int set_i_count = 0;
     int rc = 0;
 
-    set_i_count ++;
+    set_i_count++;
     ALOGI("Got set_interactive hint on= %d, count= %d\n", on, set_i_count);
 
-    if (init_interactive_hint == 0)
-    {
-        //First time the display is turned off
+    if (init_interactive_hint == 0) {
+        // First time the display is turned off
         display_fd = TEMP_FAILURE_RETRY(open(SYS_DISPLAY_PWR, O_RDWR));
         if (display_fd < 0) {
-            strerror_r(errno,err_buf,sizeof(err_buf));
+            strerror_r(errno, err_buf, sizeof(err_buf));
             ALOGE("Error opening %s: %s\n", SYS_DISPLAY_PWR, err_buf);
-        }
-        else
+        } else
             init_interactive_hint = 1;
+    } else if (!on) {
+        /* Display off. */
+        rc = TEMP_FAILURE_RETRY(write(display_fd, display_off, strlen(display_off)));
+        if (rc < 0) {
+            strerror_r(errno, err_buf, sizeof(err_buf));
+            ALOGE("Error writing %s to  %s: %s\n", display_off, SYS_DISPLAY_PWR, err_buf);
+        }
+    } else {
+        /* Display on */
+        rc = TEMP_FAILURE_RETRY(write(display_fd, display_on, strlen(display_on)));
+        if (rc < 0) {
+            strerror_r(errno, err_buf, sizeof(err_buf));
+            ALOGE("Error writing %s to  %s: %s\n", display_on, SYS_DISPLAY_PWR, err_buf);
+        }
     }
-    else
-        if (!on ) {
-            /* Display off. */
-            rc = TEMP_FAILURE_RETRY(write(display_fd, display_off, strlen(display_off)));
-            if (rc < 0) {
-                strerror_r(errno,err_buf,sizeof(err_buf));
-                ALOGE("Error writing %s to  %s: %s\n", display_off, SYS_DISPLAY_PWR, err_buf);
-            }
-        }
-        else {
-            /* Display on */
-            rc = TEMP_FAILURE_RETRY(write(display_fd, display_on, strlen(display_on)));
-            if (rc < 0) {
-                strerror_r(errno,err_buf,sizeof(err_buf));
-                ALOGE("Error writing %s to  %s: %s\n", display_on, SYS_DISPLAY_PWR, err_buf);
-            }
-        }
 
     return HINT_HANDLED; /* Don't excecute this code path, not in use */
 }
-
-

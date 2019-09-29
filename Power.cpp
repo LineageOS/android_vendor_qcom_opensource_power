@@ -41,9 +41,9 @@
 #include <android/binder_process.h>
 
 using ::aidl::android::hardware::power::BnPower;
+using ::aidl::android::hardware::power::Boost;
 using ::aidl::android::hardware::power::IPower;
 using ::aidl::android::hardware::power::Mode;
-using ::aidl::android::hardware::power::Boost;
 
 using ::ndk::ScopedAStatus;
 using ::ndk::SharedRefBase;
@@ -55,12 +55,12 @@ namespace power {
 namespace impl {
 
 void setInteractive(bool interactive) {
-   set_interactive(interactive ? 1:0);
+    set_interactive(interactive ? 1 : 0);
 }
 
 ndk::ScopedAStatus Power::setMode(Mode type, bool enabled) {
     LOG(INFO) << "Power setMode: " << static_cast<int32_t>(type) << " to: " << enabled;
-    switch(type){
+    switch (type) {
 #ifdef TAP_TO_WAKE_NODE
         case Mode::DOUBLE_TAP_TO_WAKE:
             ::android::base::WriteStringToFile(enabled ? "1" : "0", TAP_TO_WAKE_NODE, true);
@@ -99,7 +99,7 @@ ndk::ScopedAStatus Power::setMode(Mode type, bool enabled) {
 ndk::ScopedAStatus Power::isModeSupported(Mode type, bool* _aidl_return) {
     LOG(INFO) << "Power isModeSupported: " << static_cast<int32_t>(type);
 
-    switch(type){
+    switch (type) {
 #ifdef TAP_TO_WAKE_NODE
         case Mode::DOUBLE_TAP_TO_WAKE:
 #endif
@@ -116,8 +116,7 @@ ndk::ScopedAStatus Power::isModeSupported(Mode type, bool* _aidl_return) {
 }
 
 ndk::ScopedAStatus Power::setBoost(Boost type, int32_t durationMs) {
-    LOG(INFO) << "Power setBoost: " << static_cast<int32_t>(type)
-                 << ", duration: " << durationMs;
+    LOG(INFO) << "Power setBoost: " << static_cast<int32_t>(type) << ", duration: " << durationMs;
     return ndk::ScopedAStatus::ok();
 }
 
