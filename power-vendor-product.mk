@@ -1,5 +1,5 @@
 #Power product definitions
-PRODUCT_PACKAGES += android.hardware.power-service
+PRODUCT_PACKAGES += android.hardware.power-service-qti
 PRODUCT_PACKAGES += android.hardware.power-impl
 
 #Powerhint File
