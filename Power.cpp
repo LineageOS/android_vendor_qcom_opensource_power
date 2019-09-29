@@ -27,7 +27,7 @@
  * IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#define LOG_TAG "QTI PowerHAL"
+#define LOG_TAG "android.hardware.power@1.2-service-qti"
 
 #include <log/log.h>
 #include "Power.h"
