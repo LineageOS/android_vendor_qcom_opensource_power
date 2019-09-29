@@ -109,8 +109,8 @@ ifeq ($(TARGET_USES_INTERACTION_BOOST),true)
     LOCAL_CFLAGS += -DINTERACTION_BOOST
 endif
 
-LOCAL_MODULE := android.hardware.power@1.2-service
-LOCAL_INIT_RC := android.hardware.power@1.2-service.rc
+LOCAL_MODULE := android.hardware.power@1.2-service-qti
+LOCAL_INIT_RC := android.hardware.power@1.2-service-qti.rc
 LOCAL_MODULE_TAGS := optional
 LOCAL_VENDOR_MODULE := true
 include $(BUILD_EXECUTABLE)
