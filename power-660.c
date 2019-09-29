@@ -29,27 +29,27 @@
 
 #define LOG_NIDEBUG 0
 
-#include <errno.h>
-#include <string.h>
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <fcntl.h>
 #include <dlfcn.h>
+#include <errno.h>
+#include <fcntl.h>
 #include <stdlib.h>
+#include <string.h>
+#include <sys/stat.h>
+#include <sys/types.h>
 #include <unistd.h>
 
 #define LOG_TAG "QTI PowerHAL"
-#include <log/log.h>
 #include <hardware/hardware.h>
 #include <hardware/power.h>
+#include <log/log.h>
 
-#include "utils.h"
-#include "metadata-defs.h"
 #include "hint-data.h"
+#include "metadata-defs.h"
 #include "performance.h"
 #include "power-common.h"
+#include "utils.h"
 
-#define MIN_VAL(X,Y) ((X>Y)?(Y):(X))
+#define MIN_VAL(X, Y) ((X > Y) ? (Y) : (X))
 
 static int saved_interactive_mode = -1;
 static int display_hint_sent;
@@ -57,14 +57,13 @@ static int video_encode_hint_sent;
 static int cam_preview_hint_sent;
 
 static int camera_hint_ref_count;
-static void process_video_encode_hint(void *metadata);
-//static void process_cam_preview_hint(void *metadata);
+static void process_video_encode_hint(void* metadata);
+// static void process_cam_preview_hint(void *metadata);
 
 /* Returns true is target is SDM630/SDM455 else false*/
-static bool is_target_SDM630()
-{
+static bool is_target_SDM630() {
     int fd;
-    bool is_target_SDM630=false;
+    bool is_target_SDM630 = false;
     char buf[10] = {0};
     fd = open("/sys/devices/soc0/soc_id", O_RDONLY);
     if (fd >= 0) {
@@ -82,14 +81,11 @@ static bool is_target_SDM630()
     return is_target_SDM630;
 }
 
-int  power_hint_override(power_hint_t hint, void *data)
-{
-
-    switch(hint) {
+int power_hint_override(power_hint_t hint, void* data) {
+    switch (hint) {
         case POWER_HINT_VSYNC:
             break;
-        case POWER_HINT_VIDEO_ENCODE:
-        {
+        case POWER_HINT_VIDEO_ENCODE: {
             process_video_encode_hint(data);
             return HINT_HANDLED;
         }
@@ -97,8 +93,7 @@ int  power_hint_override(power_hint_t hint, void *data)
     return HINT_NONE;
 }
 
-int  set_interactive_override(int on)
-{
+int set_interactive_override(int on) {
     char governor[80];
     char tmp_str[NODE_MAX];
     int resource_values[20];
@@ -108,10 +103,10 @@ int  set_interactive_override(int on)
 
     ALOGI("Got set_interactive hint");
 
-    if (get_scaling_governor_check_cores(governor, sizeof(governor),CPU0) == -1) {
-        if (get_scaling_governor_check_cores(governor, sizeof(governor),CPU1) == -1) {
-            if (get_scaling_governor_check_cores(governor, sizeof(governor),CPU2) == -1) {
-                if (get_scaling_governor_check_cores(governor, sizeof(governor),CPU3) == -1) {
+    if (get_scaling_governor_check_cores(governor, sizeof(governor), CPU0) == -1) {
+        if (get_scaling_governor_check_cores(governor, sizeof(governor), CPU1) == -1) {
+            if (get_scaling_governor_check_cores(governor, sizeof(governor), CPU2) == -1) {
+                if (get_scaling_governor_check_cores(governor, sizeof(governor), CPU3) == -1) {
                     ALOGE("Can't obtain scaling governor.");
                     return HINT_HANDLED;
                 }
@@ -121,67 +116,56 @@ int  set_interactive_override(int on)
 
     if (!on) {
         /* Display off. */
-             if ((strncmp(governor, INTERACTIVE_GOVERNOR, strlen(INTERACTIVE_GOVERNOR)) == 0) &&
-                (strlen(governor) == strlen(INTERACTIVE_GOVERNOR))) {
-             /*
-                 1. CPUfreq params
-                        - hispeed freq for big - 1113Mhz
-                        - go hispeed load for big - 95
-                        - above_hispeed_delay for big - 40ms
+        if ((strncmp(governor, INTERACTIVE_GOVERNOR, strlen(INTERACTIVE_GOVERNOR)) == 0) &&
+            (strlen(governor) == strlen(INTERACTIVE_GOVERNOR))) {
+            /*
+                1. CPUfreq params
+                       - hispeed freq for big - 1113Mhz
+                       - go hispeed load for big - 95
+                       - above_hispeed_delay for big - 40ms
+               2. BusDCVS V2 params
+                       - Sample_ms of 10ms
+           */
+            if (is_target_SDM630()) {
+                int res[] = {0x41414000, 0x459, 0x41410000, 0x5F, 0x41400000, 0x4, 0x41820000, 0xA};
+                memcpy(resource_values, res, MIN_VAL(sizeof(resource_values), sizeof(res)));
+                num_resources = sizeof(res) / sizeof(res[0]);
+            }
+            /*
+                1. CPUfreq params
+                       - hispeed freq for little - 902Mhz
+                       - go hispeed load for little - 95
+                       - above_hispeed_delay for little - 40ms
                 2. BusDCVS V2 params
-                        - Sample_ms of 10ms
-            */
-            if(is_target_SDM630()){
-                int res[] = { 0x41414000, 0x459,
-                              0x41410000, 0x5F,
-                              0x41400000, 0x4,
-                              0x41820000, 0xA };
+                       - Sample_ms of 10ms
+                3. Sched group upmigrate - 500
+           */
+            else {
+                int res[] = {0x41414100, 0x386,      0x41410100, 0x5F,       0x41400100,
+                             0x4,        0x41820000, 0xA,        0x40C54000, 0x1F4};
                 memcpy(resource_values, res, MIN_VAL(sizeof(resource_values), sizeof(res)));
-                num_resources = sizeof(res)/sizeof(res[0]);
+                num_resources = sizeof(res) / sizeof(res[0]);
             }
-             /*
-                 1. CPUfreq params
-                        - hispeed freq for little - 902Mhz
-                        - go hispeed load for little - 95
-                        - above_hispeed_delay for little - 40ms
-                 2. BusDCVS V2 params
-                        - Sample_ms of 10ms
-                 3. Sched group upmigrate - 500
-            */
-            else{
-                int res[] =  { 0x41414100, 0x386,
-                               0x41410100, 0x5F,
-                               0x41400100, 0x4,
-                               0x41820000, 0xA,
-                               0x40C54000, 0x1F4};
-                memcpy(resource_values, res, MIN_VAL(sizeof(resource_values), sizeof(res)));
-                num_resources = sizeof(res)/sizeof(res[0]);
-
+            if (!display_hint_sent) {
+                perform_hint_action(DISPLAY_STATE_HINT_ID, resource_values, num_resources);
+                display_hint_sent = 1;
             }
-               if (!display_hint_sent) {
-                   perform_hint_action(DISPLAY_STATE_HINT_ID,
-                   resource_values, num_resources);
-                  display_hint_sent = 1;
-                }
-             }
+        }
 
     } else {
         /* Display on. */
-          if ((strncmp(governor, INTERACTIVE_GOVERNOR, strlen(INTERACTIVE_GOVERNOR)) == 0) &&
-                (strlen(governor) == strlen(INTERACTIVE_GOVERNOR))) {
-
-             undo_hint_action(DISPLAY_STATE_HINT_ID);
-             display_hint_sent = 0;
-          }
-   }
+        if ((strncmp(governor, INTERACTIVE_GOVERNOR, strlen(INTERACTIVE_GOVERNOR)) == 0) &&
+            (strlen(governor) == strlen(INTERACTIVE_GOVERNOR))) {
+            undo_hint_action(DISPLAY_STATE_HINT_ID);
+            display_hint_sent = 0;
+        }
+    }
     saved_interactive_mode = !!on;
     return HINT_HANDLED;
 }
 
-
 /* Video Encode Hint */
-static void process_video_encode_hint(void *metadata)
-{
+static void process_video_encode_hint(void* metadata) {
     char governor[80];
     int resource_values[20];
     int num_resources;
@@ -189,19 +173,15 @@ static void process_video_encode_hint(void *metadata)
 
     ALOGI("Got process_video_encode_hint");
 
-    if (get_scaling_governor_check_cores(governor,
-        sizeof(governor),CPU0) == -1) {
-            if (get_scaling_governor_check_cores(governor,
-                sizeof(governor),CPU1) == -1) {
-                    if (get_scaling_governor_check_cores(governor,
-                        sizeof(governor),CPU2) == -1) {
-                            if (get_scaling_governor_check_cores(governor,
-                                sizeof(governor),CPU3) == -1) {
-                                    ALOGE("Can't obtain scaling governor.");
-                                    // return HINT_HANDLED;
-                            }
-                    }
+    if (get_scaling_governor_check_cores(governor, sizeof(governor), CPU0) == -1) {
+        if (get_scaling_governor_check_cores(governor, sizeof(governor), CPU1) == -1) {
+            if (get_scaling_governor_check_cores(governor, sizeof(governor), CPU2) == -1) {
+                if (get_scaling_governor_check_cores(governor, sizeof(governor), CPU3) == -1) {
+                    ALOGE("Can't obtain scaling governor.");
+                    // return HINT_HANDLED;
+                }
             }
+        }
     }
 
     /* Initialize encode metadata struct fields. */
@@ -210,8 +190,7 @@ static void process_video_encode_hint(void *metadata)
     video_encode_metadata.hint_id = DEFAULT_VIDEO_ENCODE_HINT_ID;
 
     if (metadata) {
-        if (parse_video_encode_metadata((char *)metadata,
-            &video_encode_metadata) == -1) {
+        if (parse_video_encode_metadata((char*)metadata, &video_encode_metadata) == -1) {
             ALOGE("Error occurred while parsing metadata.");
             return;
         }
@@ -220,28 +199,23 @@ static void process_video_encode_hint(void *metadata)
     }
 
     if (video_encode_metadata.state == 1) {
-        if ((strncmp(governor, INTERACTIVE_GOVERNOR,
-            strlen(INTERACTIVE_GOVERNOR)) == 0) &&
+        if ((strncmp(governor, INTERACTIVE_GOVERNOR, strlen(INTERACTIVE_GOVERNOR)) == 0) &&
             (strlen(governor) == strlen(INTERACTIVE_GOVERNOR))) {
-             /*
-                 1. CPUfreq params
-                        - hispeed freq for big - 1113Mhz
-                        - go hispeed load for big - 95
-                        - above_hispeed_delay for big - 40ms
-                        - target loads - 95
-                        - nr_run - 5
-                 2. BusDCVS V2 params
-                        - Sample_ms of 10ms
-            */
-            if(is_target_SDM630()){
-                int res[] = { 0x41414000, 0x459,
-                              0x41410000, 0x5F,
-                              0x41400000, 0x4,
-                              0x41420000, 0x5F,
-                              0x40C2C000, 0X5,
-                              0x41820000, 0xA};
+            /*
+                1. CPUfreq params
+                       - hispeed freq for big - 1113Mhz
+                       - go hispeed load for big - 95
+                       - above_hispeed_delay for big - 40ms
+                       - target loads - 95
+                       - nr_run - 5
+                2. BusDCVS V2 params
+                       - Sample_ms of 10ms
+           */
+            if (is_target_SDM630()) {
+                int res[] = {0x41414000, 0x459, 0x41410000, 0x5F, 0x41400000, 0x4,
+                             0x41420000, 0x5F,  0x40C2C000, 0X5,  0x41820000, 0xA};
                 memcpy(resource_values, res, MIN_VAL(sizeof(resource_values), sizeof(res)));
-                num_resources = sizeof(res)/sizeof(res[0]);
+                num_resources = sizeof(res) / sizeof(res[0]);
 
             }
             /*
@@ -252,36 +226,30 @@ static void process_video_encode_hint(void *metadata)
                  2. BusDCVS V2 params
                         - Sample_ms of 10ms
             */
-            else{
-                int res[] = { 0x41414100, 0x386,
-                              0x41410100, 0x5F,
-                              0x41400100, 0x4,
-                              0x41820000, 0xA};
+            else {
+                int res[] = {0x41414100, 0x386, 0x41410100, 0x5F, 0x41400100, 0x4, 0x41820000, 0xA};
                 memcpy(resource_values, res, MIN_VAL(sizeof(resource_values), sizeof(res)));
-                num_resources = sizeof(res)/sizeof(res[0]);
+                num_resources = sizeof(res) / sizeof(res[0]);
             }
             camera_hint_ref_count++;
             if (camera_hint_ref_count == 1) {
                 if (!video_encode_hint_sent) {
-                    perform_hint_action(video_encode_metadata.hint_id,
-                    resource_values, num_resources);
+                    perform_hint_action(video_encode_metadata.hint_id, resource_values,
+                                        num_resources);
                     video_encode_hint_sent = 1;
                 }
-           }
+            }
         }
     } else if (video_encode_metadata.state == 0) {
-        if ((strncmp(governor, INTERACTIVE_GOVERNOR,
-            strlen(INTERACTIVE_GOVERNOR)) == 0) &&
+        if ((strncmp(governor, INTERACTIVE_GOVERNOR, strlen(INTERACTIVE_GOVERNOR)) == 0) &&
             (strlen(governor) == strlen(INTERACTIVE_GOVERNOR))) {
             camera_hint_ref_count--;
             if (!camera_hint_ref_count) {
                 undo_hint_action(video_encode_metadata.hint_id);
                 video_encode_hint_sent = 0;
             }
-            return ;
+            return;
         }
     }
     return;
 }
-
-

@@ -28,36 +28,34 @@
  */
 #define LOG_NIDEBUG 0
 
-#include <errno.h>
-#include <string.h>
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <fcntl.h>
 #include <dlfcn.h>
+#include <errno.h>
+#include <fcntl.h>
 #include <stdlib.h>
+#include <string.h>
+#include <sys/stat.h>
+#include <sys/types.h>
 
 #define LOG_TAG "QTI PowerHAL"
-#include <log/log.h>
 #include <hardware/hardware.h>
 #include <hardware/power.h>
+#include <log/log.h>
 
-#include "utils.h"
-#include "metadata-defs.h"
 #include "hint-data.h"
+#include "metadata-defs.h"
 #include "performance.h"
 #include "power-common.h"
+#include "utils.h"
 
 static int display_hint_sent;
 
-int power_hint_override(power_hint_t hint, void *data)
-{
-    switch(hint) {
-        case POWER_HINT_INTERACTION:
-        {
+int power_hint_override(power_hint_t hint, void* data) {
+    switch (hint) {
+        case POWER_HINT_INTERACTION: {
             int resources[] = {0x702, 0x20B, 0x30B};
             int duration = 3000;
 
-            interaction(duration, sizeof(resources)/sizeof(resources[0]), resources);
+            interaction(duration, sizeof(resources) / sizeof(resources[0]), resources);
             return HINT_HANDLED;
         }
     }
