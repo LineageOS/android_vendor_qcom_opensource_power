@@ -51,19 +51,14 @@ extern "C" {
 
 #include <hardware/power.h>
 
-enum CPU_GOV_CHECK {
-    CPU0 = 0,
-    CPU1 = 1,
-    CPU2 = 2,
-    CPU3 = 3
-};
+enum CPU_GOV_CHECK { CPU0 = 0, CPU1 = 1, CPU2 = 2, CPU3 = 3 };
 
 void power_init(void);
-void power_hint(power_hint_t hint, void *data);
+void power_hint(power_hint_t hint, void* data);
 void set_interactive(int on);
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif //__POWER_COMMON_H___
+#endif  //__POWER_COMMON_H___

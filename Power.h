@@ -40,14 +40,12 @@ namespace power {
 namespace impl {
 
 class Power : public BnPower {
-    public:
-        Power() : BnPower(){
-            power_init();
-        }
-        ndk::ScopedAStatus setMode(Mode type, bool enabled) override;
-        ndk::ScopedAStatus isModeSupported(Mode type, bool* _aidl_return) override;
-        ndk::ScopedAStatus setBoost(Boost type, int32_t durationMs) override;
-        ndk::ScopedAStatus isBoostSupported(Boost type, bool* _aidl_return) override;
+  public:
+    Power() : BnPower() { power_init(); }
+    ndk::ScopedAStatus setMode(Mode type, bool enabled) override;
+    ndk::ScopedAStatus isModeSupported(Mode type, bool* _aidl_return) override;
+    ndk::ScopedAStatus setBoost(Boost type, int32_t durationMs) override;
+    ndk::ScopedAStatus isBoostSupported(Boost type, bool* _aidl_return) override;
 };
 
 }  // namespace impl

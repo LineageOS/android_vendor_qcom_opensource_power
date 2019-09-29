@@ -28,30 +28,29 @@
  */
 #define LOG_NIDEBUG 0
 
-#include <errno.h>
-#include <string.h>
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <fcntl.h>
 #include <dlfcn.h>
+#include <errno.h>
+#include <fcntl.h>
 #include <stdlib.h>
+#include <string.h>
+#include <sys/stat.h>
+#include <sys/types.h>
 
 #define LOG_TAG "QTI PowerHAL"
-#include <log/log.h>
 #include <hardware/hardware.h>
 #include <hardware/power.h>
+#include <log/log.h>
 
-#include "utils.h"
-#include "metadata-defs.h"
 #include "hint-data.h"
+#include "metadata-defs.h"
 #include "performance.h"
 #include "power-common.h"
+#include "utils.h"
 
 static int display_hint_sent;
 static int camera_hint_ref_count;
 
-static int process_video_encode_hint(void *metadata)
-{
+static int process_video_encode_hint(void* metadata) {
     char governor[80];
     struct video_encode_metadata_t video_encode_metadata;
 
@@ -67,8 +66,7 @@ static int process_video_encode_hint(void *metadata)
     video_encode_metadata.hint_id = DEFAULT_VIDEO_ENCODE_HINT_ID;
 
     if (metadata) {
-        if (parse_video_encode_metadata((char *)metadata, &video_encode_metadata) ==
-            -1) {
+        if (parse_video_encode_metadata((char*)metadata, &video_encode_metadata) == -1) {
             ALOGE("Error occurred while parsing metadata.");
             return HINT_NONE;
         }
@@ -78,7 +76,7 @@ static int process_video_encode_hint(void *metadata)
 
     if (video_encode_metadata.state == 1) {
         if ((strncmp(governor, INTERACTIVE_GOVERNOR, strlen(INTERACTIVE_GOVERNOR)) == 0) &&
-                (strlen(governor) == strlen(INTERACTIVE_GOVERNOR))) {
+            (strlen(governor) == strlen(INTERACTIVE_GOVERNOR))) {
             /* 1. cpufreq params
              *    -above_hispeed_delay for LVT - 40ms
              *    -go hispeed load for LVT - 95
@@ -96,21 +94,22 @@ static int process_video_encode_hint(void *metadata)
              *    -sample_ms of 10 ms
              *    -sLVT hispeed freq to 806MHz
              */
-            int resource_values[] = {0x41400000, 0x4, 0x41410000, 0x5F, 0x41414000, 0x326,
-                0x41420000, 0x5A, 0x41400100, 0x4, 0x41410100, 0x5F, 0x41414100, 0x22C, 0x41420100, 0x5A,
-                0x41810000, 0x9C4, 0x41814000, 0x32, 0x4180C000, 0x0, 0x41820000, 0xA};
+            int resource_values[] = {0x41400000, 0x4,   0x41410000, 0x5F, 0x41414000, 0x326,
+                                     0x41420000, 0x5A,  0x41400100, 0x4,  0x41410100, 0x5F,
+                                     0x41414100, 0x22C, 0x41420100, 0x5A, 0x41810000, 0x9C4,
+                                     0x41814000, 0x32,  0x4180C000, 0x0,  0x41820000, 0xA};
 
             camera_hint_ref_count++;
             if (camera_hint_ref_count == 1) {
-                perform_hint_action(video_encode_metadata.hint_id,
-                        resource_values, sizeof(resource_values)/sizeof(resource_values[0]));
+                perform_hint_action(video_encode_metadata.hint_id, resource_values,
+                                    sizeof(resource_values) / sizeof(resource_values[0]));
             }
             ALOGI("Video Encode hint start");
             return HINT_HANDLED;
         }
     } else if (video_encode_metadata.state == 0) {
         if ((strncmp(governor, INTERACTIVE_GOVERNOR, strlen(INTERACTIVE_GOVERNOR)) == 0) &&
-                (strlen(governor) == strlen(INTERACTIVE_GOVERNOR))) {
+            (strlen(governor) == strlen(INTERACTIVE_GOVERNOR))) {
             camera_hint_ref_count--;
             if (!camera_hint_ref_count) {
                 undo_hint_action(video_encode_metadata.hint_id);
@@ -123,10 +122,9 @@ static int process_video_encode_hint(void *metadata)
     return HINT_NONE;
 }
 
-int power_hint_override(power_hint_t hint, void *data)
-{
+int power_hint_override(power_hint_t hint, void* data) {
     int ret_val = HINT_NONE;
-    switch(hint) {
+    switch (hint) {
         case POWER_HINT_VIDEO_ENCODE:
             ret_val = process_video_encode_hint(data);
             break;
@@ -136,8 +134,7 @@ int power_hint_override(power_hint_t hint, void *data)
     return ret_val;
 }
 
-int set_interactive_override(int on)
-{
+int set_interactive_override(int on) {
     return HINT_HANDLED; /* Don't excecute this code path, not in use */
     char governor[80];
 
@@ -153,8 +150,8 @@ int set_interactive_override(int on)
             (strlen(governor) == strlen(INTERACTIVE_GOVERNOR))) {
             int resource_values[] = {}; /* dummy node */
             if (!display_hint_sent) {
-                perform_hint_action(DISPLAY_STATE_HINT_ID,
-                resource_values, sizeof(resource_values)/sizeof(resource_values[0]));
+                perform_hint_action(DISPLAY_STATE_HINT_ID, resource_values,
+                                    sizeof(resource_values) / sizeof(resource_values[0]));
                 display_hint_sent = 1;
                 ALOGI("Display Off hint start");
                 return HINT_HANDLED;
