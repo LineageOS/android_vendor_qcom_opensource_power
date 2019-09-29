@@ -2,17 +2,32 @@ LOCAL_PATH := $(call my-dir)
 
 ifeq ($(call is-vendor-board-platform,QCOM),true)
 
-# HAL module implemenation stored in
-# hw/<POWERS_HARDWARE_MODULE_ID>.<ro.hardware>.so
 include $(CLEAR_VARS)
 
 LOCAL_MODULE_RELATIVE_PATH := hw
-# KEYSTONE(I1132378f14428bf511f3cea4f419e90a6e89f823,b/181709127)
-LOCAL_SHARED_LIBRARIES := liblog libcutils libdl libbase libutils libbinder_ndk android.hardware.power-V3-ndk
 
-LOCAL_HEADER_LIBRARIES += libutils_headers
-LOCAL_HEADER_LIBRARIES += libhardware_headers
-LOCAL_SRC_FILES := power-common.c metadata-parser.c utils.c list.c hint-data.c Power.cpp main.cpp PowerHintSession.cpp
+LOCAL_SHARED_LIBRARIES := \
+    liblog \
+    libcutils \
+    libdl \
+    libbase \
+    libutils \
+    libbinder_ndk \
+    android.hardware.power-V3-ndk
+
+LOCAL_HEADER_LIBRARIES := \
+    libutils_headers \
+    libhardware_headers
+
+LOCAL_SRC_FILES := \
+    power-common.c \
+    metadata-parser.c \
+    utils.c \
+    list.c \
+    hint-data.c \
+    Power.cpp \
+    main.cpp \
+    PowerHintSession.cpp
 
 LOCAL_CFLAGS += -Wall -Wextra -Werror
 
@@ -53,7 +68,7 @@ ifeq ($(call is-board-platform-in-list,msmnile), true)
 LOCAL_SRC_FILES += power-msmnile.c
 endif
 
-endif  #  End of board specific list
+endif # End of board specific list
 
 ifneq ($(TARGET_POWERHAL_MODE_EXT),)
     LOCAL_CFLAGS += -DMODE_EXT
@@ -79,5 +94,6 @@ LOCAL_MODULE_TAGS := optional
 LOCAL_CFLAGS += -Wno-unused-parameter -Wno-unused-variable
 LOCAL_VENDOR_MODULE := true
 LOCAL_VINTF_FRAGMENTS := power.xml
+
 include $(BUILD_EXECUTABLE)
 endif
