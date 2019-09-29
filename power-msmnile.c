@@ -27,46 +27,41 @@
  * IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-
 #define LOG_NIDEBUG 0
 
-#include <errno.h>
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <fcntl.h>
-#include <unistd.h>
 #include <dlfcn.h>
+#include <errno.h>
+#include <fcntl.h>
 #include <string.h>
+#include <sys/stat.h>
+#include <sys/types.h>
+#include <unistd.h>
 
 #define LOG_TAG "QTI PowerHAL"
-#include <utils/Log.h>
 #include <hardware/hardware.h>
 #include <hardware/power.h>
+#include <utils/Log.h>
 
 #include "power-common.h"
 
-int set_interactive_override(int on)
-{
+int set_interactive_override(int on) {
     static int set_i_count = 0;
 
-    set_i_count ++;
+    set_i_count++;
     ALOGI("Got set_interactive hint on= %d, count= %d\n", on, set_i_count);
-
 
     return HINT_HANDLED;
 }
 
 void interaction(int duration, int num_args, int opt_list[]);
 
-int power_hint_override(power_hint_t hint, void *data)
-{
+int power_hint_override(power_hint_t hint, void* data) {
     int ret_val = HINT_NONE;
-    switch(hint) {
-        case POWER_HINT_INTERACTION:
-        {
+    switch (hint) {
+        case POWER_HINT_INTERACTION: {
             int resources[] = {0x40800100, 0x514};
             int duration = 100;
-            interaction(duration, sizeof(resources)/sizeof(resources[0]), resources);
+            interaction(duration, sizeof(resources) / sizeof(resources[0]), resources);
             ret_val = HINT_HANDLED;
         }
         default:

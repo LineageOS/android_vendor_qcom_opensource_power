@@ -26,37 +26,31 @@
  * IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-
-
-#include <errno.h>
-#include <string.h>
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <fcntl.h>
 #include <dlfcn.h>
+#include <errno.h>
+#include <fcntl.h>
 #include <stdlib.h>
+#include <string.h>
+#include <sys/stat.h>
+#include <sys/types.h>
 #include <unistd.h>
 
 #define LOG_TAG "QTI PowerHAL"
-#include <utils/Log.h>
 #include <hardware/hardware.h>
 #include <hardware/power.h>
+#include <utils/Log.h>
 
-#include "utils.h"
-#include "metadata-defs.h"
 #include "hint-data.h"
+#include "metadata-defs.h"
 #include "performance.h"
 #include "power-common.h"
+#include "utils.h"
 
-int set_interactive_override(int on)
-{
+int set_interactive_override(int on) {
     static int set_i_count = 0;
 
-    set_i_count ++;
+    set_i_count++;
     ALOGI("Got set_interactive hint on= %d, count= %d\n", on, set_i_count);
-
 
     return HINT_HANDLED; /* Don't excecute this code path, not in use */
 }
-
-
