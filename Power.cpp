@@ -31,7 +31,7 @@
  * SPDX-License-Identifier: BSD-3-Clause-Clear
  */
 
-#define LOG_TAG "QTI PowerHAL"
+#define LOG_TAG "android.hardware.power-service-qti"
 
 #include "Power.h"
 #include "PowerHintSession.h"
