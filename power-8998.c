@@ -28,51 +28,51 @@
  */
 #define LOG_NIDEBUG 0
 
-#include <errno.h>
-#include <string.h>
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <fcntl.h>
 #include <dlfcn.h>
+#include <errno.h>
+#include <fcntl.h>
 #include <stdlib.h>
+#include <string.h>
+#include <sys/stat.h>
+#include <sys/types.h>
 #include <unistd.h>
 
 #define LOG_TAG "QTI PowerHAL"
-#include <log/log.h>
 #include <hardware/hardware.h>
 #include <hardware/power.h>
+#include <log/log.h>
 
-#include "utils.h"
-#include "metadata-defs.h"
 #include "hint-data.h"
+#include "metadata-defs.h"
 #include "performance.h"
 #include "power-common.h"
+#include "utils.h"
 
-#define CHECK_HANDLE(x) ((x)>0)
-#define NUM_PERF_MODES  3
+#define CHECK_HANDLE(x) ((x) > 0)
+#define NUM_PERF_MODES 3
 
 typedef enum {
-    NORMAL_MODE       = 0,
-    SUSTAINED_MODE    = 1,
-    VR_MODE           = 2,
-    VR_SUSTAINED_MODE = (SUSTAINED_MODE|VR_MODE),
-    INVALID_MODE      = 0xFF
-}perf_mode_type_t;
+    NORMAL_MODE = 0,
+    SUSTAINED_MODE = 1,
+    VR_MODE = 2,
+    VR_SUSTAINED_MODE = (SUSTAINED_MODE | VR_MODE),
+    INVALID_MODE = 0xFF
+} perf_mode_type_t;
 
 typedef struct perf_mode {
     perf_mode_type_t type;
     int perf_hint_id;
-}perf_mode_t;
+} perf_mode_t;
 
-perf_mode_t perf_modes[NUM_PERF_MODES] = { { SUSTAINED_MODE, SUSTAINED_PERF_HINT },
-                                           { VR_MODE, VR_MODE_HINT },
-                                           { VR_SUSTAINED_MODE, VR_MODE_SUSTAINED_PERF_HINT } };
+perf_mode_t perf_modes[NUM_PERF_MODES] = {{SUSTAINED_MODE, SUSTAINED_PERF_HINT},
+                                          {VR_MODE, VR_MODE_HINT},
+                                          {VR_SUSTAINED_MODE, VR_MODE_SUSTAINED_PERF_HINT}};
 
 static int current_mode = NORMAL_MODE;
 
-static inline  int get_perfd_hint_id(perf_mode_type_t type) {
+static inline int get_perfd_hint_id(perf_mode_type_t type) {
     int i;
-    for(i=0; i<NUM_PERF_MODES; i++) {
+    for (i = 0; i < NUM_PERF_MODES; i++) {
         if (perf_modes[i].type == type) {
             ALOGD("Hint id is 0x%x for mode 0x%x", perf_modes[i].perf_hint_id, type);
             return perf_modes[i].perf_hint_id;
@@ -83,7 +83,6 @@ static inline  int get_perfd_hint_id(perf_mode_type_t type) {
 }
 
 static int switch_mode(perf_mode_type_t mode) {
-
     int hint_id = 0;
     static int perfd_mode_handle = -1;
 
@@ -95,7 +94,7 @@ static int switch_mode(perf_mode_type_t mode) {
     }
     // switch to a perf mode
     hint_id = get_perfd_hint_id(mode);
-    if(hint_id != 0) {
+    if (hint_id != 0) {
         perfd_mode_handle = perf_hint_enable(hint_id, 0);
         if (!CHECK_HANDLE(perfd_mode_handle)) {
             ALOGE("Failed perf_hint_interaction for mode: 0x%x", mode);
@@ -106,33 +105,32 @@ static int switch_mode(perf_mode_type_t mode) {
     return 0;
 }
 
-static int process_perf_hint(void *data, perf_mode_type_t mode) {
-
+static int process_perf_hint(void* data, perf_mode_type_t mode) {
     // enable
-    if (data){
+    if (data) {
         ALOGI("Enable request for mode: 0x%x", mode);
         // check if mode is current mode
-        if ( current_mode & mode ) {
+        if (current_mode & mode) {
             ALOGD("Mode 0x%x already enabled", mode);
             return HINT_HANDLED;
         }
         // enable requested mode
-        if ( 0 != switch_mode(current_mode | mode)) {
+        if (0 != switch_mode(current_mode | mode)) {
             ALOGE("Couldn't enable mode 0x%x", mode);
             return HINT_NONE;
         }
         current_mode |= mode;
         ALOGI("Current mode is 0x%x", current_mode);
-    // disable
+        // disable
     } else {
         ALOGI("Disable request for mode: 0x%x", mode);
         // check if mode is enabled
-        if ( !(current_mode & mode) ) {
+        if (!(current_mode & mode)) {
             ALOGD("Mode 0x%x already disabled", mode);
             return HINT_HANDLED;
         }
-        //disable requested mode
-        if ( 0 != switch_mode(current_mode & ~mode)) {
+        // disable requested mode
+        if (0 != switch_mode(current_mode & ~mode)) {
             ALOGE("Couldn't disable mode 0x%x", mode);
             return HINT_NONE;
         }
@@ -143,14 +141,12 @@ static int process_perf_hint(void *data, perf_mode_type_t mode) {
     return HINT_HANDLED;
 }
 
-static int process_video_encode_hint(void *metadata)
-{
+static int process_video_encode_hint(void* metadata) {
     char governor[80];
     struct video_encode_metadata_t video_encode_metadata;
     static int video_encode_handle = 0;
 
-    if(!metadata)
-       return HINT_NONE;
+    if (!metadata) return HINT_NONE;
 
     if (get_scaling_governor(governor, sizeof(governor)) == -1) {
         ALOGE("Can't obtain scaling governor.");
@@ -162,20 +158,18 @@ static int process_video_encode_hint(void *metadata)
     memset(&video_encode_metadata, 0, sizeof(struct video_encode_metadata_t));
     video_encode_metadata.state = -1;
 
-    if (parse_video_encode_metadata((char *)metadata, &video_encode_metadata) ==
-            -1) {
-       ALOGE("Error occurred while parsing metadata.");
-       return HINT_NONE;
+    if (parse_video_encode_metadata((char*)metadata, &video_encode_metadata) == -1) {
+        ALOGE("Error occurred while parsing metadata.");
+        return HINT_NONE;
     }
 
     if (video_encode_metadata.state == 1) {
-          if (is_interactive_governor(governor)) {
-              video_encode_handle = perf_hint_enable(
-                       VIDEO_ENCODE_HINT, 0);
-              return HINT_HANDLED;
+        if (is_interactive_governor(governor)) {
+            video_encode_handle = perf_hint_enable(VIDEO_ENCODE_HINT, 0);
+            return HINT_HANDLED;
         }
     } else if (video_encode_metadata.state == 0) {
-          if (is_interactive_governor(governor)) {
+        if (is_interactive_governor(governor)) {
             release_request(video_encode_handle);
             ALOGI("Video Encode hint stop");
             return HINT_HANDLED;
@@ -184,10 +178,9 @@ static int process_video_encode_hint(void *metadata)
     return HINT_NONE;
 }
 
-int power_hint_override(power_hint_t hint, void *data)
-{
+int power_hint_override(power_hint_t hint, void* data) {
     int ret_val = HINT_NONE;
-    switch(hint) {
+    switch (hint) {
         case POWER_HINT_VIDEO_ENCODE:
             ret_val = process_video_encode_hint(data);
             break;
@@ -208,7 +201,6 @@ int power_hint_override(power_hint_t hint, void *data)
     return ret_val;
 }
 
-int set_interactive_override(int UNUSED(on))
-{
+int set_interactive_override(int UNUSED(on)) {
     return HINT_HANDLED; /* Don't excecute this code path, not in use */
 }
