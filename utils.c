@@ -192,6 +192,11 @@ int is_interactive_governor(char* governor) {
     return 0;
 }
 
+int is_schedutil_governor(char* governor) {
+    if (strncmp(governor, SCHEDUTIL_GOVERNOR, (strlen(SCHEDUTIL_GOVERNOR) + 1)) == 0) return 1;
+    return 0;
+}
+
 #ifndef INTERACTION_BOOST
 void interaction(int duration, int num_args, int opt_list[]) {
 #else
