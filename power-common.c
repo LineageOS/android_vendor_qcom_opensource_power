@@ -130,7 +130,7 @@ void set_interactive(int on) {
 
     if (set_interactive_override(on) == HINT_HANDLED) {
         return;
+    } else {
+        ALOGI("Hint not handled in set_interactive_override");
     }
-
-    ALOGI("Got set_interactive hint");
 }
