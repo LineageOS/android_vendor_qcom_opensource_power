@@ -147,26 +147,22 @@ int power_hint_override(power_hint_t hint, void* data) {
 int set_interactive_override(int on) {
     char governor[80];
 
-    ALOGI("Got set_interactive hint");
-
     if (get_scaling_governor(governor, sizeof(governor)) == -1) {
         ALOGE("Can't obtain scaling governor.");
-        return HINT_HANDLED;
+        return HINT_NONE;
     }
 
     if (!on) {
-        /* Display off. */
+        /* Display off */
         if (is_interactive_governor(governor)) {
             int resource_values[] = {INT_OP_CLUSTER0_TIMER_RATE, BIG_LITTLE_TR_MS_50,
                                      INT_OP_CLUSTER1_TIMER_RATE, BIG_LITTLE_TR_MS_50,
                                      INT_OP_NOTIFY_ON_MIGRATE,   0x00};
-
             perform_hint_action(DISPLAY_STATE_HINT_ID, resource_values,
                                 ARRAY_SIZE(resource_values));
-        } /* Perf time rate set for CORE0,CORE4 8952 target*/
-
+        }
     } else {
-        /* Display on. */
+        /* Display on */
         if (is_interactive_governor(governor)) {
             undo_hint_action(DISPLAY_STATE_HINT_ID);
         }

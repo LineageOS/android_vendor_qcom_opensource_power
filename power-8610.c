@@ -144,3 +144,27 @@ int power_hint_override(power_hint_t hint, void* data) {
     }
     return ret_val;
 }
+
+int set_interactive_override(int on) {
+    char governor[80];
+
+    if (get_scaling_governor(governor, sizeof(governor)) == -1) {
+        ALOGE("Can't obtain scaling governor.");
+        return HINT_NONE;
+    }
+
+    if (!on) {
+        /* Display off */
+        if (is_interactive_governor(governor)) {
+            int resource_values[] = {TR_MS_50, THREAD_MIGRATION_SYNC_OFF};
+            perform_hint_action(DISPLAY_STATE_HINT_ID, resource_values,
+                                ARRAY_SIZE(resource_values));
+        }
+    } else {
+        /* Display on */
+        if (is_interactive_governor(governor)) {
+            undo_hint_action(DISPLAY_STATE_HINT_ID);
+        }
+    }
+    return HINT_HANDLED;
+}
