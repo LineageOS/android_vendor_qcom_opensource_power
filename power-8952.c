@@ -60,16 +60,13 @@ int set_interactive_override(int on) {
     static const char* display_off = "0";
     char err_buf[80];
     static int init_interactive_hint = 0;
-    static int set_i_count = 0;
-
-    ALOGI("Got set_interactive hint");
 
     if (get_scaling_governor_check_cores(governor, sizeof(governor), CPU0) == -1) {
         if (get_scaling_governor_check_cores(governor, sizeof(governor), CPU1) == -1) {
             if (get_scaling_governor_check_cores(governor, sizeof(governor), CPU2) == -1) {
                 if (get_scaling_governor_check_cores(governor, sizeof(governor), CPU3) == -1) {
                     ALOGE("Can't obtain scaling governor.");
-                    return HINT_HANDLED;
+                    return HINT_NONE;
                 }
             }
         }
@@ -81,11 +78,9 @@ int set_interactive_override(int on) {
             int resource_values[] = {INT_OP_CLUSTER0_TIMER_RATE, BIG_LITTLE_TR_MS_50,
                                      INT_OP_CLUSTER1_TIMER_RATE, BIG_LITTLE_TR_MS_50,
                                      INT_OP_NOTIFY_ON_MIGRATE,   0x00};
-
             perform_hint_action(DISPLAY_STATE_HINT_ID, resource_values,
                                 ARRAY_SIZE(resource_values));
-        } /* Perf time rate set for CORE0,CORE4 8952 target*/
-
+        }
     } else {
         /* Display on. */
         if (is_interactive_governor(governor)) {
@@ -93,16 +88,12 @@ int set_interactive_override(int on) {
         }
     }
 
-    set_i_count++;
-    ALOGI("Got set_interactive hint on= %d, count= %d\n", on, set_i_count);
-
     if (init_interactive_hint == 0) {
         // First time the display is turned off
         display_fd = TEMP_FAILURE_RETRY(open(SYS_DISPLAY_PWR, O_RDWR));
         if (display_fd < 0) {
             strerror_r(errno, err_buf, sizeof(err_buf));
             ALOGE("Error opening %s: %s\n", SYS_DISPLAY_PWR, err_buf);
-            return HINT_HANDLED;
         } else
             init_interactive_hint = 1;
     } else if (!on) {
@@ -120,6 +111,5 @@ int set_interactive_override(int on) {
             ALOGE("Error writing %s to  %s: %s\n", display_on, SYS_DISPLAY_PWR, err_buf);
         }
     }
-
     return HINT_HANDLED;
 }

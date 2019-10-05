@@ -160,12 +160,11 @@ int set_interactive_override(int on) {
 
     if (get_scaling_governor(governor, sizeof(governor)) == -1) {
         ALOGE("Can't obtain scaling governor.");
-
         return HINT_NONE;
     }
 
     if (!on) {
-        /* Display off. */
+        /* Display off */
         /*
          * We need to be able to identify the first display off hint
          * and release the current lock holder
@@ -178,6 +177,11 @@ int set_interactive_override(int on) {
             /* used for all subsequent toggles to the display */
             undo_hint_action(DISPLAY_STATE_HINT_ID_2);
         }
+        if (is_interactive_governor(governor)) {
+            int resource_values[] = {TR_MS_50, THREAD_MIGRATION_SYNC_OFF};
+            perform_hint_action(DISPLAY_STATE_HINT_ID, resource_values,
+                                ARRAY_SIZE(resource_values));
+        }
     } else {
         /* Display on */
         if (is_target_8974pro()) {
@@ -185,7 +189,9 @@ int set_interactive_override(int on) {
             perform_hint_action(DISPLAY_STATE_HINT_ID_2, resource_values2,
                                 ARRAY_SIZE(resource_values2));
         }
+        if (is_interactive_governor(governor)) {
+            undo_hint_action(DISPLAY_STATE_HINT_ID);
+        }
     }
-
-    return HINT_NONE;
+    return HINT_HANDLED;
 }
