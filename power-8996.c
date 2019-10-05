@@ -47,13 +47,16 @@
 #include "power-common.h"
 #include "utils.h"
 
+static int video_encode_hint_sent;
+
 static int process_video_encode_hint(void* metadata) {
     char governor[80];
     struct video_encode_metadata_t video_encode_metadata;
 
+    if (!metadata) return HINT_NONE;
+
     if (get_scaling_governor(governor, sizeof(governor)) == -1) {
         ALOGE("Can't obtain scaling governor.");
-
         return HINT_NONE;
     }
 
@@ -62,12 +65,8 @@ static int process_video_encode_hint(void* metadata) {
     video_encode_metadata.state = -1;
     video_encode_metadata.hint_id = DEFAULT_VIDEO_ENCODE_HINT_ID;
 
-    if (metadata) {
-        if (parse_video_encode_metadata((char*)metadata, &video_encode_metadata) == -1) {
-            ALOGE("Error occurred while parsing metadata.");
-            return HINT_NONE;
-        }
-    } else {
+    if (parse_video_encode_metadata((char*)metadata, &video_encode_metadata) == -1) {
+        ALOGE("Error occurred while parsing metadata.");
         return HINT_NONE;
     }
 
@@ -94,17 +93,17 @@ static int process_video_encode_hint(void* metadata) {
                                      0x41420000, 0x5A,  0x41400100, 0x4,  0x41410100, 0x5F,
                                      0x41414100, 0x22C, 0x41420100, 0x5A, 0x41810000, 0x9C4,
                                      0x41814000, 0x32,  0x4180C000, 0x0,  0x41820000, 0xA};
-
-            perform_hint_action(video_encode_metadata.hint_id, resource_values,
-                                ARRAY_SIZE(resource_values));
-            ALOGI("Video Encode hint start");
-            return HINT_HANDLED;
+            if (!video_encode_hint_sent) {
+                perform_hint_action(video_encode_metadata.hint_id, resource_values,
+                                    ARRAY_SIZE(resource_values));
+                video_encode_hint_sent = 1;
+                return HINT_HANDLED;
+            }
         }
     } else if (video_encode_metadata.state == 0) {
         if (is_interactive_governor(governor)) {
             undo_hint_action(video_encode_metadata.hint_id);
-
-            ALOGI("Video Encode hint stop");
+            video_encode_hint_sent = 0;
             return HINT_HANDLED;
         }
     }
