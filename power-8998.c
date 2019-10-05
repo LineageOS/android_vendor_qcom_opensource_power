@@ -150,7 +150,6 @@ static int process_video_encode_hint(void* metadata) {
 
     if (get_scaling_governor(governor, sizeof(governor)) == -1) {
         ALOGE("Can't obtain scaling governor.");
-
         return HINT_NONE;
     }
 
@@ -171,7 +170,6 @@ static int process_video_encode_hint(void* metadata) {
     } else if (video_encode_metadata.state == 0) {
         if (is_interactive_governor(governor)) {
             release_request(video_encode_handle);
-            ALOGI("Video Encode hint stop");
             return HINT_HANDLED;
         }
     }
