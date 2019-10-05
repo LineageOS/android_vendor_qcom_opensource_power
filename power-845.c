@@ -145,50 +145,9 @@ static int process_perf_hint(void* data, perf_mode_type_t mode) {
     return HINT_HANDLED;
 }
 
-static int process_video_encode_hint(void* metadata) {
-    char governor[80];
-    struct video_encode_metadata_t video_encode_metadata;
-    static int video_encode_handle = 0;
-
-    if (!metadata) return HINT_NONE;
-
-    if (get_scaling_governor(governor, sizeof(governor)) == -1) {
-        ALOGE("Can't obtain scaling governor.");
-
-        return HINT_NONE;
-    }
-
-    /* Initialize encode metadata struct fields */
-    memset(&video_encode_metadata, 0, sizeof(struct video_encode_metadata_t));
-    video_encode_metadata.state = -1;
-
-    if (parse_video_encode_metadata((char*)metadata, &video_encode_metadata) == -1) {
-        ALOGE("Error occurred while parsing metadata.");
-        return HINT_NONE;
-    }
-
-    if (video_encode_metadata.state == 1) {
-        if (is_interactive_governor(governor)) {
-            video_encode_handle = perf_hint_enable(VIDEO_ENCODE_HINT, 0);
-            ALOGI("Video encode hint start");
-            return HINT_HANDLED;
-        }
-    } else if (video_encode_metadata.state == 0) {
-        if (is_interactive_governor(governor)) {
-            release_request(video_encode_handle);
-            ALOGI("Video Encode hint stop");
-            return HINT_HANDLED;
-        }
-    }
-    return HINT_NONE;
-}
-
 int power_hint_override(power_hint_t hint, void* data) {
     int ret_val = HINT_NONE;
     switch (hint) {
-        case POWER_HINT_VIDEO_ENCODE:
-            ret_val = process_video_encode_hint(data);
-            break;
         case POWER_HINT_SUSTAINED_PERFORMANCE:
             ret_val = process_perf_hint(data, SUSTAINED_MODE);
             break;

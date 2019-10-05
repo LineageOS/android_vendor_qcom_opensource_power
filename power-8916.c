@@ -84,8 +84,6 @@ int power_hint_override(power_hint_t hint, void* UNUSED(data)) {
         }
         case POWER_HINT_VIDEO_ENCODE: /* Do nothing for encode case */
             return HINT_HANDLED;
-        case POWER_HINT_VIDEO_DECODE: /* Do nothing for decode case */
-            return HINT_HANDLED;
         default:
             return HINT_HANDLED;
     }

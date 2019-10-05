@@ -49,43 +49,8 @@
 #include "power-common.h"
 #include "utils.h"
 
-#define MIN_VAL(X, Y) ((X > Y) ? (Y) : (X))
-
-static int video_encode_hint_sent;
-
-static void process_video_encode_hint(void* metadata);
-
 static int display_fd;
 #define SYS_DISPLAY_PWR "/sys/kernel/hbtp/display_pwr"
-
-/**
- * Returns true if the target is SDM632.
- */
-static bool is_target_SDM632(void) {
-    static int is_SDM632 = -1;
-    int soc_id;
-
-    if (is_SDM632 >= 0) return is_SDM632;
-
-    soc_id = get_soc_id();
-    is_SDM632 = soc_id == 349 || soc_id == 350;
-
-    return is_SDM632;
-}
-
-int power_hint_override(power_hint_t hint, void* data) {
-    switch (hint) {
-        case POWER_HINT_VSYNC:
-            break;
-        case POWER_HINT_VIDEO_ENCODE: {
-            process_video_encode_hint(data);
-            return HINT_HANDLED;
-        }
-        default:
-            break;
-    }
-    return HINT_NONE;
-}
 
 int set_interactive_override(int on) {
     char governor[80];
@@ -158,93 +123,4 @@ int set_interactive_override(int on) {
     }
 
     return HINT_HANDLED;
-}
-
-/* Video Encode Hint */
-static void process_video_encode_hint(void* metadata) {
-    char governor[80] = {0};
-    int resource_values[20] = {0};
-    struct video_encode_metadata_t video_encode_metadata;
-
-    ALOGI("Got process_video_encode_hint");
-
-    if (get_scaling_governor_check_cores(governor, sizeof(governor), CPU0) == -1) {
-        if (get_scaling_governor_check_cores(governor, sizeof(governor), CPU1) == -1) {
-            if (get_scaling_governor_check_cores(governor, sizeof(governor), CPU2) == -1) {
-                if (get_scaling_governor_check_cores(governor, sizeof(governor), CPU3) == -1) {
-                    ALOGE("Can't obtain scaling governor.");
-                    // return HINT_HANDLED;
-                }
-            }
-        }
-    }
-
-    /* Initialize encode metadata struct fields. */
-    memset(&video_encode_metadata, 0, sizeof(struct video_encode_metadata_t));
-    video_encode_metadata.state = -1;
-    video_encode_metadata.hint_id = DEFAULT_VIDEO_ENCODE_HINT_ID;
-
-    if (metadata) {
-        if (parse_video_encode_metadata((char*)metadata, &video_encode_metadata) == -1) {
-            ALOGE("Error occurred while parsing metadata.");
-            return;
-        }
-    } else {
-        return;
-    }
-
-    if (video_encode_metadata.state == 1) {
-        if (is_schedutil_governor(governor)) {
-            if (is_target_SDM632()) {
-                /* sample_ms = 10mS
-                 * SLB for Core0 = -6
-                 * SLB for Core1 = -6
-                 * SLB for Core2 = -6
-                 * SLB for Core3 = -6
-                 * hispeed load = 95
-                 * hispeed freq = 1036 */
-                int res[] = {
-                        0x41820000, 0xa,        0x40c68100, 0xfffffffa, 0x40c68110,
-                        0xfffffffa, 0x40c68120, 0xfffffffa, 0x40c68130, 0xfffffffa,
-                        0x41440100, 0x5f,       0x4143c100, 0x40c,
-                };
-                memcpy(resource_values, res, MIN_VAL(sizeof(resource_values), sizeof(res)));
-                if (!video_encode_hint_sent) {
-                    perform_hint_action(video_encode_metadata.hint_id, resource_values,
-                                        ARRAY_SIZE(res));
-                    video_encode_hint_sent = 1;
-                }
-            } else {
-                /* sample_ms = 10mS */
-                int res[] = {
-                        0x41820000,
-                        0xa,
-                };
-                memcpy(resource_values, res, MIN_VAL(sizeof(resource_values), sizeof(res)));
-                if (!video_encode_hint_sent) {
-                    perform_hint_action(video_encode_metadata.hint_id, resource_values,
-                                        ARRAY_SIZE(res));
-                    video_encode_hint_sent = 1;
-                }
-            }
-        } else if (is_interactive_governor(governor)) {
-            /* Sched_load and migration_notification disable
-             * timer rate - 40mS*/
-            int res[] = {
-                    0x41430000, 0x1, 0x41434000, 0x1, 0x41424000, 0x28,
-            };
-            memcpy(resource_values, res, MIN_VAL(sizeof(resource_values), sizeof(res)));
-            if (!video_encode_hint_sent) {
-                perform_hint_action(video_encode_metadata.hint_id, resource_values,
-                                    ARRAY_SIZE(res));
-                video_encode_hint_sent = 1;
-            }
-        }
-    } else if (video_encode_metadata.state == 0) {
-        if (is_interactive_governor(governor) || is_schedutil_governor(governor)) {
-            undo_hint_action(video_encode_metadata.hint_id);
-            video_encode_hint_sent = 0;
-        }
-    }
-    return;
 }
