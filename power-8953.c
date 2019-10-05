@@ -158,17 +158,14 @@ int power_hint_override(power_hint_t hint, void* data) {
 
 int set_interactive_override(int on) {
     char governor[80];
-    static int set_i_count = 0;
-
-    ALOGI("Got set_interactive hint");
 
     if (get_scaling_governor(governor, sizeof(governor)) == -1) {
         ALOGE("Can't obtain scaling governor.");
-        return HINT_HANDLED;
+        return HINT_NONE;
     }
 
     if (!on) {
-        /* Display off. */
+        /* Display off */
         if (is_interactive_governor(governor)) {
             /* timer rate - 40mS*/
             int resource_values[] = {
@@ -177,17 +174,13 @@ int set_interactive_override(int on) {
             };
             perform_hint_action(DISPLAY_STATE_HINT_ID, resource_values,
                                 ARRAY_SIZE(resource_values));
-        } /* Perf time rate set for CORE0,CORE4 8952 target*/
-
+        }
     } else {
-        /* Display on. */
+        /* Display on */
         if (is_interactive_governor(governor)) {
             undo_hint_action(DISPLAY_STATE_HINT_ID);
         }
     }
-
-    set_i_count++;
-    ALOGI("Got set_interactive hint on= %d, count= %d\n", on, set_i_count);
 
     return HINT_HANDLED;
 }

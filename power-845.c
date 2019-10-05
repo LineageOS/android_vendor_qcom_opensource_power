@@ -200,12 +200,3 @@ int power_hint_override(power_hint_t hint, void* data) {
     }
     return ret_val;
 }
-
-int set_interactive_override(int on) {
-    static int set_i_count = 0;
-
-    set_i_count++;
-    ALOGI("Got set_interactive hint on= %d, count= %d\n", on, set_i_count);
-
-    return HINT_HANDLED; /* Don't excecute this code path, not in use */
-}

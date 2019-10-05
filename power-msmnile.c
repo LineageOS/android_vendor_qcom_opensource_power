@@ -45,15 +45,6 @@
 #include "power-common.h"
 #include "utils.h"
 
-int set_interactive_override(int on) {
-    static int set_i_count = 0;
-
-    set_i_count++;
-    ALOGI("Got set_interactive hint on= %d, count= %d\n", on, set_i_count);
-
-    return HINT_HANDLED;
-}
-
 int power_hint_override(power_hint_t hint, void* data) {
     int ret_val = HINT_NONE;
     switch (hint) {

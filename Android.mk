@@ -59,10 +59,6 @@ ifeq ($(call is-board-platform-in-list,sdm845), true)
 LOCAL_SRC_FILES += power-845.c
 endif
 
-ifeq ($(call is-board-platform-in-list,sdm710), true)
-LOCAL_SRC_FILES += power-710.c
-endif
-
 ifeq ($(call is-board-platform-in-list,msmnile), true)
 LOCAL_SRC_FILES += power-msmnile.c
 endif
