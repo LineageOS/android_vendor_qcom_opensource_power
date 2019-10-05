@@ -49,8 +49,6 @@
 #include "power-common.h"
 #include "utils.h"
 
-#define MIN_VAL(X, Y) ((X > Y) ? (Y) : (X))
-
 static int video_encode_hint_sent;
 
 /**
@@ -153,52 +151,46 @@ int power_hint_override(power_hint_t hint, void* data) {
 
 int set_interactive_override(int on) {
     char governor[80];
-    int resource_values[20];
-    int num_resources;
-
-    ALOGI("Got set_interactive hint");
 
     if (get_scaling_governor(governor, sizeof(governor)) == -1) {
         ALOGE("Can't obtain scaling governor.");
-        return HINT_HANDLED;
+        return HINT_NONE;
     }
 
     if (!on) {
-        /* Display off. */
+        /* Display off */
         if (is_interactive_governor(governor)) {
-            /*
-                1. CPUfreq params
-                       - hispeed freq for big - 1113Mhz
-                       - go hispeed load for big - 95
-                       - above_hispeed_delay for big - 40ms
-               2. BusDCVS V2 params
-                       - Sample_ms of 10ms
-           */
             if (is_target_SDM630()) {
-                int res[] = {0x41414000, 0x459, 0x41410000, 0x5F, 0x41400000, 0x4, 0x41820000, 0xA};
-                memcpy(resource_values, res, MIN_VAL(sizeof(resource_values), sizeof(res)));
-                num_resources = ARRAY_SIZE(res);
-            }
-            /*
-                1. CPUfreq params
-                       - hispeed freq for little - 902Mhz
-                       - go hispeed load for little - 95
-                       - above_hispeed_delay for little - 40ms
-                2. BusDCVS V2 params
+                /*
+                    1. CPUfreq params
+                        - hispeed freq for big - 1113Mhz
+                        - go hispeed load for big - 95
+                        - above_hispeed_delay for big - 40ms
+                    2. BusDCVS V2 params
                        - Sample_ms of 10ms
-                3. Sched group upmigrate - 500
-           */
-            else {
-                int res[] = {0x41414100, 0x386,      0x41410100, 0x5F,       0x41400100,
-                             0x4,        0x41820000, 0xA,        0x40C54000, 0x1F4};
-                memcpy(resource_values, res, MIN_VAL(sizeof(resource_values), sizeof(res)));
-                num_resources = ARRAY_SIZE(res);
+                 */
+                int resource_values[] = {0x41414000, 0x459, 0x41410000, 0x5F,
+                                         0x41400000, 0x4,   0x41820000, 0xA};
+                perform_hint_action(DISPLAY_STATE_HINT_ID, resource_values,
+                                    ARRAY_SIZE(resource_values));
+            } else {
+                /*
+                    1. CPUfreq params
+                        - hispeed freq for little - 902Mhz
+                        - go hispeed load for little - 95
+                        - above_hispeed_delay for little - 40ms
+                    2. BusDCVS V2 params
+                        - Sample_ms of 10ms
+                    3. Sched group upmigrate - 500
+                 */
+                int resource_values[] = {0x41414100, 0x386,      0x41410100, 0x5F,       0x41400100,
+                                         0x4,        0x41820000, 0xA,        0x40C54000, 0x1F4};
+                perform_hint_action(DISPLAY_STATE_HINT_ID, resource_values,
+                                    ARRAY_SIZE(resource_values));
             }
-            perform_hint_action(DISPLAY_STATE_HINT_ID, resource_values, num_resources);
         }
-
     } else {
-        /* Display on. */
+        /* Display on */
         if (is_interactive_governor(governor)) {
             undo_hint_action(DISPLAY_STATE_HINT_ID);
         }
