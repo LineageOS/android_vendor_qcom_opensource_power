@@ -53,11 +53,7 @@ int set_interactive_override(int on) {
     static const char* display_off = "0";
     char err_buf[80];
     static int init_interactive_hint = 0;
-    static int set_i_count = 0;
     int rc = 0;
-
-    set_i_count++;
-    ALOGI("Got set_interactive hint on= %d, count= %d\n", on, set_i_count);
 
     if (init_interactive_hint == 0) {
         // First time the display is turned off
@@ -68,7 +64,7 @@ int set_interactive_override(int on) {
         } else
             init_interactive_hint = 1;
     } else if (!on) {
-        /* Display off. */
+        /* Display off */
         rc = TEMP_FAILURE_RETRY(write(display_fd, display_off, strlen(display_off)));
         if (rc < 0) {
             strerror_r(errno, err_buf, sizeof(err_buf));
@@ -82,7 +78,6 @@ int set_interactive_override(int on) {
             ALOGE("Error writing %s to  %s: %s\n", display_on, SYS_DISPLAY_PWR, err_buf);
         }
     }
-
     return HINT_HANDLED;
 }
 
