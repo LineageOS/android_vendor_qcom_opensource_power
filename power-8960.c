@@ -26,6 +26,7 @@
  * OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
  * IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+
 #define LOG_NIDEBUG 0
 
 #include <dlfcn.h>
@@ -36,7 +37,7 @@
 #include <sys/stat.h>
 #include <sys/types.h>
 
-#define LOG_TAG "QTI PowerHAL"
+#define LOG_TAG "QCOM PowerHAL"
 #include <hardware/hardware.h>
 #include <hardware/power.h>
 #include <log/log.h>
@@ -96,7 +97,7 @@ static int process_video_decode_hint(void* metadata) {
         return HINT_NONE;
     }
 
-    /* Initialize decode metadata struct fields */
+    /* Initialize encode metadata struct fields */
     memset(&video_decode_metadata, 0, sizeof(struct video_decode_metadata_t));
     video_decode_metadata.state = -1;
     video_decode_metadata.hint_id = DEFAULT_VIDEO_DECODE_HINT_ID;
@@ -131,13 +132,6 @@ int power_hint_override(power_hint_t hint, void* data) {
             break;
         case POWER_HINT_VIDEO_DECODE:
             ret_val = process_video_decode_hint(data);
-            break;
-        case POWER_HINT_INTERACTION:
-            int resources[] = {0x702, 0x20B, 0x30B};
-            int duration = 3000;
-
-            interaction(duration, ARRAY_SIZE(resources), resources);
-            ret_val = HINT_HANDLED;
             break;
         default:
             break;
