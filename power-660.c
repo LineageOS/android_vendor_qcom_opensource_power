@@ -71,14 +71,12 @@ int set_interactive_override(int on) {
     int resource_values[20];
     int num_resources;
 
-    ALOGI("Got set_interactive hint");
-
     if (get_scaling_governor_check_cores(governor, sizeof(governor), CPU0) == -1) {
         if (get_scaling_governor_check_cores(governor, sizeof(governor), CPU1) == -1) {
             if (get_scaling_governor_check_cores(governor, sizeof(governor), CPU2) == -1) {
                 if (get_scaling_governor_check_cores(governor, sizeof(governor), CPU3) == -1) {
                     ALOGE("Can't obtain scaling governor.");
-                    return HINT_HANDLED;
+                    return HINT_NONE;
                 }
             }
         }
@@ -92,9 +90,9 @@ int set_interactive_override(int on) {
                        - hispeed freq for big - 1113Mhz
                        - go hispeed load for big - 95
                        - above_hispeed_delay for big - 40ms
-               2. BusDCVS V2 params
+                2. BusDCVS V2 params
                        - Sample_ms of 10ms
-           */
+             */
             if (is_target_SDM630()) {
                 int res[] = {0x41414000, 0x459, 0x41410000, 0x5F, 0x41400000, 0x4, 0x41820000, 0xA};
                 memcpy(resource_values, res, MIN_VAL(sizeof(resource_values), sizeof(res)));
@@ -108,7 +106,7 @@ int set_interactive_override(int on) {
                 2. BusDCVS V2 params
                        - Sample_ms of 10ms
                 3. Sched group upmigrate - 500
-           */
+             */
             else {
                 int res[] = {0x41414100, 0x386,      0x41410100, 0x5F,       0x41400100,
                              0x4,        0x41820000, 0xA,        0x40C54000, 0x1F4};
