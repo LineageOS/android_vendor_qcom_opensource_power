@@ -52,9 +52,6 @@
 
 static int video_encode_hint_sent;
 
-static int display_fd;
-#define SYS_DISPLAY_PWR "/sys/kernel/hbtp/display_pwr"
-
 const int kMinInteractiveDuration = 500;  /* ms */
 const int kMaxInteractiveDuration = 5000; /* ms */
 const int kMaxLaunchDuration = 5000;      /* ms */
@@ -242,12 +239,6 @@ int power_hint_override(power_hint_t hint, void* data) {
 
 int set_interactive_override(int on) {
     char governor[80];
-    int rc = 0;
-
-    static const char* display_on = "1";
-    static const char* display_off = "0";
-    char err_buf[80];
-    static int init_interactive_hint = 0;
 
     if (get_scaling_governor(governor, sizeof(governor)) == -1) {
         ALOGE("Can't obtain scaling governor.");
@@ -268,28 +259,5 @@ int set_interactive_override(int on) {
         }
     }
 
-    if (init_interactive_hint == 0) {
-        // First time the display is turned off
-        display_fd = TEMP_FAILURE_RETRY(open(SYS_DISPLAY_PWR, O_RDWR));
-        if (display_fd < 0) {
-            strerror_r(errno, err_buf, sizeof(err_buf));
-            ALOGE("Error opening %s: %s\n", SYS_DISPLAY_PWR, err_buf);
-        } else
-            init_interactive_hint = 1;
-    } else if (!on) {
-        /* Display off */
-        rc = TEMP_FAILURE_RETRY(write(display_fd, display_off, strlen(display_off)));
-        if (rc < 0) {
-            strerror_r(errno, err_buf, sizeof(err_buf));
-            ALOGE("Error writing %s to  %s: %s\n", display_off, SYS_DISPLAY_PWR, err_buf);
-        }
-    } else {
-        /* Display on */
-        rc = TEMP_FAILURE_RETRY(write(display_fd, display_on, strlen(display_on)));
-        if (rc < 0) {
-            strerror_r(errno, err_buf, sizeof(err_buf));
-            ALOGE("Error writing %s to  %s: %s\n", display_on, SYS_DISPLAY_PWR, err_buf);
-        }
-    }
     return HINT_HANDLED;
 }
