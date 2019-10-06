@@ -1,5 +1,6 @@
 /*
  * Copyright (c) 2013, The Linux Foundation. All rights reserved.
+ * Copyright (C) 2018-2019 The LineageOS Project
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are
@@ -47,6 +48,69 @@
 #include "performance.h"
 #include "power-common.h"
 #include "utils.h"
+
+static int current_power_profile = PROFILE_BALANCED;
+
+// clang-format off
+static int profile_high_performance[] = {
+    CPUS_ONLINE_MIN_4,
+    CPU0_MIN_FREQ_TURBO_MAX,
+    CPU1_MIN_FREQ_TURBO_MAX,
+    CPU2_MIN_FREQ_TURBO_MAX,
+    CPU3_MIN_FREQ_TURBO_MAX
+};
+
+static int profile_power_save[] = {
+    CPUS_ONLINE_MAX_LIMIT_2,
+    CPU0_MAX_FREQ_NONTURBO_MAX,
+    CPU1_MAX_FREQ_NONTURBO_MAX,
+    CPU2_MAX_FREQ_NONTURBO_MAX,
+    CPU3_MAX_FREQ_NONTURBO_MAX
+};
+// clang-format on
+
+#ifdef INTERACTION_BOOST
+int get_number_of_profiles() {
+    return 3;
+}
+#endif
+
+static int set_power_profile(void* data) {
+    int profile = data ? *((int*)data) : 0;
+    int ret = -EINVAL;
+    const char* profile_name = NULL;
+
+    if (profile == current_power_profile) return 0;
+
+    ALOGV("%s: Profile=%d", __func__, profile);
+
+    if (current_power_profile != PROFILE_BALANCED) {
+        undo_hint_action(DEFAULT_PROFILE_HINT_ID);
+        ALOGV("%s: Hint undone", __func__);
+        current_power_profile = PROFILE_BALANCED;
+    }
+
+    if (profile == PROFILE_POWER_SAVE) {
+        ret = perform_hint_action(DEFAULT_PROFILE_HINT_ID, profile_power_save,
+                                  ARRAY_SIZE(profile_power_save));
+        profile_name = "powersave";
+
+    } else if (profile == PROFILE_HIGH_PERFORMANCE) {
+        ret = perform_hint_action(DEFAULT_PROFILE_HINT_ID, profile_high_performance,
+                                  ARRAY_SIZE(profile_high_performance));
+        profile_name = "performance";
+
+    } else if (profile == PROFILE_BALANCED) {
+        ret = 0;
+        profile_name = "balanced";
+    }
+
+    if (ret == 0) {
+        current_power_profile = profile;
+        ALOGD("%s: Set %s mode", __func__, profile_name);
+    }
+    return ret;
+}
 
 static int process_video_encode_hint(void* metadata) {
     char governor[80];
@@ -166,6 +230,19 @@ static void process_interaction_hint(void* data) {
 
 int power_hint_override(power_hint_t hint, void* data) {
     int ret_val = HINT_NONE;
+
+    if (hint == POWER_HINT_SET_PROFILE) {
+        if (set_power_profile(data) < 0)
+            ALOGE("Setting power profile failed. mpdecision not started?");
+        return HINT_HANDLED;
+    }
+
+    // Skip other hints in high/low power modes
+    if (current_power_profile == PROFILE_POWER_SAVE ||
+        current_power_profile == PROFILE_HIGH_PERFORMANCE) {
+        return HINT_HANDLED;
+    }
+
     switch (hint) {
         case POWER_HINT_VIDEO_ENCODE:
             ret_val = process_video_encode_hint(data);

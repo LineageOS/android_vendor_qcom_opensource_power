@@ -1,5 +1,6 @@
 /*
  * Copyright (c) 2015, The Linux Foundation. All rights reserved.
+ * Copyright (C) 2018-2019 The LineageOS Project
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are
@@ -62,6 +63,81 @@ static bool is_target_8916(void) {
     is_8916 = soc_id == 206 || (soc_id >= 247 && soc_id <= 250);
 
     return is_8916;
+}
+
+static int current_power_profile = PROFILE_BALANCED;
+
+// clang-format off
+static int profile_high_performance_8916[3] = {
+    0x1C00, 0x0901, CPU0_MIN_FREQ_TURBO_MAX,
+};
+
+static int profile_high_performance_8939[11] = {
+    SCHED_BOOST_ON, 0x1C00, 0x0901,
+    CPU0_MIN_FREQ_TURBO_MAX, CPU1_MIN_FREQ_TURBO_MAX,
+    CPU2_MIN_FREQ_TURBO_MAX, CPU3_MIN_FREQ_TURBO_MAX,
+    CPU4_MIN_FREQ_TURBO_MAX, CPU5_MIN_FREQ_TURBO_MAX,
+    CPU6_MIN_FREQ_TURBO_MAX, CPU7_MIN_FREQ_TURBO_MAX,
+};
+
+static int profile_power_save_8916[1] = {
+    CPU0_MAX_FREQ_NONTURBO_MAX,
+};
+
+static int profile_power_save_8939[5] = {
+    CPUS_ONLINE_MAX_LIMIT_2,
+    CPU0_MAX_FREQ_NONTURBO_MAX, CPU1_MAX_FREQ_NONTURBO_MAX,
+    CPU2_MAX_FREQ_NONTURBO_MAX, CPU3_MAX_FREQ_NONTURBO_MAX,
+};
+// clang-format on
+
+#ifdef INTERACTION_BOOST
+int get_number_of_profiles() {
+    return 3;
+}
+#endif
+
+static int set_power_profile(void* data) {
+    int profile = data ? *((int*)data) : 0;
+    int ret = -EINVAL;
+    const char* profile_name = NULL;
+
+    if (profile == current_power_profile) return 0;
+
+    ALOGV("%s: Profile=%d", __func__, profile);
+
+    if (current_power_profile != PROFILE_BALANCED) {
+        undo_hint_action(DEFAULT_PROFILE_HINT_ID);
+        ALOGV("%s: Hint undone", __func__);
+        current_power_profile = PROFILE_BALANCED;
+    }
+
+    if (profile == PROFILE_POWER_SAVE) {
+        ret = perform_hint_action(
+                DEFAULT_PROFILE_HINT_ID,
+                is_target_8916() ? profile_power_save_8916 : profile_power_save_8939,
+                is_target_8916() ? ARRAY_SIZE(profile_power_save_8916)
+                                 : ARRAY_SIZE(profile_power_save_8939));
+        profile_name = "powersave";
+
+    } else if (profile == PROFILE_HIGH_PERFORMANCE) {
+        ret = perform_hint_action(
+                DEFAULT_PROFILE_HINT_ID,
+                is_target_8916() ? profile_high_performance_8916 : profile_high_performance_8939,
+                is_target_8916() ? ARRAY_SIZE(profile_high_performance_8916)
+                                 : ARRAY_SIZE(profile_high_performance_8939));
+        profile_name = "performance";
+
+    } else if (profile == PROFILE_BALANCED) {
+        ret = 0;
+        profile_name = "balanced";
+    }
+
+    if (ret == 0) {
+        current_power_profile = profile;
+        ALOGD("%s: Set %s mode", __func__, profile_name);
+    }
+    return ret;
 }
 
 // clang-format off
@@ -157,6 +233,18 @@ static int process_activity_launch_hint(void* data) {
 
 int power_hint_override(power_hint_t hint, void* data) {
     int ret_val = HINT_NONE;
+
+    if (hint == POWER_HINT_SET_PROFILE) {
+        if (set_power_profile(data) < 0) ALOGE("Setting power profile failed. perfd not started?");
+        return HINT_HANDLED;
+    }
+
+    // Skip other hints in high/low power modes
+    if (current_power_profile == PROFILE_POWER_SAVE ||
+        current_power_profile == PROFILE_HIGH_PERFORMANCE) {
+        return HINT_HANDLED;
+    }
+
     switch (hint) {
         case POWER_HINT_VIDEO_ENCODE: /* Do nothing for encode case */
             ret_val = HINT_HANDLED;
