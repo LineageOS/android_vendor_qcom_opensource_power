@@ -49,49 +49,13 @@
 #include "performance.h"
 #include "power-common.h"
 
-static int display_fd;
-#define SYS_DISPLAY_PWR "/sys/kernel/hbtp/display_pwr"
-
 int set_interactive_override(struct power_module *module, int on)
 {
-    static const char *display_on = "1";
-    static const char *display_off = "0";
-    char err_buf[80];
-    static int init_interactive_hint = 0;
     static int set_i_count = 0;
-    int rc = 0;
 
     set_i_count ++;
     ALOGI("Got set_interactive hint on= %d, count= %d\n", on, set_i_count);
 
-    if (init_interactive_hint == 0)
-    {
-        //First time the display is turned off
-        display_fd = TEMP_FAILURE_RETRY(open(SYS_DISPLAY_PWR, O_RDWR));
-        if (display_fd < 0) {
-            strerror_r(errno,err_buf,sizeof(err_buf));
-            ALOGE("Error opening %s: %s\n", SYS_DISPLAY_PWR, err_buf);
-        }
-        else
-            init_interactive_hint = 1;
-    }
-    else
-        if (!on ) {
-            /* Display off. */
-            rc = TEMP_FAILURE_RETRY(write(display_fd, display_off, strlen(display_off)));
-            if (rc < 0) {
-                strerror_r(errno,err_buf,sizeof(err_buf));
-                ALOGE("Error writing %s to  %s: %s\n", display_off, SYS_DISPLAY_PWR, err_buf);
-            }
-        }
-        else {
-            /* Display on */
-            rc = TEMP_FAILURE_RETRY(write(display_fd, display_on, strlen(display_on)));
-            if (rc < 0) {
-                strerror_r(errno,err_buf,sizeof(err_buf));
-                ALOGE("Error writing %s to  %s: %s\n", display_on, SYS_DISPLAY_PWR, err_buf);
-            }
-        }
 
     return HINT_HANDLED; /* Don't excecute this code path, not in use */
 }
