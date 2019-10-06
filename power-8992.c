@@ -35,6 +35,7 @@
 #include <string.h>
 #include <sys/stat.h>
 #include <sys/types.h>
+#include <time.h>
 
 #define LOG_TAG "QTI PowerHAL"
 #include <hardware/hardware.h>
@@ -128,7 +129,56 @@ static int process_video_decode_hint(void* metadata) {
     return HINT_NONE;
 }
 
+// clang-format off
+static int resources_interaction_fling_boost[] = {
+    ALL_CPUS_PWR_CLPS_DIS,
+    SCHED_BOOST_ON,
+    SCHED_PREFER_IDLE_DIS
+};
+
+static int resources_interaction_boost[] = {
+    ALL_CPUS_PWR_CLPS_DIS,
+    SCHED_PREFER_IDLE_DIS
+};
+
+static int resources_launch[] = {
+    SCHED_BOOST_ON,
+    0x20C
+};
+// clang-format on
+
+static int process_activity_launch_hint(void* data) {
+    static int launch_handle = -1;
+    static int launch_mode = 0;
+
+    // release lock early if launch has finished
+    if (!data) {
+        if (CHECK_HANDLE(launch_handle)) {
+            release_request(launch_handle);
+            launch_handle = -1;
+        }
+        launch_mode = 0;
+        return HINT_HANDLED;
+    }
+
+    if (!launch_mode) {
+        launch_handle = interaction_with_handle(launch_handle, 5000, ARRAY_SIZE(resources_launch),
+                                                resources_launch);
+        if (!CHECK_HANDLE(launch_handle)) {
+            ALOGE("Failed to perform launch boost");
+            return HINT_NONE;
+        }
+        launch_mode = 1;
+    }
+    return HINT_HANDLED;
+}
+
 int power_hint_override(power_hint_t hint, void* data) {
+    static struct timespec s_previous_boost_timespec;
+    struct timespec cur_boost_timespec;
+    long long elapsed_time;
+    static int s_previous_duration = 0;
+    int duration;
     int ret_val = HINT_NONE;
     switch (hint) {
         case POWER_HINT_VIDEO_ENCODE:
@@ -136,6 +186,38 @@ int power_hint_override(power_hint_t hint, void* data) {
             break;
         case POWER_HINT_VIDEO_DECODE:
             ret_val = process_video_decode_hint(data);
+            break;
+        case POWER_HINT_INTERACTION:
+            duration = 500;  // 500ms by default
+            if (data) {
+                int input_duration = *((int*)data);
+                if (input_duration > duration) {
+                    duration = (input_duration > 5000) ? 5000 : input_duration;
+                }
+            }
+
+            clock_gettime(CLOCK_MONOTONIC, &cur_boost_timespec);
+
+            elapsed_time = calc_timespan_us(s_previous_boost_timespec, cur_boost_timespec);
+            // don't hint if previous hint's duration covers this hint's duration
+            if ((s_previous_duration * 1000) > (elapsed_time + duration * 1000)) {
+                ret_val = HINT_HANDLED;
+                break;
+            }
+            s_previous_boost_timespec = cur_boost_timespec;
+            s_previous_duration = duration;
+
+            if (duration >= 1500) {
+                interaction(duration, ARRAY_SIZE(resources_interaction_fling_boost),
+                            resources_interaction_fling_boost);
+            } else {
+                interaction(duration, ARRAY_SIZE(resources_interaction_boost),
+                            resources_interaction_boost);
+            }
+            ret_val = HINT_HANDLED;
+            break;
+        case POWER_HINT_LAUNCH:
+            ret_val = process_activity_launch_hint(data);
             break;
         default:
             break;
