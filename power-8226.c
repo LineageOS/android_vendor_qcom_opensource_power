@@ -35,6 +35,7 @@
 #include <string.h>
 #include <sys/stat.h>
 #include <sys/types.h>
+#include <time.h>
 
 #define LOG_TAG "QTI PowerHAL"
 #include <hardware/hardware.h>
@@ -123,7 +124,20 @@ static int process_video_decode_hint(void* metadata) {
     return HINT_NONE;
 }
 
+// clang-format off
+static int resources_interaction_boost[] = {
+    CPUS_ONLINE_MIN_2,
+    0x20B,
+    0x30B
+};
+// clang-format on
+
 int power_hint_override(power_hint_t hint, void* data) {
+    static struct timespec s_previous_boost_timespec;
+    struct timespec cur_boost_timespec;
+    long long elapsed_time;
+    static int s_previous_duration = 0;
+    int duration;
     int ret_val = HINT_NONE;
     switch (hint) {
         case POWER_HINT_VIDEO_ENCODE:
@@ -133,10 +147,27 @@ int power_hint_override(power_hint_t hint, void* data) {
             ret_val = process_video_decode_hint(data);
             break;
         case POWER_HINT_INTERACTION:
-            int resources[] = {0x702, 0x20B, 0x30B};
-            int duration = 3000;
+            duration = 500;  // 500ms by default
+            if (data) {
+                int input_duration = *((int*)data);
+                if (input_duration > duration) {
+                    duration = (input_duration > 5000) ? 5000 : input_duration;
+                }
+            }
 
-            interaction(duration, ARRAY_SIZE(resources), resources);
+            clock_gettime(CLOCK_MONOTONIC, &cur_boost_timespec);
+
+            elapsed_time = calc_timespan_us(s_previous_boost_timespec, cur_boost_timespec);
+            // don't hint if previous hint's duration covers this hint's duration
+            if ((s_previous_duration * 1000) > (elapsed_time + duration * 1000)) {
+                ret_val = HINT_HANDLED;
+                break;
+            }
+            s_previous_boost_timespec = cur_boost_timespec;
+            s_previous_duration = duration;
+
+            interaction(duration, ARRAY_SIZE(resources_interaction_boost),
+                        resources_interaction_boost);
             ret_val = HINT_HANDLED;
             break;
         default:
