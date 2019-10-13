@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e1d7824e_42378350",
+        "filename": "power-660.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 10258
+      },
+      "writtenOn": "2019-10-13T12:25:46Z",
+      "side": 1,
+      "message": "always returns HINT_HANDLED, so use a return value here is probably pointless",
+      "range": {
+        "startLine": 74,
+        "startChar": 11,
+        "endLine": 74,
+        "endChar": 39
+      },
+      "revId": "403e38d1e96475a97f77bab0de4729f07655a6c4",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    }
+  ]
+}
