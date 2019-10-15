@@ -193,7 +193,7 @@ int power_hint_override(power_hint_t hint, void* data) {
             ret_val = process_perf_hint(data, VR_MODE);
             break;
         case POWER_HINT_INTERACTION: {
-            int resources[] = {0x40800100, 0x514};
+            int resources[] = {MIN_FREQ_LITTLE_CORE_0, 0x514};
             int duration = 100;
             interaction(duration, ARRAY_SIZE(resources), resources);
             ret_val = HINT_HANDLED;
