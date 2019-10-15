@@ -100,8 +100,10 @@ static int process_video_encode_hint(void* metadata) {
                     2. BusDCVS V2 params
                         - Sample_ms of 10ms
                  */
-                int resource_values[] = {0x41414000, 0x459, 0x41410000, 0x5F, 0x41400000, 0x4,
-                                         0x41420000, 0x5F,  0x40C2C000, 0X5,  0x41820000, 0xA};
+                int resource_values[] = {
+                        HISPEED_FREQ_BIG,        0x459, GO_HISPEED_LOAD_BIG,   0x5F,
+                        ABOVE_HISPEED_DELAY_BIG, 0x4,   TARGET_LOADS_BIG,      0x5F,
+                        SCHED_SPILL_NR_RUN,      0X5,   CPUBW_HWMON_SAMPLE_MS, 0xA};
                 if (!video_encode_hint_sent) {
                     perform_hint_action(video_encode_metadata.hint_id, resource_values,
                                         ARRAY_SIZE(resource_values));
@@ -117,8 +119,9 @@ static int process_video_encode_hint(void* metadata) {
                     2. BusDCVS V2 params
                         - Sample_ms of 10ms
                  */
-                int resource_values[] = {0x41414100, 0x386, 0x41410100, 0x5F,
-                                         0x41400100, 0x4,   0x41820000, 0xA};
+                int resource_values[] = {
+                        HISPEED_FREQ_LITTLE,        0x386, GO_HISPEED_LOAD_LITTLE, 0x5F,
+                        ABOVE_HISPEED_DELAY_LITTLE, 0x4,   CPUBW_HWMON_SAMPLE_MS,  0xA};
                 if (!video_encode_hint_sent) {
                     perform_hint_action(video_encode_metadata.hint_id, resource_values,
                                         ARRAY_SIZE(resource_values));
@@ -169,8 +172,9 @@ int set_interactive_override(int on) {
                     2. BusDCVS V2 params
                        - Sample_ms of 10ms
                  */
-                int resource_values[] = {0x41414000, 0x459, 0x41410000, 0x5F,
-                                         0x41400000, 0x4,   0x41820000, 0xA};
+                int resource_values[] = {
+                        HISPEED_FREQ_BIG,        0x459, GO_HISPEED_LOAD_BIG,   0x5F,
+                        ABOVE_HISPEED_DELAY_BIG, 0x4,   CPUBW_HWMON_SAMPLE_MS, 0xA};
                 perform_hint_action(DISPLAY_STATE_HINT_ID, resource_values,
                                     ARRAY_SIZE(resource_values));
             } else {
@@ -183,8 +187,10 @@ int set_interactive_override(int on) {
                         - Sample_ms of 10ms
                     3. Sched group upmigrate - 500
                  */
-                int resource_values[] = {0x41414100, 0x386,      0x41410100, 0x5F,       0x41400100,
-                                         0x4,        0x41820000, 0xA,        0x40C54000, 0x1F4};
+                int resource_values[] = {
+                        HISPEED_FREQ_LITTLE,        0x386, GO_HISPEED_LOAD_LITTLE, 0x5F,
+                        ABOVE_HISPEED_DELAY_LITTLE, 0x4,   CPUBW_HWMON_SAMPLE_MS,  0xA,
+                        SCHED_GROUP_UP_MIGRATE,     0x1F4};
                 perform_hint_action(DISPLAY_STATE_HINT_ID, resource_values,
                                     ARRAY_SIZE(resource_values));
             }

@@ -100,11 +100,20 @@ static int process_video_encode_hint(void* metadata) {
                  * SLB for Core3 = -6
                  * hispeed load = 95
                  * hispeed freq = 998Mhz */
-                int resource_values[] = {
-                        0x41820000, 0xa,        0x40c68100, 0xfffffffa, 0x40c68110,
-                        0xfffffffa, 0x40c68120, 0xfffffffa, 0x40c68130, 0xfffffffa,
-                        0x41440100, 0x5f,       0x4143c100, 0x3e6,
-                };
+                int resource_values[] = {CPUBW_HWMON_SAMPLE_MS,
+                                         0xa,
+                                         0x40c68100,
+                                         0xfffffffa,
+                                         0x40c68110,
+                                         0xfffffffa,
+                                         0x40c68120,
+                                         0xfffffffa,
+                                         0x40c68130,
+                                         0xfffffffa,
+                                         0x41440100,
+                                         0x5f,
+                                         0x4143c100,
+                                         0x3e6};
                 if (!video_encode_hint_sent) {
                     perform_hint_action(video_encode_metadata.hint_id, resource_values,
                                         ARRAY_SIZE(resource_values));
@@ -113,10 +122,7 @@ static int process_video_encode_hint(void* metadata) {
                 }
             } else {
                 /* sample_ms = 10mS */
-                int resource_values[] = {
-                        0x41820000,
-                        0xa,
-                };
+                int resource_values[] = {CPUBW_HWMON_SAMPLE_MS, 0xa};
                 if (!video_encode_hint_sent) {
                     perform_hint_action(video_encode_metadata.hint_id, resource_values,
                                         ARRAY_SIZE(resource_values));
