@@ -154,7 +154,7 @@ int set_interactive_override(int on) {
     if (!on) {
         /* Display off */
         if (is_interactive_governor(governor)) {
-            int resource_values[] = {0x777}; /* 4+0 core config in display off */
+            int resource_values[] = {CPUS_ONLINE_MPD_OVERRIDE}; /* 4+0 core config in display off */
             perform_hint_action(DISPLAY_STATE_HINT_ID, resource_values,
                                 ARRAY_SIZE(resource_values));
         }
