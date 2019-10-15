@@ -180,12 +180,14 @@ static int process_video_encode_hint(void* metadata) {
              * 3. hysteresis optimization
              *    -bus dcvs hysteresis tuning
              *    -sample_ms of 10 ms
-             *    -sLVT hispeed freq to 806MHz
              */
-            int resource_values[] = {0x41400000, 0x4,   0x41410000, 0x5F, 0x41414000, 0x326,
-                                     0x41420000, 0x5A,  0x41400100, 0x4,  0x41410100, 0x5F,
-                                     0x41414100, 0x22C, 0x41420100, 0x5A, 0x41810000, 0x9C4,
-                                     0x41814000, 0x32,  0x4180C000, 0x0,  0x41820000, 0xA};
+            int resource_values[] = {
+                    ABOVE_HISPEED_DELAY_BIG,    0x4,   GO_HISPEED_LOAD_BIG,    0x5F,
+                    HISPEED_FREQ_BIG,           0x326, TARGET_LOADS_BIG,       0x5A,
+                    ABOVE_HISPEED_DELAY_LITTLE, 0x4,   GO_HISPEED_LOAD_LITTLE, 0x5F,
+                    HISPEED_FREQ_LITTLE,        0x22C, TARGET_LOADS_LITTLE,    0x5A,
+                    LOW_POWER_CEIL_MBPS,        0x9C4, LOW_POWER_IO_PERCENT,   0x32,
+                    CPUBW_HWMON_HYST_OPT,       0x0,   CPUBW_HWMON_SAMPLE_MS,  0xA};
             if (!video_encode_hint_sent) {
                 perform_hint_action(video_encode_metadata.hint_id, resource_values,
                                     ARRAY_SIZE(resource_values));
