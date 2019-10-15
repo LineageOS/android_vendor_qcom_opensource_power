@@ -100,11 +100,20 @@ static int process_video_encode_hint(void* metadata) {
                  * SLB for Core3 = -6
                  * hispeed load = 95
                  * hispeed freq = 1036 */
-                int resource_values[] = {
-                        0x41820000, 0xa,        0x40c68100, 0xfffffffa, 0x40c68110,
-                        0xfffffffa, 0x40c68120, 0xfffffffa, 0x40c68130, 0xfffffffa,
-                        0x41440100, 0x5f,       0x4143c100, 0x40c,
-                };
+                int resource_values[] = {CPUBW_HWMON_SAMPLE_MS,
+                                         0xa,
+                                         0x40c68100,
+                                         0xfffffffa,
+                                         0x40c68110,
+                                         0xfffffffa,
+                                         0x40c68120,
+                                         0xfffffffa,
+                                         0x40c68130,
+                                         0xfffffffa,
+                                         0x41440100,
+                                         0x5f,
+                                         0x4143c100,
+                                         0x40c};
                 if (!video_encode_hint_sent) {
                     perform_hint_action(video_encode_metadata.hint_id, resource_values,
                                         ARRAY_SIZE(resource_values));
@@ -113,10 +122,7 @@ static int process_video_encode_hint(void* metadata) {
                 }
             } else {
                 /* sample_ms = 10mS */
-                int resource_values[] = {
-                        0x41820000,
-                        0xa,
-                };
+                int resource_values[] = {CPUBW_HWMON_SAMPLE_MS, 0xa};
                 if (!video_encode_hint_sent) {
                     perform_hint_action(video_encode_metadata.hint_id, resource_values,
                                         ARRAY_SIZE(resource_values));
@@ -127,9 +133,9 @@ static int process_video_encode_hint(void* metadata) {
         } else if (is_interactive_governor(governor)) {
             /* Sched_load and migration_notification disable
              * timer rate - 40mS*/
-            int resource_values[] = {
-                    0x41430000, 0x1, 0x41434000, 0x1, 0x41424000, 0x28,
-            };
+            int resource_values[] = {INT_OP_CLUSTER0_USE_SCHED_LOAD,      0x1,
+                                     INT_OP_CLUSTER0_USE_MIGRATION_NOTIF, 0x1,
+                                     INT_OP_CLUSTER0_TIMER_RATE,          BIG_LITTLE_TR_MS_40};
             if (!video_encode_hint_sent) {
                 perform_hint_action(video_encode_metadata.hint_id, resource_values,
                                     ARRAY_SIZE(resource_values));
@@ -176,11 +182,7 @@ int set_interactive_override(int on) {
     if (!on) {
         /* Display off */
         if (is_interactive_governor(governor)) {
-            /* timer rate - 40mS*/
-            int resource_values[] = {
-                    0x41424000,
-                    0x28,
-            };
+            int resource_values[] = {INT_OP_CLUSTER0_TIMER_RATE, BIG_LITTLE_TR_MS_40};
             perform_hint_action(DISPLAY_STATE_HINT_ID, resource_values,
                                 ARRAY_SIZE(resource_values));
         }

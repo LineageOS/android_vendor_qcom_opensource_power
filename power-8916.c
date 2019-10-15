@@ -76,7 +76,7 @@ int power_hint_override(power_hint_t hint, void* UNUSED(data)) {
         case POWER_HINT_VSYNC:
             break;
         case POWER_HINT_INTERACTION: {
-            int resources[] = {0x702, 0x20F, 0x30F};
+            int resources[] = {CPUS_ONLINE_MIN_2, 0x20F, 0x30F};
             int duration = 3000;
 
             interaction(duration, ARRAY_SIZE(resources), resources);
