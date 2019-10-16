@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "664d22bd_79019001",
+        "filename": "utils.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 11883
+      },
+      "writtenOn": "2019-10-16T18:11:54Z",
+      "side": 1,
+      "message": "PERF_HAL_PATH",
+      "range": {
+        "startLine": 68,
+        "startChar": 68,
+        "endLine": 68,
+        "endChar": 72
+      },
+      "revId": "0accee18fe9b4d662b6ed83ec181c5ccc0ba6398",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ad0b961_11391c7c",
+        "filename": "utils.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 11883
+      },
+      "writtenOn": "2019-10-16T18:11:54Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 5
+      },
+      "revId": "0accee18fe9b4d662b6ed83ec181c5ccc0ba6398",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    }
+  ]
+}
