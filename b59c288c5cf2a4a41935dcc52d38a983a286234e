@@ -45,6 +45,30 @@
       "revId": "b59c288c5cf2a4a41935dcc52d38a983a286234e",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5975f586_abaa74fc",
+        "filename": "Power.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 13559
+      },
+      "writtenOn": "2020-04-09T11:58:31Z",
+      "side": 1,
+      "message": "https://github.com/LineageOS/android_kernel_xiaomi_sdm845/blob/lineage-17.1/drivers/input/touchscreen/nt36xxx/nt36xxx.c#L85-L86",
+      "parentUuid": "e40fbf79_20dabe32",
+      "range": {
+        "startLine": 84,
+        "startChar": 34,
+        "endLine": 84,
+        "endChar": 40
+      },
+      "revId": "b59c288c5cf2a4a41935dcc52d38a983a286234e",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
     }
   ]
 }
