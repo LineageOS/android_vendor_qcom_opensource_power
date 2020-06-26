@@ -16,6 +16,24 @@
       "revId": "9685a877d9252842f488528a861e8d39acde8f9e",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d257b236_9c0c8e44",
+        "filename": "power-8998.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 10258
+      },
+      "writtenOn": "2020-06-26T11:10:18Z",
+      "side": 1,
+      "message": "750ms is just a random threshold to distinguish between slow swipes and flings, the later one is usually above 1s in practice. This condition translates to \"if it\u0027s been less than 250ms (even shorter than kMinInteractiveDuration!) from the last boost and the upcoming one is not a fling, skip\". Adding some logs here and take some actions on touchscreen would give you a better sense.",
+      "parentUuid": "ad8f99ba_e66fc61d",
+      "revId": "9685a877d9252842f488528a861e8d39acde8f9e",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
     }
   ]
 }
