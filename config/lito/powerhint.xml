@@ -43,11 +43,12 @@
         <!--L CPU - Set hispeed load 95 -->
         <!--CPU-LLCC BWMON - Set sample_ms 20 -->
         <!--LLCC-DDR BWMON - Set sample_ms 20 -->
+        <!--CPU CORE 0 Min freq to 864 Mhz -->
         <Config
             Id="0x00001331" Enable="true" Timeout="0" Target="lito"
             Resources="0x40C68100, 0xFFFFFFFA, 0x40C68110, 0xFFFFFFFA, 0x40C68120, 0xFFFFFFFA,
             0x40C68130, 0xFFFFFFFA, 0x40C68140, 0xFFFFFFFA, 0x40C68150, 0xFFFFFFFA,
-            0x4143C100, 0x360, 0x41440100, 0x5F, 0x41820000, 0x14, 0x4300C000, 0x14"/>
+            0x4143C100, 0x360, 0x41440100, 0x5F, 0x41820000, 0x14, 0x4300C000, 0x14, 0x40800100, 864"/>
 
         <!-- camera 60 FPS -->
         <!--L CPU CORE 0 SCHED LOAD BOOST -->
