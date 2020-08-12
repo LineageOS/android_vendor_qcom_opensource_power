@@ -154,12 +154,13 @@
         <!--L CPU CORE 5 SCHED LOAD BOOST -->
         <!--CPU-LLCC BWMON - Set sample_ms 20 -->
         <!--LLCC-DDR BWMON - Set sample ms 20 -->
-        <!--CPU CORE 0 Min freq to 1.075Ghz -->
+        <!--CPU CORE 0 Min freq to 1.363Ghz -->
+        <!--Sched_prefer_spread to 1 -->
         <Config
             Id="0x00001334" Enable="true" Timeout="0" Target="lito"
             Resources="0x40C68100, 0xFFFFFFFA, 0x40C68110, 0xFFFFFFFA, 0x40C68120, 0xFFFFFFFA,
             0x40C68130, 0xFFFFFFFA, 0x40C68140, 0xFFFFFFFA, 0x40C68150, 0xFFFFFFFA,
-            0x4183C000, 0x14, 0x43034000, 0x14, 0x40800100, 0x433"/>
+            0x4183C000, 0x14, 0x43034000, 0x14, 0x40800100, 0x553, 0x40CA8000, 1"/>
 
         <!-- HFR 480fps -->
         <!--L CPU CORE 0 SCHED LOAD BOOST -->
