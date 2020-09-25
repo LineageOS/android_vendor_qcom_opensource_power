@@ -3,7 +3,9 @@ PRODUCT_PACKAGES += android.hardware.power-service-qti
 PRODUCT_PACKAGES += android.hardware.power-impl
 
 #Powerhint File
-ifeq ($(TARGET_BOARD_PLATFORM),msmnile)
+ifeq ($(TARGET_BOARD_PLATFORM),sdm660)
+PRODUCT_COPY_FILES += vendor/qcom/opensource/power/config/sdm660/powerhint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.xml
+else ifeq ($(TARGET_BOARD_PLATFORM),msmnile)
 PRODUCT_COPY_FILES += vendor/qcom/opensource/power/config/msmnile/powerhint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.xml
 else ifeq ($(TARGET_BOARD_PLATFORM),kona)
 PRODUCT_COPY_FILES += vendor/qcom/opensource/power/config/kona/powerhint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.xml
