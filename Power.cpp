@@ -54,12 +54,22 @@ namespace hardware {
 namespace power {
 namespace impl {
 
+#ifdef MODE_EXT
+extern bool isDeviceSpecificModeSupported(Mode type, bool* _aidl_return);
+extern bool setDeviceSpecificMode(Mode type, bool enabled);
+#endif
+
 void setInteractive(bool interactive) {
     set_interactive(interactive ? 1 : 0);
 }
 
 ndk::ScopedAStatus Power::setMode(Mode type, bool enabled) {
     LOG(INFO) << "Power setMode: " << static_cast<int32_t>(type) << " to: " << enabled;
+#ifdef MODE_EXT
+    if (setDeviceSpecificMode(type, enabled)) {
+        return ndk::ScopedAStatus::ok();
+    }
+#endif
     switch (type) {
 #ifdef TAP_TO_WAKE_NODE
         case Mode::DOUBLE_TAP_TO_WAKE:
@@ -98,6 +108,12 @@ ndk::ScopedAStatus Power::setMode(Mode type, bool enabled) {
 
 ndk::ScopedAStatus Power::isModeSupported(Mode type, bool* _aidl_return) {
     LOG(INFO) << "Power isModeSupported: " << static_cast<int32_t>(type);
+
+#ifdef MODE_EXT
+    if (isDeviceSpecificModeSupported(type, _aidl_return)) {
+        return ndk::ScopedAStatus::ok();
+    }
+#endif
 
     switch (type) {
 #ifdef TAP_TO_WAKE_NODE
