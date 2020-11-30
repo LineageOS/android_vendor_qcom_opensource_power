@@ -40,10 +40,12 @@ int main() {
     std::shared_ptr<Power> vib = ndk::SharedRefBase::make<Power>();
     const std::string instance = std::string() + Power::descriptor + "/default";
     LOG(INFO) << "Instance " << instance;
-    binder_status_t status = AServiceManager_addService(vib->asBinder().get(), instance.c_str());
-    LOG(INFO) << "Status " << status;
-    if(status != STATUS_OK){
-        LOG(ERROR) << "Could not register" << instance;
+    if(vib){
+        binder_status_t status = AServiceManager_addService(vib->asBinder().get(), instance.c_str());
+        LOG(INFO) << "Status " << status;
+        if(status != STATUS_OK){
+            LOG(ERROR) << "Could not register" << instance;
+        }
     }
 
     ABinderProcess_joinThreadPool();
