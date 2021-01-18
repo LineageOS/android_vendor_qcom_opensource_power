@@ -112,6 +112,11 @@ endif
 
 endif # End of board specific list
 
+ifneq ($(TARGET_POWERHAL_BOOST_EXT),)
+    LOCAL_CFLAGS += -DBOOST_EXT
+    LOCAL_SRC_FILES += ../../../../$(TARGET_POWERHAL_BOOST_EXT)
+endif
+
 ifneq ($(TARGET_POWERHAL_MODE_EXT),)
     LOCAL_CFLAGS += -DMODE_EXT
     LOCAL_SRC_FILES += ../../../../$(TARGET_POWERHAL_MODE_EXT)
