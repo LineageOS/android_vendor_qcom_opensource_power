@@ -144,7 +144,8 @@ ndk::ScopedAStatus Power::isModeSupported(Mode type, bool* _aidl_return) {
 }
 
 ndk::ScopedAStatus Power::setBoost(Boost type, int32_t durationMs) {
-    LOG(INFO) << "Power setBoost: " << static_cast<int32_t>(type) << ", duration: " << durationMs;
+    LOG(VERBOSE) << "Power setBoost: " << static_cast<int32_t>(type)
+                 << ", duration: " << durationMs;
     return ndk::ScopedAStatus::ok();
 }
 
