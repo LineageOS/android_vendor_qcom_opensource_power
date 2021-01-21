@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "711a5d48_f8ad03c1",
+        "filename": "power-8998.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 21290
+      },
+      "writtenOn": "2021-01-21T14:52:15Z",
+      "side": 1,
+      "message": "What is the point of setting it to -1 here? It would get overriden before it is used again.",
+      "range": {
+        "startLine": 219,
+        "startChar": 8,
+        "endLine": 219,
+        "endChar": 32
+      },
+      "revId": "c4c7a1370824241eb1e26ae953875af8407c98a5",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    }
+  ]
+}
