@@ -22,6 +22,30 @@
       "revId": "c4c7a1370824241eb1e26ae953875af8407c98a5",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "177fbc42_9e3c268a",
+        "filename": "power-8998.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 8752
+      },
+      "writtenOn": "2021-01-21T16:42:46Z",
+      "side": 1,
+      "message": "You\u0027re right this seems superfluous and a relict from copy\u0026paste modify the launch hint handling.",
+      "parentUuid": "711a5d48_f8ad03c1",
+      "range": {
+        "startLine": 219,
+        "startChar": 8,
+        "endLine": 219,
+        "endChar": 32
+      },
+      "revId": "c4c7a1370824241eb1e26ae953875af8407c98a5",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
     }
   ]
 }
