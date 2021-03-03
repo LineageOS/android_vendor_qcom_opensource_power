@@ -7,7 +7,8 @@ ifeq ($(call is-vendor-board-platform,QCOM),true)
 include $(CLEAR_VARS)
 
 LOCAL_MODULE_RELATIVE_PATH := hw
-LOCAL_SHARED_LIBRARIES := liblog libcutils libdl libxml2 libbase libutils android.hardware.power-ndk_platform libbinder_ndk
+# KEYSTONE(I1132378f14428bf511f3cea4f419e90a6e89f823,b/181709127)
+LOCAL_SHARED_LIBRARIES := liblog libcutils libdl libxml2 libbase libutils android.hardware.power-V1-ndk_platform libbinder_ndk
 LOCAL_HEADER_LIBRARIES += libutils_headers
 LOCAL_HEADER_LIBRARIES += libhardware_headers
 LOCAL_SRC_FILES := power-common.c metadata-parser.c utils.c list.c hint-data.c powerhintparser.c Power.cpp main.cpp
