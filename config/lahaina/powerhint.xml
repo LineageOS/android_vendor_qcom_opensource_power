@@ -50,7 +50,6 @@
             Id="0x00001301" Enable="true" Target="lahaina"
             Resources=""/>
 
-
         <!-- qvr level cpu1 gpu1 -->
         <!-- B CPU - Cluster min freq ~.902 Ghz -->
         <!-- B CPU - Cluster max freq ~.2.092 Ghz -->
@@ -58,15 +57,15 @@
         <!-- L CPU - Cluster max freq ~1.286 Ghz -->
         <!-- P CPU - PRIME CPU min freq ~.921 Ghz-->
         <!-- P CPU - PRIME CPU max freq ~2.112 Ghz -->
-        <!-- GPU - min pwrlevel 5 (freq 315 Mhz) -->
-        <!-- GPU - max pwrlevel 0 (freq 710 Mhz) -->
+        <!-- GPU - min pwrlevel 9 (freq 315 Mhz) -->
+        <!-- GPU - max pwrlevel 5 (freq 540 Mhz) -->
         <!-- Min Big CPUs 3 -->
         <!-- Min Prime CPUs 1 -->
-        <!-- Idefinite Duration -->
+        <!-- Indefinite Duration -->
         <Config
             Id="0x0000130A" Enable="true" Target="lahaina" Timeout="0"
             Resources="0x40800000, 0x386, 0x40804000, 0x82C, 0x40800100, 0x253, 0x40804100, 0x506, 0x40800200, 0x399, 0x40804200, 0x840,
-            0x42804000, 0x5, 0x42808000, 0x0, 0x41000000, 0x3, 0x41000200, 0x1"/>
+            0x42804000, 0x9, 0x42808000, 0x5, 0x41000000, 0x3, 0x41000200, 0x1"/>
 
         <!-- qvr level cpu1 gpu2 -->
         <!-- B CPU - Cluster min freq ~.902 Ghz -->
@@ -75,15 +74,15 @@
         <!-- L CPU - Cluster max freq ~1.286 Ghz -->
         <!-- P CPU - PRIME CPU min freq ~.921 Ghz-->
         <!-- P CPU - PRIME CPU max freq ~2.112 Ghz -->
-        <!-- GPU - min pwrlevel 5 (freq 315 Mhz) -->
-        <!-- GPU - max pwrlevel 0 (freq 710 Mhz) -->
+        <!-- GPU - min pwrlevel 9 (freq 315 Mhz) -->
+        <!-- GPU - max pwrlevel 5 (freq 540 Mhz) -->
         <!-- Min Big CPUs 3 -->
         <!-- Min Prime CPUs 1 -->
-        <!-- Idefinite Duration -->
+        <!-- Indefinite Duration -->
         <Config
             Id="0x0000130B" Enable="true" Target="lahaina" Timeout="0"
             Resources="0x40800000, 0x386, 0x40804000, 0x82C, 0x40800100, 0x253, 0x40804100, 0x506, 0x40800200, 0x399, 0x40804200, 0x840,
-            0x42804000, 0x5, 0x42808000, 0x0, 0x41000000, 0x3, 0x41000200, 0x1"/>
+            0x42804000, 0x9, 0x42808000, 0x5, 0x41000000, 0x3, 0x41000200, 0x1"/>
 
         <!-- qvr level cpu1 gpu3 -->
         <!-- B CPU - Cluster min freq ~.902 Ghz -->
@@ -92,15 +91,15 @@
         <!-- L CPU - Cluster max freq ~1.286 Ghz -->
         <!-- P CPU - PRIME CPU min freq ~.921 Ghz-->
         <!-- P CPU - PRIME CPU max freq ~2.112 Ghz -->
-        <!-- GPU - min pwrlevel 0 (freq 710 Mhz) -->
-        <!-- GPU - max pwrlevel 0 (freq 710 Mhz) -->
+        <!-- GPU - min pwrlevel 9 (freq 315 Mhz) -->
+        <!-- GPU - max pwrlevel 5 (freq 540 Mhz) -->
         <!-- Min Big CPUs 3 -->
         <!-- Min Prime CPUs 1 -->
-        <!-- Idefinite Duration -->
+        <!-- Indefinite Duration -->
         <Config
             Id="0x0000130C" Enable="true" Target="lahaina" Timeout="0"
             Resources="0x40800000, 0x386, 0x40804000, 0x82C, 0x40800100, 0x253, 0x40804100, 0x506, 0x40800200, 0x399, 0x40804200, 0x840,
-            0x42804000, 0x0, 0x42808000, 0x0, 0x41000000, 0x3, 0x41000200, 0x1"/>
+            0x42804000, 0x9, 0x42808000, 0x5, 0x41000000, 0x3, 0x41000200, 0x1"/>
 
         <!-- qvr level cpu2 gpu1 -->
         <!-- B CPU - Cluster min freq ~.902 Ghz -->
@@ -109,15 +108,15 @@
         <!-- L CPU - Cluster max freq ~1.286 Ghz -->
         <!-- P CPU - PRIME CPU min freq ~.921 Ghz-->
         <!-- P CPU - PRIME CPU max freq ~2.112 Ghz -->
-        <!-- GPU - min pwrlevel 5 (freq 315 Mhz) -->
-        <!-- GPU - max pwrlevel 0 (freq 710 Mhz) -->
+        <!-- GPU - min pwrlevel 9 (freq 315 Mhz) -->
+        <!-- GPU - max pwrlevel 5 (freq 540 Mhz) -->
         <!-- Min Big CPUs 3 -->
         <!-- Min Prime CPUs 1 -->
-        <!-- Idefinite Duration -->
+        <!-- Indefinite Duration -->
         <Config
             Id="0x0000130D" Enable="true" Target="lahaina" Timeout="0"
             Resources="0x40800000, 0x386, 0x40804000, 0x82C, 0x40800100, 0x253, 0x40804100, 0x506, 0x40800200, 0x399, 0x40804200, 0x840,
-            0x42804000, 0x5, 0x42808000, 0x0, 0x41000000, 0x3, 0x41000200, 0x1"/>
+            0x42804000, 0x9, 0x42808000, 0x5, 0x41000000, 0x3, 0x41000200, 0x1"/>
 
         <!-- qvr level cpu2 gpu2 -->
         <!-- B CPU - Cluster min freq ~.902 Ghz -->
@@ -126,15 +125,15 @@
         <!-- L CPU - Cluster max freq ~1.286 Ghz -->
         <!-- P CPU - PRIME CPU min freq ~.921 Ghz-->
         <!-- P CPU - PRIME CPU max freq ~2.112 Ghz -->
-        <!-- GPU - min pwrlevel 5 (freq 315 Mhz) -->
-        <!-- GPU - max pwrlevel 0 (freq 710 Mhz) -->
+        <!-- GPU - min pwrlevel 9 (freq 315 Mhz) -->
+        <!-- GPU - max pwrlevel 5 (freq 540 Mhz) -->
         <!-- Min Big CPUs 3 -->
         <!-- Min Prime CPUs 1 -->
-        <!-- Idefinite Duration -->
+        <!-- Indefinite Duration -->
         <Config
             Id="0x0000130E" Enable="true" Target="lahaina" Timeout="0"
             Resources="0x40800000, 0x386, 0x40804000, 0x82C, 0x40800100, 0x253, 0x40804100, 0x506, 0x40800200, 0x399, 0x40804200, 0x840,
-            0x42804000, 0x5, 0x42808000, 0x0, 0x41000000, 0x3, 0x41000200, 0x1"/>
+            0x42804000, 0x9, 0x42808000, 0x5, 0x41000000, 0x3, 0x41000200, 0x1"/>
 
         <!-- qvr level cpu2 gpu3 -->
         <!-- B CPU - Cluster min freq ~.902 Ghz -->
@@ -143,15 +142,15 @@
         <!-- L CPU - Cluster max freq ~1.286 Ghz -->
         <!-- P CPU - PRIME CPU min freq ~.921 Ghz-->
         <!-- P CPU - PRIME CPU max freq ~2.112 Ghz -->
-        <!-- GPU - min pwrlevel 0 (freq 710 Mhz) -->
-        <!-- GPU - max pwrlevel 0 (freq 710 Mhz) -->
+        <!-- GPU - min pwrlevel 9 (freq 315 Mhz) -->
+        <!-- GPU - max pwrlevel 5 (freq 540 Mhz) -->
         <!-- Min Big CPUs 3 -->
         <!-- Min Prime CPUs 1 -->
-        <!-- Idefinite Duration -->
+        <!-- Indefinite Duration -->
         <Config
             Id="0x0000130F" Enable="true" Target="lahaina" Timeout="0"
             Resources="0x40800000, 0x386, 0x40804000, 0x82C, 0x40800100, 0x253, 0x40804100, 0x506, 0x40800200, 0x399, 0x40804200, 0x840,
-            0x42804000, 0x0, 0x42808000, 0x0, 0x41000000, 0x3, 0x41000200, 0x1"/>
+            0x42804000, 0x9, 0x42808000, 0x5, 0x41000000, 0x3, 0x41000200, 0x1"/>
 
         <!-- qvr level cpu3 gpu1 -->
         <!-- B CPU - Cluster min freq ~.902 Ghz -->
@@ -160,15 +159,15 @@
         <!-- L CPU - Cluster max freq ~1.286 Ghz -->
         <!-- P CPU - PRIME CPU min freq ~.921 Ghz-->
         <!-- P CPU - PRIME CPU max freq ~2.112 Ghz -->
-        <!-- GPU - min pwrlevel 5 (freq 315 Mhz) -->
-        <!-- GPU - max pwrlevel 0 (freq 710 Mhz) -->
+        <!-- GPU - min pwrlevel 9 (freq 315 Mhz) -->
+        <!-- GPU - max pwrlevel 5 (freq 540 Mhz) -->
         <!-- Min Big CPUs 3 -->
         <!-- Min Prime CPUs 1 -->
-        <!-- Idefinite Duration -->
+        <!-- Indefinite Duration -->
         <Config
             Id="0x00001310" Enable="true" Target="lahaina" Timeout="0"
             Resources="0x40800000, 0x386, 0x40804000, 0x82C, 0x40800100, 0x253, 0x40804100, 0x506, 0x40800200, 0x399, 0x40804200, 0x840,
-            0x42804000, 0x5, 0x42808000, 0x0, 0x41000000, 0x3, 0x41000200, 0x1"/>
+            0x42804000, 0x9, 0x42808000, 0x5, 0x41000000, 0x3, 0x41000200, 0x1"/>
 
         <!-- qvr level cpu3 gpu2 -->
         <!-- B CPU - Cluster min freq ~.902 Ghz -->
@@ -177,15 +176,15 @@
         <!-- L CPU - Cluster max freq ~1.286 Ghz -->
         <!-- P CPU - PRIME CPU min freq ~.921 Ghz-->
         <!-- P CPU - PRIME CPU max freq ~2.112 Ghz -->
-        <!-- GPU - min pwrlevel 5 (freq 315 Mhz) -->
-        <!-- GPU - max pwrlevel 0 (freq 710 Mhz) -->
+        <!-- GPU - min pwrlevel 9 (freq 315 Mhz) -->
+        <!-- GPU - max pwrlevel 5 (freq 540 Mhz) -->
         <!-- Min Big CPUs 3 -->
         <!-- Min Prime CPUs 1 -->
-        <!-- Idefinite Duration -->
+        <!-- Indefinite Duration -->
         <Config
             Id="0x00001311" Enable="true" Target="lahaina" Timeout="0"
             Resources="0x40800000, 0x386, 0x40804000, 0x82C, 0x40800100, 0x253, 0x40804100, 0x506, 0x40800200, 0x399, 0x40804200, 0x840,
-            0x42804000, 0x5, 0x42808000, 0x0, 0x41000000, 0x3, 0x41000200, 0x1"/>
+            0x42804000, 0x9, 0x42808000, 0x5, 0x41000000, 0x3, 0x41000200, 0x1"/>
 
         <!-- qvr level cpu3 gpu3 -->
         <!-- B CPU - Cluster min freq ~.902 Ghz -->
@@ -194,15 +193,16 @@
         <!-- L CPU - Cluster max freq ~1.286 Ghz -->
         <!-- P CPU - PRIME CPU min freq ~.921 Ghz-->
         <!-- P CPU - PRIME CPU max freq ~2.112 Ghz -->
-        <!-- GPU - min pwrlevel 0 (freq 710 Mhz) -->
-        <!-- GPU - max pwrlevel 0 (freq 710 Mhz) -->
+        <!-- GPU - min pwrlevel 9 (freq 315 Mhz) -->
+        <!-- GPU - max pwrlevel 5 (freq 540 Mhz) -->
         <!-- Min Big CPUs 3 -->
         <!-- Min Prime CPUs 1 -->
-        <!-- Idefinite Duration -->
+        <!-- Indefinite Duration -->
         <Config
             Id="0x00001312" Enable="true" Target="lahaina" Timeout="0"
             Resources="0x40800000, 0x386, 0x40804000, 0x82C, 0x40800100, 0x253, 0x40804100, 0x506, 0x40800200, 0x399, 0x40804200, 0x840,
-            0x42804000, 0x0, 0x42808000, 0x0, 0x41000000, 0x3, 0x41000200, 0x1"/>
+            0x42804000, 0x9, 0x42808000, 0x5, 0x41000000, 0x3, 0x41000200, 0x1"/>
+
 
         <!--camera ZSLPreview-->
         <!--CPU-LLC BWMON - Set sample_ms 33-->
