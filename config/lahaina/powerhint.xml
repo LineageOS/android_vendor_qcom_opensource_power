@@ -577,10 +577,12 @@
         <!--L CPU - Set hispeed load 95 -->
         <!--CPU-LLCC BWMON - Set sample_ms 20 -->
         <!--LLCC-DDR BWMON - Set sample_ms 20 -->
+        <!--Sched downmigrate/group_downmigrate 40, Upmigrate/group_upmigrate 45 -->
         <Config
             Id="0x00001330" Enable="true" Timeout="0" Target="yupik"
             Resources="0x40C68100, 0xFFFFFFFA, 0x40C68110, 0xFFFFFFFA, 0x40C68120, 0xFFFFFFFA,
-            0x40C68130, 0xFFFFFFFA, 0x4143C100, 940, 0x41440100, 0x5F, 0x4183C000, 0x14, 0x43034000, 0x14"/>
+            0x40C68130, 0xFFFFFFFA, 0x4143C100, 940, 0x41440100, 0x5F, 0x4183C000, 0x14, 0x43034000, 
+            0x14, 0x40C58000, 40, 0x40C54000, 45, 0x40C20000, 40, 0x40C1C000, 45"/>
 
         <!-- camera 30fps encode -->
         <!--L CPU CORE 0 SCHED LOAD BOOST -->
@@ -592,11 +594,13 @@
         <!--CPU-LLCC BWMON - Set sample_ms 20 -->
         <!--LLCC-DDR BWMON - Set sample_ms 20 -->
         <!--L CPU Min Freq 940, Max Freq 1804 -->
+        <!--Sched downmigrate/group_downmigrate 40, Upmigrate/group_upmigrate 45 -->
         <Config
             Id="0x00001331" Enable="true" Timeout="0" Target="yupik"
             Resources="0x40C68100, 0xFFFFFFFA, 0x40C68110, 0xFFFFFFFA, 0x40C68120, 0xFFFFFFFA,
-            0x40C68130, 0xFFFFFFFA, 0x4143C100, 940, 0x41440100, 0x5F, 0x4183C000, 0x14, 0x43034000, 0x14,
-            0x40800100, 940, 0x40804100, 1804"/>
+            0x40C68130, 0xFFFFFFFA, 0x4143C100, 940, 0x41440100, 0x5F, 0x4183C000, 0x14, 0x43034000,
+            0x14, 0x40800100, 940, 0x40804100, 1804, 0x40C58000, 40, 0x40C54000, 45, 0x40C20000, 40,
+            0x40C1C000, 45"/>
 
         <!-- camera 60 FPS -->
         <!--L CPU CORE 0 SCHED LOAD BOOST -->
@@ -605,10 +609,12 @@
         <!--L CPU CORE 3 SCHED LOAD BOOST -->
         <!--CPU-LLCC BWMON - Set sample_ms 20 -->
         <!--LLCC-DDR BWMON - Set sample ms 20 -->
+        <!--Sched downmigrate/group_downmigrate 40, Upmigrate/group_upmigrate 45 -->
         <Config
             Id="0x00001332" Enable="true" Timeout="0" Target="yupik"
             Resources="0x40C68100, 0xFFFFFFFA, 0x40C68110, 0xFFFFFFFA, 0x40C68120, 0xFFFFFFFA,
-            0x40C68130, 0xFFFFFFFA, 0x4183C000, 0x14, 0x43034000, 0x14"/>
+            0x40C68130, 0xFFFFFFFA, 0x4183C000, 0x14, 0x43034000, 0x14, 0x40C58000, 40, 0x40C54000, 45,
+            0x40C20000, 40, 0x40C1C000, 45"/>
 
         <!-- camera HFR -->
         <!--L CPU CORE 0 SCHED LOAD BOOST -->
@@ -618,10 +624,12 @@
         <!--CPU-LLCC BWMON - Set sample_ms 20 -->
         <!--LLCC-DDR BWMON - Set sample ms 20 -->
         <!--CPU CORE 0 Min freq to 1.152Ghz -->
+        <!--Sched downmigrate/group_downmigrate 40, Upmigrate/group_upmigrate 45 -->
         <Config
             Id="0x00001333" Enable="true" Timeout="0" Target="yupik"
             Resources="0x40C68100, 0xFFFFFFFA, 0x40C68110, 0xFFFFFFFA, 0x40C68120, 0xFFFFFFFA,
-            0x40C68130, 0xFFFFFFFA, 0x4183C000, 0x14, 0x43034000, 0x14, 0x40800100, 0x480"/>
+            0x40C68130, 0xFFFFFFFA, 0x4183C000, 0x14, 0x43034000, 0x14, 0x40800100, 0x480, 0x40C58000, 40,
+            0x40C54000, 45, 0x40C20000, 40, 0x40C1C000, 45"/>
 
         <!-- HFR 480fps -->
         <!--L CPU CORE 0 SCHED LOAD BOOST -->
