@@ -222,10 +222,11 @@
         <!--CPU-LLC-DDR BWMON - Set hyst_length hist memory 0 -->
         <!--L CPU - Disable schedutil PL -->
         <!--L CPU - Set hispeed load 99 -->
+        <!--L CPU - max freq 729000 -->
         <Config
             Id="0x00001330" Enable="true" Timeout="0" Target="taro"
             Resources="0x41820000, 0x21, 0x41808000, 0x64, 0x4180C000, 0, 0x4300C000, 0x21,
-            0x43004000, 0x64, 0x43008000, 0, 0x41444100, 0, 0x41440100, 0x63"/>
+            0x43004000, 0x64, 0x43008000, 0, 0x41444100, 0, 0x41440100, 0x63, 0x40804100, 0x2D9"/>
 
 
         <!--camera 30fps-->
@@ -235,6 +236,7 @@
         <!--CPU-LLC-DDR BWMON - Set sample_ms 33 -->
         <!--CPU-LLC-DDR BWMON - Set io_percent 100 -->
         <!--CPU-LLC-DDR BWMON - Set hyst_length hist memory 0 -->
+        <!--CPU-LLC-DDR BWMON - Set min_freq 547 -->
         <!--L CPU max freq 1075200 -->
         <!--L CPU - Disable schedutil PL -->
         <!--B CPU - Disable schedutil PL -->
@@ -244,7 +246,7 @@
         <Config
             Id="0x00001331" Enable="true" Timeout="0" Target="taro"
             Resources="0x41820000, 0x21, 0x41808000, 0x64, 0x4180C000, 0, 0x4300C000, 0x21,
-            0x43004000, 0x64, 0x43008000, 0, 0x40804100, 0x433, 0x41444100, 0, 0x41444000, 0, 0x41440000, 0x63,
+            0x43004000, 0x64, 0x43008000, 0, 0x4303C000, 0x858B8 ,0x40804100, 0x433, 0x41444100, 0, 0x41444000, 0, 0x41440000, 0x63,
             0x40CE0000, 0x0032000A, 0x40CE0200, 0x00550055"/>
 
         <!--camera 60fps-->
@@ -254,6 +256,7 @@
         <!--CPU-LLC-DDR BWMON - Set sample_ms 16 -->
         <!--CPU-LLC-DDR BWMON - Set io_percent 100 -->
         <!--CPU-LLC-DDR BWMON - Set hyst_length hist memory 0 -->
+        <!--CPU-LLC-DDR BWMON - Set min_freq 1555 -->
         <!--L CPU max freq 1075200 -->
         <!--L CPU - Disable schedutil PL -->
         <!--B CPU - Disable schedutil PL -->
@@ -263,7 +266,7 @@
         <Config
             Id="0x00001332" Enable="true" Timeout="0" Target="taro"
             Resources="0x41820000, 0x10, 0x41808000, 0x64, 0x4180C000, 0, 0x4300C000, 0x10,
-            0x43004000, 0x64, 0x43008000, 0, 0x40804100, 0x433, 0x41444100, 0, 0x41444000, 0, 0x41440000, 0x63,
+            0x43004000, 0x64, 0x43008000, 0, 0x4303C000, 0x17BA38,  0x40804100, 0x433, 0x41444100, 0, 0x41444000, 0, 0x41440000, 0x63,
             0x40CE0000, 0x0032000A, 0x40CE0200, 0x00550055"/>
 
         <!--camera 8k30-->
