@@ -348,18 +348,21 @@
         <!--L CPU CORE 5 SCHED LOAD BOOST -->
         <!--L CPU CORE 6 SCHED LOAD BOOST -->
         <!--L CPU CORE 7 SCHED LOAD BOOST -->
-        <!--L CPU Hispeed freq of 1113Mhz -->
         <!--L CLUSTER_LITTLE - Set hispeed load 95 -->
         <!--L CLUSTER_BIG - Set hispeed load 95 -->
         <!--CPUBW HWMON - Set sample_ms 50 -->
         <!--CPUBW HWMON - Set io_percent 100 -->
         <!--CPUBW HWMON - Set up_scale 0 -->
         <!--L CPU core ctl min cpus 6 -->
+        <!--L CPU core Fmin 1.1 GHz -->
+        <!--Set uclamp latency sensitivity to 1 -->
+        <!--Enable sched prefer spread 1 -->
         <Config
             Id="0x00001331" Enable="true" Timeout="0" Target="blair"
             Resources="0x40C68100, -10, 0x40C68110, -10, 0x40C68120, -10,
             0x40C68130, -10, 0x40C68000, -10, 0x40C68010, -10, 0x40C68020, -10, 0x40C68030, -10,
-            0x4143C100, 1113, 0x41440100, 0x5F, 0x41440000, 0x5F, 0x43034000, 0x32, 0x43020000, 0x64, 0x43014000, 0x0, 0x41000100, 6"/>
+            0x41440100, 0x5F, 0x41440000, 0x5F, 0x43034000, 0x32, 0x43020000, 0x64, 0x43014000, 0x0, 0x41000100, 6,
+            0x40800100, 1113, 0x40CEC000, 0x1, 0x40CA8000, 0x1"/>
 
 
         <!-- camera 60 FPS -->
@@ -371,16 +374,19 @@
         <!--L CPU CORE 5 SCHED LOAD BOOST -->
         <!--L CPU CORE 6 SCHED LOAD BOOST -->
         <!--L CPU CORE 7 SCHED LOAD BOOST -->
-        <!--L CPU Hispeed freq of 1113Mhz -->
         <!--L CLUSTER_LITTLE - Set hispeed load 95 -->
         <!--L CLUSTER_BIG - Set hispeed load 95 -->
         <!--CPUBW HWMON - Set sample_ms 20 -->
         <!--L CPU core ctl min cpus 6 -->
+        <!--L CPU core Fmin 1.1 GHz -->
+        <!--Set uclamp latency sensitivity to 1 -->
+        <!--Enable sched prefer spread 1 -->
         <Config
             Id="0x00001332" Enable="true" Timeout="0" Target="blair"
             Resources="0x40C68100, -10, 0x40C68110, -10, 0x40C68120, -10,
             0x40C68130, -10, 0x40C68000, -10, 0x40C68010, -10, 0x40C68020, -10, 0x40C68030, -10,
-            0x4143C100, 1113, 0x41440100, 0x5F, 0x41440000, 0x5F, 0x43034000, 0x14, 0x41000100, 6"/>
+            0x41440100, 0x5F, 0x41440000, 0x5F, 0x43034000, 0x14, 0x41000100, 6,
+            0x40800100, 1113, 0x40CEC000, 0x1, 0x40CA8000, 0x1"/>
 
 
         <!-- camera HFR -->
@@ -596,11 +602,14 @@
         <!--CPUBW HWMON - Set io_percent 100 -->
         <!--CPUBW HWMON - Set up_scale 0 -->
         <!--L CPU core ctl min cpus 6 -->
+        <!--Set uclamp latency sensitivity to 1 -->
+        <!--Enable sched prefer spread 1 -->
         <Config
             Id="0x00001336" Enable="true" Timeout="0" Target="blair"
             Resources="0x40C68100, -10, 0x40C68110, -10, 0x40C68120, -10,
             0x40C68130, -10, 0x40C68000, -10, 0x40C68010, -10, 0x40C68020, -10, 0x40C68030, -10,
-            0x40800100, 1113, 0x43034000, 0x32, 0x43020000, 0x64, 0x43014000, 0x0, 0x41000100, 6"/>
+            0x40800100, 1113, 0x43034000, 0x32, 0x43020000, 0x64, 0x43014000, 0x0, 0x41000100, 6,
+            0x40CEC000, 0x1, 0x40CA8000, 0x1"/>
 
     </Powerhint>
 </HintConfigs>
