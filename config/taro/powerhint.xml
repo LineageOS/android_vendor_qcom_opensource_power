@@ -223,10 +223,13 @@
         <!--L CPU - Disable schedutil PL -->
         <!--L CPU - Set hispeed load 99 -->
         <!--L CPU - max freq 729000 -->
+        <!--B CPU - Disable Core Control -->
+        <!--L CPU - Disable Core Control -->
+        <!--P CPU - Disable Core Control -->
         <Config
             Id="0x00001330" Enable="true" Timeout="0" Target="taro"
             Resources="0x4183C000, 0x21, 0x41834000, 0x64, 0x41838000, 0, 0x43034000, 0x21,
-            0x43020000, 0x64, 0x43024000, 0, 0x41444100, 0, 0x41440100, 0x63, 0x40804100, 0x2D9"/>
+            0x43020000, 0x64, 0x43024000, 0, 0x41444100, 0, 0x41440100, 0x63, 0x40804100, 0x2D9, 0x41008000, 0, 0x41008100, 0, 0x41008200, 0"/>
 
 
         <!--camera 30fps-->
@@ -243,11 +246,14 @@
         <!--B CPU - Set hispeed load 99 -->
         <!--UPMIGRATE - 50 85 -->
         <!--DOWNMIGRATE - 10 85 -->
+        <!--B CPU - Disable Core Control -->
+        <!--L CPU - Disable Core Control -->
+        <!--P CPU - Disable Core Control -->
         <Config
             Id="0x00001331" Enable="true" Timeout="0" Target="taro"
             Resources="0x4183C000, 0x21, 0x41834000, 0x64, 0x41838000, 0, 0x43034000, 0x21,
             0x43020000, 0x64, 0x43024000, 0, 0x4303C000, 0x858B8 ,0x40804100, 0x433, 0x41444100, 0, 0x41444000, 0, 0x41440000, 0x63,
-            0x40CE0000, 0x0032000A, 0x40CE0200, 0x00550055"/>
+            0x40CE0000, 0x0032000A, 0x40CE0200, 0x00550055, 0x41008000, 0, 0x41008100, 0, 0x41008200, 0"/>
 
         <!--camera 60fps-->
         <!--CPU-LLC BWMON - Set sample_ms 16 -->
@@ -263,11 +269,14 @@
         <!--B CPU - Set hispeed load 99 -->
         <!--UPMIGRATE - 50 85-->
         <!--DOWNMIGRATE - 10 85-->
+        <!--B CPU - Disable Core Control -->
+        <!--L CPU - Disable Core Control -->
+        <!--P CPU - Disable Core Control -->
         <Config
             Id="0x00001332" Enable="true" Timeout="0" Target="taro"
             Resources="0x4183C000, 0x10, 0x41834000, 0x64, 0x41838000, 0, 0x43034000, 0x10,
             0x43020000, 0x64, 0x43024000, 0, 0x4303C000, 0x17BA38,  0x40804100, 0x433, 0x41444100, 0, 0x41444000, 0, 0x41440000, 0x63,
-            0x40CE0000, 0x0032000A, 0x40CE0200, 0x00550055"/>
+            0x40CE0000, 0x0032000A, 0x40CE0200, 0x00550055, 0x41008000, 0, 0x41008100, 0, 0x41008200, 0"/>
 
         <!--camera 8k30-->
         <!--CPU-LLC BWMON - Set sample_ms 33 -->
@@ -282,11 +291,14 @@
         <!--B CPU - Set hispeed load 99 -->
         <!--UPMIGRATE - 40 85-->
         <!--DOWNMIGRATE - 10 85-->
+        <!--B CPU - Disable Core Control -->
+        <!--L CPU - Disable Core Control -->
+        <!--P CPU - Disable Core Control -->
         <Config
             Id="0x00001335" Enable="true" Timeout="0" Target="taro"
             Resources="0x4183C000, 0x21, 0x41834000, 0x64, 0x41838000, 0, 0x43034000, 0x21,
             0x43020000, 0x64, 0x43024000, 0, 0x40804100, 0x433, 0x41444100, 0, 0x41444000, 0, 0x41440000, 0x63,
-            0x40CE0000, 0x0028000A, 0x40CE0200, 0x00550055"/>
+            0x40CE0000, 0x0028000A, 0x40CE0200, 0x00550055, 0x41008000, 0, 0x41008100, 0, 0x41008200, 0"/>
 
         <!--video encode HFR 480 fps-->
         <!-- MPCTLV3_ALL_CPUS_PWR_CLPS_DIS, 0x1 -->
