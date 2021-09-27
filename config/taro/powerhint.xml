@@ -359,5 +359,17 @@
             Id="0X00001505" Enable="true" Timeout="0" Taget="taro"
             Resources="0x40804100, 0x2BC"/>
 
+        <!-- video decode 30 fps non secure content tunings-->
+        <!-- MPCTLV3_MIN_FREQ_CLUSTER_BIG_CORE_0, 0XA -->
+         <Config
+            Id="0X00001502" Enable="true" Timeout="0" Taget="taro"
+            Resources="0x40800000, 0XA"/>
+
+        <!-- video decode 30 fps secure content tunings-->
+        <!-- MPCTLV3_MIN_FREQ_CLUSTER_BIG_CORE_0, 0XA -->
+         <Config
+            Id="0X00001504" Enable="true" Timeout="0" Taget="taro"
+            Resources="0x40800000, 0XA"/>
+
     </Powerhint>
 </HintConfigs>
