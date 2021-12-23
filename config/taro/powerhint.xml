@@ -792,40 +792,40 @@
         <!-- camera open tunings-->
         <!-- MPCTLV3_ALL_CPUS_PWR_CLPS_DIS, 0x1 -->
         <!-- MPCTLV3_SCHED_BOOST, 0x1 -->
-        <!-- MPCTLV3_MAX_FREQ_CLUSTER_BIG_CORE_0, 0xFFF -->
-        <!-- MPCTLV3_MIN_FREQ_CLUSTER_BIG_CORE_0, 0xFFF -->
-        <!-- MPCTLV3_MAX_FREQ_CLUSTER_LITTLE_CORE_0, 0xFFF -->
-        <!-- MPCTLV3_MIN_FREQ_CLUSTER_LITTLE_CORE_0, 0xFFF -->
-        <!-- MPCTLV3_MIN_FREQ_CLUSTER_PLUS_CORE_0, 0xFFF -->
-        <!-- MPCTLV3_MAX_FREQ_CLUSTER_PLUS_CORE_0, 0xFFF -->
+        <!-- MPCTLV3_MAX_FREQ_CLUSTER_BIG_CORE_0, ~1.804 Ghz -->
+        <!-- MPCTLV3_MIN_FREQ_CLUSTER_BIG_CORE_0, ~1.804 Ghz -->
+        <!-- MPCTLV3_MAX_FREQ_CLUSTER_LITTLE_CORE_0, ~1.651 Ghz -->
+        <!-- MPCTLV3_MIN_FREQ_CLUSTER_LITTLE_CORE_0, ~1.651 Ghz -->
+        <!-- MPCTLV3_MIN_FREQ_CLUSTER_PLUS_CORE_0, ~2.169 Ghz -->
+        <!-- MPCTLV3_MAX_FREQ_CLUSTER_PLUS_CORE_0, ~2.169 Ghz-->
         <Config
             Id="0x00001337" Enable="true" Timeout="0" Taget="diwali"
-            Resources="0x40400000, 0x1, 0x40C00000, 0x1, 0x40804000, 0XFFF, 0x40800000, 0XFFF,
-            0x40804100, 0XFFF, 0x40800100, 0XFFF, 0x40800200, 0XFFF, 0x40804200, 0XFFF"/>
+            Resources="0x40400000, 0x1, 0x40C00000, 0x1, 0x40804000, 0X70C, 0x40800000, 0X70C,
+            0x40804100, 0X673, 0x40800100, 0X673, 0x40800200, 0X879, 0x40804200, 0X879"/>
 
         <!-- camera close tunings-->
         <!-- MPCTLV3_ALL_CPUS_PWR_CLPS_DIS, 0x1 -->
         <!-- MPCTLV3_SCHED_BOOST, 0x1 -->
-        <!-- MPCTLV3_MAX_FREQ_CLUSTER_BIG_CORE_0, 0xFFF -->
-         <!-- MPCTLV3_MIN_FREQ_CLUSTER_BIG_CORE_0, 0xFFF -->
-         <!-- MPCTLV3_MAX_FREQ_CLUSTER_LITTLE_CORE_0, 0xFFF -->
-         <!-- MPCTLV3_MIN_FREQ_CLUSTER_LITTLE_CORE_0, 0xFFF -->
-         <!-- MPCTLV3_MIN_FREQ_CLUSTER_PLUS_CORE_0, 0xFFF -->
-         <!-- MPCTLV3_MAX_FREQ_CLUSTER_PLUS_CORE_0, 0xFFF -->
+        <!-- MPCTLV3_MAX_FREQ_CLUSTER_BIG_CORE_0,  ~1.804 Ghz -->
+         <!-- MPCTLV3_MIN_FREQ_CLUSTER_BIG_CORE_0, ~1.804 Ghz -->
+         <!-- MPCTLV3_MAX_FREQ_CLUSTER_LITTLE_CORE_0, ~1.651 Ghz -->
+         <!-- MPCTLV3_MIN_FREQ_CLUSTER_LITTLE_CORE_0, ~1.651 Ghz -->
+         <!-- MPCTLV3_MIN_FREQ_CLUSTER_PLUS_CORE_0, ~2.169 Ghz -->
+         <!-- MPCTLV3_MAX_FREQ_CLUSTER_PLUS_CORE_0, ~2.169 Ghz -->
          <Config
             Id="0x00001338" Enable="true" Timeout="0" Taget="diwali"
-            Resources="0x40400000, 0x1, 0x40C00000, 0x1, 0x40804000, 0XFFF, 0x40800000, 0XFFF,
-            0x40804100, 0XFFF, 0x40800100, 0XFFF, 0x40800200, 0XFFF, 0x40804200, 0XFFF"/>
+            Resources="0x40400000, 0x1, 0x40C00000, 0x1, 0x40804000, 0X70C, 0x40800000, 0X70C,
+            0x40804100, 0X673, 0x40800100, 0X673, 0x40800200, 0X879, 0x40804200, 0X879"/>
 
          <!-- camera snapshot tunings-->
          <!-- MPCTLV3_ALL_CPUS_PWR_CLPS_DIS, 0x1 -->
-         <!-- Silver cluster min freq to 1.228GHz -->
-         <!-- Gold cluster min freq to 1.382GHz -->
+         <!-- Silver cluster min freq to ~1.094 GHz -->
+         <!-- Gold cluster min freq to 1.132 GHz -->
          <!-- MPCTLV3_SCHED_DOWNMIGRATE, 0x14 -->
          <!-- MPCTLV3_SCHED_UPMIGRATE, 0x1E -->
          <Config
             Id="0x00001339" Enable="true" Timeout="0" Taget="diwali"
-            Resources="0x40400000, 0x1, 0x40800100, 0x4CC, 0x40800000, 0x569, 0x40C20000, 0X14,
+            Resources="0x40400000, 0x1, 0x40800100, 0x446, 0x40800000, 0x46C, 0x40C20000, 0X14,
             0x40C1C000, 0X1E"/>
 
     </Powerhint>
