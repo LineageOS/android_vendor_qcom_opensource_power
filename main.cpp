@@ -28,7 +28,6 @@
  * IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "LineagePower.h"
 #include "Power.h"
 
 #include <android-base/logging.h>
@@ -36,7 +35,6 @@
 #include <android/binder_process.h>
 
 using aidl::android::hardware::power::impl::Power;
-using LineagePower = aidl::vendor::lineage::power::impl::Power;
 
 int main() {
     ABinderProcess_setThreadPoolMaxThreadCount(0);
@@ -46,18 +44,6 @@ int main() {
     if (vib) {
         binder_status_t status =
                 AServiceManager_addService(vib->asBinder().get(), instance.c_str());
-        LOG(INFO) << "Status " << status;
-        if (status != STATUS_OK) {
-            LOG(ERROR) << "Could not register" << instance;
-        }
-    }
-
-    std::shared_ptr<LineagePower> lineage_vib = ndk::SharedRefBase::make<LineagePower>();
-    const std::string lineage_instance = std::string() + LineagePower::descriptor + "/default";
-    LOG(INFO) << "Instance " << lineage_instance;
-    if (lineage_vib) {
-        binder_status_t status =
-                AServiceManager_addService(lineage_vib->asBinder().get(), lineage_instance.c_str());
         LOG(INFO) << "Status " << status;
         if (status != STATUS_OK) {
             LOG(ERROR) << "Could not register" << instance;
