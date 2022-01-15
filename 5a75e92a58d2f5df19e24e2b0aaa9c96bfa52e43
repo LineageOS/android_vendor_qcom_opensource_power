@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6c83479_57897764",
+        "filename": "main.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 21651
+      },
+      "writtenOn": "2022-01-15T15:29:02Z",
+      "side": 1,
+      "message": "Unnecessary change.",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 1
+      },
+      "revId": "5a75e92a58d2f5df19e24e2b0aaa9c96bfa52e43",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
