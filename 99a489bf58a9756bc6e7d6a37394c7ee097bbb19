@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6288df70_d5232fd0",
+        "filename": "utils.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 21290
+      },
+      "writtenOn": "2022-01-18T22:42:45Z",
+      "side": 1,
+      "message": "Just an #ifdef INTERACTION_BOOST here might be better.\nThis was originally done in 15.1 to add UNUSED to the parameters and UNUSED was removed while forward-porting this to 18.1 since it\u0027s not needed anymore.\nNow this just duplicates the same line.",
+      "revId": "99a489bf58a9756bc6e7d6a37394c7ee097bbb19",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
