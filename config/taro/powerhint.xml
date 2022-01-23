@@ -301,10 +301,11 @@
             Resources="0x4183C000, 0x21, 0x41834000, 0x64, 0x41838000, 0, 0x43034000, 0x21,
             0x43020000, 0x64, 0x43024000, 0, 0x41444100, 0, 0x41440100, 0x63, 0x40804100, 0x2D9, 0x41008000, 0, 0x41008100, 0, 0x41008200, 0"/>
 
+        <!--L CPU - max freq 691200 -->
         <Config
             Id="0x00001330" Enable="true" Timeout="0" Target="cape"
             Resources="0x4183C000, 0x21, 0x41834000, 0x64, 0x41838000, 0, 0x43034000, 0x21,
-            0x43020000, 0x64, 0x43024000, 0, 0x41444100, 0, 0x41440100, 0x63, 0x40804100, 0x2D9, 0x41008000, 0, 0x41008100, 0, 0x41008200, 0"/>
+            0x43020000, 0x64, 0x43024000, 0, 0x41444100, 0, 0x41440100, 0x63, 0x40804100, 0x2B3, 0x41008000, 0, 0x41008100, 0, 0x41008200, 0"/>
 
         <!--camera 30fps-->
         <!--CPU-LLC BWMON - Set sample_ms 33 -->
@@ -329,10 +330,11 @@
             0x43020000, 0x64, 0x43024000, 0, 0x4303C000, 0x858B8 ,0x40804100, 0x433, 0x41444100, 0, 0x41444000, 0, 0x41440000, 0x63,
             0x40CE0000, 0x0032000A, 0x40CE0200, 0x00550055, 0x41008000, 0, 0x41008100, 0, 0x41008200, 0"/>
 
+        <!--L CPU max freq 1056000 -->
         <Config
             Id="0x00001331" Enable="true" Timeout="0" Target="cape"
             Resources="0x4183C000, 0x21, 0x41834000, 0x64, 0x41838000, 0, 0x43034000, 0x21,
-            0x43020000, 0x64, 0x43024000, 0, 0x4303C000, 0x858B8 ,0x40804100, 0x433, 0x41444100, 0, 0x41444000, 0, 0x41440000, 0x63,
+            0x43020000, 0x64, 0x43024000, 0, 0x4303C000, 0x858B8 ,0x40804100, 0x420, 0x41444100, 0, 0x41444000, 0, 0x41440000, 0x63,
             0x40CE0000, 0x0032000A, 0x40CE0200, 0x00550055, 0x41008000, 0, 0x41008100, 0, 0x41008200, 0"/>
 
         <!--camera 60fps-->
@@ -358,10 +360,11 @@
             0x43020000, 0x64, 0x43024000, 0, 0x4303C000, 0x17BA38,  0x40804100, 0x433, 0x41444100, 0, 0x41444000, 0, 0x41440000, 0x63,
             0x40CE0000, 0x0032000A, 0x40CE0200, 0x00550055, 0x41008000, 0, 0x41008100, 0, 0x41008200, 0"/>
 
+        <!--L CPU max freq 1056000 -->
         <Config
             Id="0x00001332" Enable="true" Timeout="0" Target="cape"
             Resources="0x4183C000, 0x10, 0x41834000, 0x64, 0x41838000, 0, 0x43034000, 0x10,
-            0x43020000, 0x64, 0x43024000, 0, 0x4303C000, 0x17BA38,  0x40804100, 0x433, 0x41444100, 0, 0x41444000, 0, 0x41440000, 0x63,
+            0x43020000, 0x64, 0x43024000, 0, 0x4303C000, 0x17BA38,  0x40804100, 0x420, 0x41444100, 0, 0x41444000, 0, 0x41440000, 0x63,
             0x40CE0000, 0x0032000A, 0x40CE0200, 0x00550055, 0x41008000, 0, 0x41008100, 0, 0x41008200, 0"/>
 
         <!--camera 8k30-->
@@ -386,10 +389,11 @@
             0x43020000, 0x64, 0x43024000, 0, 0x40804100, 0x433, 0x41444100, 0, 0x41444000, 0, 0x41440000, 0x63,
             0x40CE0000, 0x0028000A, 0x40CE0200, 0x00550055, 0x41008000, 0, 0x41008100, 0, 0x41008200, 0"/>
 
+        <!--L CPU max freq 1056000 -->
         <Config
             Id="0x00001335" Enable="true" Timeout="0" Target="cape"
             Resources="0x4183C000, 0x21, 0x41834000, 0x64, 0x41838000, 0, 0x43034000, 0x21,
-            0x43020000, 0x64, 0x43024000, 0, 0x40804100, 0x433, 0x41444100, 0, 0x41444000, 0, 0x41440000, 0x63,
+            0x43020000, 0x64, 0x43024000, 0, 0x40804100, 0x420, 0x41444100, 0, 0x41444000, 0, 0x41440000, 0x63,
             0x40CE0000, 0x0028000A, 0x40CE0200, 0x00550055, 0x41008000, 0, 0x41008100, 0, 0x41008200, 0"/>
 
         <!--video encode HFR 480 fps-->
@@ -426,8 +430,8 @@
             0x40804100, 0XFFF, 0x40800100, 0XFFF, 0x40800200, 0XFFF, 0x40804200, 0XFFF"/>
         <Config
             Id="0x00001338" Enable="true" Timeout="0" Taget="cape"
-            Resources="0x40400000, 0x1, 0x40C00000, 0x1, 0x40804000, 0XFFF, 0x40800000, 0XFFF,
-            0x40804100, 0XFFF, 0x40800100, 0XFFF, 0x40800200, 0XFFF, 0x40804200, 0XFFF"/>
+            Resources="0x40400000, 0x1, 0x40C00000, 0x1, 0x40804000, 0X6E6, 0x40800000, 0X6E6,
+            0x40804100, 0X613, 0x40800100, 0X613, 0x40800200, 0X853, 0x40804200, 0X853"/>
 
         <!-- camera close tunings-->
         <!-- MPCTLV3_ALL_CPUS_PWR_CLPS_DIS, 0x1 -->
@@ -444,8 +448,8 @@
             0x40804100, 0XFFF, 0x40800100, 0XFFF, 0x40800200, 0XFFF, 0x40804200, 0XFFF"/>
          <Config
             Id="0x00001338" Enable="true" Timeout="0" Taget="cape"
-            Resources="0x40400000, 0x1, 0x40C00000, 0x1, 0x40804000, 0XFFF, 0x40800000, 0XFFF,
-            0x40804100, 0XFFF, 0x40800100, 0XFFF, 0x40800200, 0XFFF, 0x40804200, 0XFFF"/>
+            Resources="0x40400000, 0x1, 0x40C00000, 0x1, 0x40804000, 0X6E6, 0x40800000, 0X6E6,
+            0x40804100, 0X613, 0x40800100, 0X613, 0x40800200, 0X853, 0x40804200, 0X853"/>
 
          <!-- camera snapshot tunings-->
          <!-- MPCTLV3_ALL_CPUS_PWR_CLPS_DIS, 0x1 -->
@@ -460,7 +464,7 @@
 
          <Config
             Id="0x00001339" Enable="true" Timeout="0" Taget="cape"
-            Resources="0x40400000, 0x1, 0x40800100, 0x46C, 0x40800000, 0x553, 0x40C20000, 0X14,
+            Resources="0x40400000, 0x1, 0x40800100, 0x420, 0x40800000, 0x4B9, 0x40C20000, 0X14,
             0x40C1C000, 0X1E"/>
 
         <!-- decode 240 fps tunings-->
@@ -468,9 +472,10 @@
          <Config
             Id="0X00001505" Enable="true" Timeout="0" Taget="taro"
             Resources="0x40804100, 0x2BC"/>
-          <Config
+         <!--L CPU - max freq 691200 -->
+         <Config
             Id="0X00001505" Enable="true" Timeout="0" Taget="cape"
-            Resources="0x40804100, 0x2BC"/>
+            Resources="0x40804100, 0x2B3"/>
 
         <!-- video decode 30 fps non secure content tunings-->
         <!-- MPCTLV3_MIN_FREQ_CLUSTER_BIG_CORE_0, 0XA -->
@@ -491,10 +496,7 @@
             Resources="0x40800000, 0XA"/>
 
         <!--camera preview -->
-        <!--L CPU CORE 0 SCHED LOAD BOOST -->
-        <!--L CPU CORE 1 SCHED LOAD BOOST -->
-        <!--L CPU CORE 2 SCHED LOAD BOOST -->
-        <!--L CPU CORE 3 SCHED LOAD BOOST -->
+        <!--Policy0 SCHED LOAD BOOST -->
         <!--L CPU Hispeed freq of 1094Mhz -->
         <!--L CPU - Set hispeed load 95 -->
         <!--CPU-LLCC BWMON - Set sample_ms 20 -->
@@ -503,49 +505,39 @@
         <!--Set uclamp latency sensitivity to 1 -->
         <Config
             Id="0x00001330" Enable="true" Timeout="0" Target="diwali"
-            Resources="0x40C68100, 0xFFFFFFFA, 0x40C68110, 0xFFFFFFFA, 0x40C68120, 0xFFFFFFFA,
-            0x40C68130, 0xFFFFFFFA, 0x4143C100, 1094, 0x41440100, 0x5F, 0x4183C000, 0x14, 0x43034000,
-            0x14, 0x40C58000, 40, 0x40C54000, 45, 0x40C20000, 40, 0x40C1C000, 45, 0x40CEC000, 0x1"/>
+            Resources="0x40C68100, 0xFFFFFFFA, 0x4143C100, 1094, 0x41440100, 0x5F, 0x4183C000, 0x14, 0x43034000,
+            0x14,0x40CE0000, 0x002D0028, 0x40CF4000, 0x002D0028, 0x40CEC000, 0x1"/>
 
         <!-- camera 30fps encode -->
-        <!--L CPU CORE 0 SCHED LOAD BOOST -->
-        <!--L CPU CORE 1 SCHED LOAD BOOST -->
-        <!--L CPU CORE 2 SCHED LOAD BOOST -->
-        <!--L CPU CORE 3 SCHED LOAD BOOST -->
+        <!--Policy0 SCHED LOAD BOOST -->
         <!--L CPU Hispeed freq of 1094Mhz -->
         <!--L CPU - Set hispeed load 95 -->
-        <!--CPU-LLCC BWMON - Set sample_ms 20 -->
-        <!--LLCC-DDR BWMON - Set sample_ms 20 -->
+        <!--CPU-LLCC BWMON - Set sample_ms 33 -->
+        <!--CPU-LLCC BWMON - Set io_percent 100 -->
+        <!--CPU-LLCC BWMON - Set hyst_length hist memory 0 -->
+        <!--LLCC-DDR BWMON - Set sample_ms 33 -->
+        <!--LLCC-DDR BWMON - Set io_percent 100 -->
+        <!--LLCC-DDR BWMON - Set hyst_length hist memory 0 -->
         <!--L CPU Min Freq 902, Max Freq 1651 -->
         <!--Sched downmigrate/group_downmigrate 40, Upmigrate/group_upmigrate 45 -->
         <!--Set uclamp latency sensitivity to 1 -->
         <Config
             Id="0x00001331" Enable="true" Timeout="0" Target="diwali"
-            Resources="0x40C68100, 0xFFFFFFFA, 0x40C68110, 0xFFFFFFFA, 0x40C68120, 0xFFFFFFFA,
-            0x40C68130, 0xFFFFFFFA, 0x4143C100, 1094, 0x41440100, 0x5F, 0x4183C000, 0x14, 0x43034000,
-            0x14, 0x40800100, 902, 0x40804100, 1651, 0x40C58000, 40, 0x40C54000, 45, 0x40C20000, 40,
-            0x40C1C000, 45, 0x40CEC000, 0x1"/>
+            Resources="0x40C68100, 0xFFFFFFFA, 0x4143C100, 1094, 0x41440100, 0x5F, 0x4183C000, 0x21, 0x41834000,
+            0x64, 0x41838000, 0, 0x43034000, 0x21, 0x43020000, 0x64, 0x43024000, 0, 0x40800100, 902, 0x40804100, 1651, 0x40CE0000, 0x002D0028, 0x40CF4000, 0x002D0028, 0x40CEC000, 0x1"/>
 
         <!-- camera 60 FPS -->
-        <!--L CPU CORE 0 SCHED LOAD BOOST -->
-        <!--L CPU CORE 1 SCHED LOAD BOOST -->
-        <!--L CPU CORE 2 SCHED LOAD BOOST -->
-        <!--L CPU CORE 3 SCHED LOAD BOOST -->
+        <!--Policy0 SCHED LOAD BOOST -->
         <!--CPU-LLCC BWMON - Set sample_ms 20 -->
         <!--LLCC-DDR BWMON - Set sample ms 20 -->
         <!--Sched downmigrate/group_downmigrate 30, Upmigrate/group_upmigrate 35 -->
         <!--Set uclamp latency sensitivity to 1 -->
         <Config
             Id="0x00001332" Enable="true" Timeout="0" Target="diwali"
-            Resources="0x40C68100, 0xFFFFFFFA, 0x40C68110, 0xFFFFFFFA, 0x40C68120, 0xFFFFFFFA,
-            0x40C68130, 0xFFFFFFFA, 0x4183C000, 0x14, 0x43034000, 0x14, 0x40C58000, 30, 0x40C54000, 35,
-            0x40C20000, 30, 0x40C1C000, 35, 0x40CEC000, 0x1"/>
+            Resources="0x40C68100, 0xFFFFFFFA, 0x4183C000, 0x14, 0x43034000, 0x14, 0x40CE0000, 0x0023001E,0x40CF4000, 0x0023001E, 0x40CEC000, 0x1"/>
 
         <!-- camera HFR -->
-        <!--L CPU CORE 0 SCHED LOAD BOOST -->
-        <!--L CPU CORE 1 SCHED LOAD BOOST -->
-        <!--L CPU CORE 2 SCHED LOAD BOOST -->
-        <!--L CPU CORE 3 SCHED LOAD BOOST -->
+        <!--Policy0 SCHED LOAD BOOST -->
         <!--CPU-LLCC BWMON - Set sample_ms 20 -->
         <!--LLCC-DDR BWMON - Set sample ms 20 -->
         <!--CPU CORE 0 Min freq to 1.094Ghz -->
@@ -553,29 +545,20 @@
         <!--Set uclamp latency sensitivity to 1 -->
         <Config
             Id="0x00001333" Enable="true" Timeout="0" Target="diwali"
-            Resources="0x40C68100, 0xFFFFFFFA, 0x40C68110, 0xFFFFFFFA, 0x40C68120, 0xFFFFFFFA,
-            0x40C68130, 0xFFFFFFFA, 0x4183C000, 0x14, 0x43034000, 0x14, 0x40800100, 0x446, 0x40C58000, 30,
-            0x40C54000, 35, 0x40C20000, 30, 0x40C1C000, 35, 0x40CEC000, 0x1"/>
+            Resources="0x40C68100, 0xFFFFFFFA, 0x4183C000, 0x14, 0x43034000, 0x14, 0x40800100, 0x446, 0x40CE0000, 0x0023001E, 0x40CF4000, 0x0023001E, 0x40CEC000, 0x1"/>
 
         <!-- HFR 480fps -->
-        <!--L CPU CORE 0 SCHED LOAD BOOST -->
-        <!--L CPU CORE 1 SCHED LOAD BOOST -->
-        <!--L CPU CORE 2 SCHED LOAD BOOST -->
-        <!--L CPU CORE 3 SCHED LOAD BOOST -->
+        <!--Policy0 SCHED LOAD BOOST -->
         <!--CPU-LLCC BWMON - Set sample_ms 20 -->
         <!--LLCC-DDR BWMON - Set sample ms 20 -->
         <!--CPU CORE 0 Min freq to 1.094Ghz -->
         <!--Set uclamp latency sensitivity to 1 -->
         <Config
             Id="0x00001334" Enable="true" Timeout="0" Target="diwali"
-            Resources="0x40C68100, 0xFFFFFFFA, 0x40C68110, 0xFFFFFFFA, 0x40C68120, 0xFFFFFFFA,
-            0x40C68130, 0xFFFFFFFA, 0x4183C000, 0x14, 0x43034000, 0x14, 0x40800100, 0x446, 0x40CEC000, 0x1"/>
+            Resources="0x40C68100, 0xFFFFFFFA, 0x4183C000, 0x14, 0x43034000, 0x14, 0x40800100, 0x446, 0x40CEC000, 0x1"/>
 
         <!-- multi camera 30fps-->
-        <!--L CPU CORE 0 SCHED LOAD BOOST -->
-        <!--L CPU CORE 1 SCHED LOAD BOOST -->
-        <!--L CPU CORE 2 SCHED LOAD BOOST -->
-        <!--L CPU CORE 3 SCHED LOAD BOOST -->
+        <!--Policy0 SCHED LOAD BOOST -->
         <!--L CPU Hispeed freq of 1094Mhz -->
         <!--CPU-LLCC BWMON - Set sample_ms 20 -->
         <!--LLCC-DDR BWMON - Set sample_ms 20 -->
@@ -583,8 +566,7 @@
         <!--Set uclamp latency sensitivity to 1 -->
         <Config
             Id="0x00001336" Enable="true" Timeout="0" Target="diwali"
-            Resources="0x40C68100, 0xFFFFFFFA, 0x40C68110, 0xFFFFFFFA, 0x40C68120, 0xFFFFFFFA,
-            0x40C68130, 0xFFFFFFFA, 0x4143C100, 1094, 0x4183C000, 0x14, 0x43034000, 0x14,
+            Resources="0x40C68100, 0xFFFFFFFA, 0x4143C100, 1094, 0x4183C000, 0x14, 0x43034000, 0x14,
             0x40800100, 902, 0x40804100, 1651, 0x40CEC000, 0x1"/>
 
         <!-- same settings for all the qvr power levels intentionally -->
@@ -792,41 +774,40 @@
         <!-- camera open tunings-->
         <!-- MPCTLV3_ALL_CPUS_PWR_CLPS_DIS, 0x1 -->
         <!-- MPCTLV3_SCHED_BOOST, 0x1 -->
-        <!-- MPCTLV3_MAX_FREQ_CLUSTER_BIG_CORE_0, 0xFFF -->
-        <!-- MPCTLV3_MIN_FREQ_CLUSTER_BIG_CORE_0, 0xFFF -->
-        <!-- MPCTLV3_MAX_FREQ_CLUSTER_LITTLE_CORE_0, 0xFFF -->
-        <!-- MPCTLV3_MIN_FREQ_CLUSTER_LITTLE_CORE_0, 0xFFF -->
-        <!-- MPCTLV3_MIN_FREQ_CLUSTER_PLUS_CORE_0, 0xFFF -->
-        <!-- MPCTLV3_MAX_FREQ_CLUSTER_PLUS_CORE_0, 0xFFF -->
+        <!-- MPCTLV3_MAX_FREQ_CLUSTER_BIG_CORE_0, ~1.804 Ghz -->
+        <!-- MPCTLV3_MIN_FREQ_CLUSTER_BIG_CORE_0, ~1.804 Ghz -->
+        <!-- MPCTLV3_MAX_FREQ_CLUSTER_LITTLE_CORE_0, ~1.651 Ghz -->
+        <!-- MPCTLV3_MIN_FREQ_CLUSTER_LITTLE_CORE_0, ~1.651 Ghz -->
+        <!-- MPCTLV3_MIN_FREQ_CLUSTER_PLUS_CORE_0, ~2.169 Ghz -->
+        <!-- MPCTLV3_MAX_FREQ_CLUSTER_PLUS_CORE_0, ~2.169 Ghz-->
         <Config
             Id="0x00001337" Enable="true" Timeout="0" Taget="diwali"
-            Resources="0x40400000, 0x1, 0x40C00000, 0x1, 0x40804000, 0XFFF, 0x40800000, 0XFFF,
-            0x40804100, 0XFFF, 0x40800100, 0XFFF, 0x40800200, 0XFFF, 0x40804200, 0XFFF"/>
+            Resources="0x40400000, 0x1, 0x40C00000, 0x1, 0x40804000, 0X70C, 0x40800000, 0X70C,
+            0x40804100, 0X673, 0x40800100, 0X673, 0x40800200, 0X879, 0x40804200, 0X879"/>
 
         <!-- camera close tunings-->
         <!-- MPCTLV3_ALL_CPUS_PWR_CLPS_DIS, 0x1 -->
         <!-- MPCTLV3_SCHED_BOOST, 0x1 -->
-        <!-- MPCTLV3_MAX_FREQ_CLUSTER_BIG_CORE_0, 0xFFF -->
-         <!-- MPCTLV3_MIN_FREQ_CLUSTER_BIG_CORE_0, 0xFFF -->
-         <!-- MPCTLV3_MAX_FREQ_CLUSTER_LITTLE_CORE_0, 0xFFF -->
-         <!-- MPCTLV3_MIN_FREQ_CLUSTER_LITTLE_CORE_0, 0xFFF -->
-         <!-- MPCTLV3_MIN_FREQ_CLUSTER_PLUS_CORE_0, 0xFFF -->
-         <!-- MPCTLV3_MAX_FREQ_CLUSTER_PLUS_CORE_0, 0xFFF -->
+        <!-- MPCTLV3_MAX_FREQ_CLUSTER_BIG_CORE_0,  ~1.804 Ghz -->
+         <!-- MPCTLV3_MIN_FREQ_CLUSTER_BIG_CORE_0, ~1.804 Ghz -->
+         <!-- MPCTLV3_MAX_FREQ_CLUSTER_LITTLE_CORE_0, ~1.651 Ghz -->
+         <!-- MPCTLV3_MIN_FREQ_CLUSTER_LITTLE_CORE_0, ~1.651 Ghz -->
+         <!-- MPCTLV3_MIN_FREQ_CLUSTER_PLUS_CORE_0, ~2.169 Ghz -->
+         <!-- MPCTLV3_MAX_FREQ_CLUSTER_PLUS_CORE_0, ~2.169 Ghz -->
          <Config
             Id="0x00001338" Enable="true" Timeout="0" Taget="diwali"
-            Resources="0x40400000, 0x1, 0x40C00000, 0x1, 0x40804000, 0XFFF, 0x40800000, 0XFFF,
-            0x40804100, 0XFFF, 0x40800100, 0XFFF, 0x40800200, 0XFFF, 0x40804200, 0XFFF"/>
+            Resources="0x40400000, 0x1, 0x40C00000, 0x1, 0x40804000, 0X70C, 0x40800000, 0X70C,
+            0x40804100, 0X673, 0x40800100, 0X673, 0x40800200, 0X879, 0x40804200, 0X879"/>
 
          <!-- camera snapshot tunings-->
          <!-- MPCTLV3_ALL_CPUS_PWR_CLPS_DIS, 0x1 -->
-         <!-- Silver cluster min freq to 1.228GHz -->
-         <!-- Gold cluster min freq to 1.382GHz -->
+         <!-- Silver cluster min freq to ~1.094 GHz -->
+         <!-- Gold cluster min freq to 1.132 GHz -->
          <!-- MPCTLV3_SCHED_DOWNMIGRATE, 0x14 -->
          <!-- MPCTLV3_SCHED_UPMIGRATE, 0x1E -->
          <Config
             Id="0x00001339" Enable="true" Timeout="0" Taget="diwali"
-            Resources="0x40400000, 0x1, 0x40800100, 0x4CC, 0x40800000, 0x569, 0x40C20000, 0X14,
-            0x40C1C000, 0X1E"/>
+            Resources="0x40400000, 0x1, 0x40800100, 0x446, 0x40800000, 0x46C, 0x40CE0000, 0x001E0014"/>
 
     </Powerhint>
 </HintConfigs>
