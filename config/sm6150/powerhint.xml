@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
 <!--
-/* Copyright (c) 2016-2018, The Linux Foundation. All rights reserved.
+/* Copyright (c) 2016-2020, The Linux Foundation. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are
@@ -39,19 +39,15 @@
         <!--L CPU CORE 3 SCHED LOAD BOOST -->
         <!--L CPU CORE 4 SCHED LOAD BOOST -->
         <!--L CPU CORE 5 SCHED LOAD BOOST -->
-        <!--L CPU Hispeed freq of 1017Mhz -->
+        <!--L CPU Hispeed freq of 998Mhz -->
         <!--L CPU - Set hispeed load 95 -->
-        <!--CPU-LLCC BWMON - Set polling interval 200 -->
-        <!--CPU-LLCC BWMON - use AB 0 -->
-        <!--LLCC-DDR BWMON - Set sample_ms 20 -->
-        <!--CPU-LLCC BWMON - Set up_scale 0 -->
-        <!--L CPU core ctl min cpus 6 -->
-        <!--CPU-LLCC BWMON - io percent 100 -->
+        <!--BWMON - Set sample_ms 20 for both cpu and llcc -->
+        <!--Change min freq to 748Mhz -->
         <Config
-            Id="0x00001331" Enable="true" Timeout="0" Target="atoll"
+            Id="0x00001331" Enable="true" Timeout="0" Target="msmsteppe"
             Resources="0x40C68100, 0xFFFFFFFA, 0x40C68110, 0xFFFFFFFA, 0x40C68120, 0xFFFFFFFA,
             0x40C68130, 0xFFFFFFFA, 0x40C68140, 0xFFFFFFFA, 0x40C68150, 0xFFFFFFFA,
-            0x4143C100, 0x3F9, 0x41440100, 0x5F, 0x4181C000, 0xC8, 0x41830000, 0, 0x43034000, 0x14, 0x4182C000, 0, 0x41000100, 6, 0x41808000, 100"/>
+            0x4143C100, 0x3F9, 0x41440100, 0x5F, 0x4183C000, 0x14, 0x43034000, 0x14, 0x40800100,0x2EC"/>
 
         <!-- camera 60 FPS -->
         <!--L CPU CORE 0 SCHED LOAD BOOST -->
@@ -60,17 +56,12 @@
         <!--L CPU CORE 3 SCHED LOAD BOOST -->
         <!--L CPU CORE 4 SCHED LOAD BOOST -->
         <!--L CPU CORE 5 SCHED LOAD BOOST -->
-        <!--CPU-LLCC BWMON - Set polling interval 200 -->
-        <!--CPU-LLCC BWMON - use AB 0 -->
-        <!--LLCC-DDR BWMON - Set sample ms 20 -->
-        <!--CPU-LLCC BWMON - Set up_scale 0 -->
-        <!--L CPU core ctl min cpus 6 -->
-        <!--CPU-LLCC BWMON - io percent 100 -->
+        <!--BWMON - Set sample_ms 20 -->
         <Config
-            Id="0x00001332" Enable="true" Timeout="0" Target="atoll"
+            Id="0x00001332" Enable="true" Timeout="0" Target="msmsteppe"
             Resources="0x40C68100, 0xFFFFFFFA, 0x40C68110, 0xFFFFFFFA, 0x40C68120, 0xFFFFFFFA,
             0x40C68130, 0xFFFFFFFA, 0x40C68140, 0xFFFFFFFA, 0x40C68150, 0xFFFFFFFA,
-            0x4181C000, 0xC8, 0x41830000, 0, 0x43034000, 0x14, 0x4182C000, 0, 0x41000100, 6, 0x41808000, 100"/>
+            0x4183C000, 0x14, 0x40800100,0x2EC"/>
 
         <!-- camera HFR -->
         <!--L CPU CORE 0 SCHED LOAD BOOST -->
@@ -79,37 +70,88 @@
         <!--L CPU CORE 3 SCHED LOAD BOOST -->
         <!--L CPU CORE 4 SCHED LOAD BOOST -->
         <!--L CPU CORE 5 SCHED LOAD BOOST -->
-        <!--CPU-LLCC BWMON - Set polling interval 200 -->
-        <!--CPU-LLCC BWMON - use AB 0 -->
-        <!--LLCC-DDR BWMON - Set sample ms 20 -->
-        <!--CPU-LLCC BWMON - Set up_scale 0 -->
-        <!--L CPU core ctl min cpus 6 -->
-        <!--CPU-LLCC BWMON - io percent 100 -->
+        <!--BWMON - Set sample_ms 20 -->
         <Config
-            Id="0x00001333" Enable="true" Timeout="0" Target="atoll"
+            Id="0x00001333" Enable="true" Timeout="0" Target="msmsteppe"
             Resources="0x40C68100, 0xFFFFFFFA, 0x40C68110, 0xFFFFFFFA, 0x40C68120, 0xFFFFFFFA,
             0x40C68130, 0xFFFFFFFA, 0x40C68140, 0xFFFFFFFA, 0x40C68150, 0xFFFFFFFA,
-            0x4181C000, 0xC8, 0x41830000, 0, 0x43034000, 0x14, 0x4182C000, 0, 0x41000100, 6, 0x41808000, 100"/>
+            0x4183C000, 0x14, 0x40800100,0x2EC"/>
 
-        <!-- HFR 480fps -->
+        <!-- Dual camera -->
         <!--L CPU CORE 0 SCHED LOAD BOOST -->
         <!--L CPU CORE 1 SCHED LOAD BOOST -->
         <!--L CPU CORE 2 SCHED LOAD BOOST -->
         <!--L CPU CORE 3 SCHED LOAD BOOST -->
         <!--L CPU CORE 4 SCHED LOAD BOOST -->
         <!--L CPU CORE 5 SCHED LOAD BOOST -->
-        <!--CPU-LLCC BWMON - Set polling interval 200 -->
-        <!--CPU-LLCC BWMON - use AB 0 -->
-        <!--LLCC-DDR BWMON - Set sample ms 20 -->
-        <!--CPU CORE 0 Min freq to 1.2Ghz -->
-        <!--CPU-LLCC BWMON - Set up_scale 0 -->
-        <!--L CPU core ctl min cpus 6 -->
-        <!--CPU-LLCC BWMON - io percent 100 -->
+        <!--BWMON - Set sample_ms 20 -->
         <Config
-            Id="0x00001334" Enable="true" Timeout="0" Target="atoll"
+            Id="0x00001334" Enable="true" Timeout="0" Target="msmsteppe"
             Resources="0x40C68100, 0xFFFFFFFA, 0x40C68110, 0xFFFFFFFA, 0x40C68120, 0xFFFFFFFA,
             0x40C68130, 0xFFFFFFFA, 0x40C68140, 0xFFFFFFFA, 0x40C68150, 0xFFFFFFFA,
-            0x4181C000, 0xC8, 0x41830000, 0, 0x43034000, 0x14, 0x40800100, 0x4B9, 0x4182C000, 0, 0x41000100, 6, 0x41808000, 100"/>
+            0x4183C000, 0x14, 0x40800100,0x2EC"/>
+
+        <!-- camera 30fps and camera preview -->
+        <!--L CPU CORE 0 SCHED LOAD BOOST -->
+        <!--L CPU CORE 1 SCHED LOAD BOOST -->
+        <!--L CPU CORE 2 SCHED LOAD BOOST -->
+        <!--L CPU CORE 3 SCHED LOAD BOOST -->
+        <!--L CPU CORE 4 SCHED LOAD BOOST -->
+        <!--L CPU CORE 5 SCHED LOAD BOOST -->
+        <!--L CPU Hispeed freq of 998Mhz -->
+        <!--L CPU - Set hispeed load 95 -->
+        <!--CPU-LLCC BWMON - Set sample_ms 20 -->
+        <!--LLCC-DDR BWMON - Set sample_ms 20 -->
+        <Config
+            Id="0x00001331" Enable="true" Timeout="0" Target="sdmmagpie"
+            Resources="0x40C68100, 0xFFFFFFFA, 0x40C68110, 0xFFFFFFFA, 0x40C68120, 0xFFFFFFFA,
+            0x40C68130, 0xFFFFFFFA, 0x40C68140, 0xFFFFFFFA, 0x40C68150, 0xFFFFFFFA,
+            0x4143C100, 0x3F9, 0x41440100, 0x5F, 0x4183C000, 0x14, 0x43034000, 0x14"/>
+
+        <!-- camera 60 FPS -->
+        <!--L CPU CORE 0 SCHED LOAD BOOST -->
+        <!--L CPU CORE 1 SCHED LOAD BOOST -->
+        <!--L CPU CORE 2 SCHED LOAD BOOST -->
+        <!--L CPU CORE 3 SCHED LOAD BOOST -->
+        <!--L CPU CORE 4 SCHED LOAD BOOST -->
+        <!--L CPU CORE 5 SCHED LOAD BOOST -->
+        <!--CPU-LLCC BWMON - Set sample_ms 20 -->
+        <!--LLCC-DDR BWMON - Set sample ms 20 -->
+        <Config
+            Id="0x00001332" Enable="true" Timeout="0" Target="sdmmagpie"
+            Resources="0x40C68100, 0xFFFFFFFA, 0x40C68110, 0xFFFFFFFA, 0x40C68120, 0xFFFFFFFA,
+            0x40C68130, 0xFFFFFFFA, 0x40C68140, 0xFFFFFFFA, 0x40C68150, 0xFFFFFFFA,
+            0x4183C000, 0x14, 0x43034000, 0x14"/>
+
+        <!-- camera HFR -->
+        <!--L CPU CORE 0 SCHED LOAD BOOST -->
+        <!--L CPU CORE 1 SCHED LOAD BOOST -->
+        <!--L CPU CORE 2 SCHED LOAD BOOST -->
+        <!--L CPU CORE 3 SCHED LOAD BOOST -->
+        <!--L CPU CORE 4 SCHED LOAD BOOST -->
+        <!--L CPU CORE 5 SCHED LOAD BOOST -->
+        <!--CPU-LLCC BWMON - Set sample_ms 20 -->
+        <!--LLCC-DDR BWMON - Set sample ms 20 -->
+        <Config
+            Id="0x00001333" Enable="true" Timeout="0" Target="sdmmagpie"
+            Resources="0x40C68100, 0xFFFFFFFA, 0x40C68110, 0xFFFFFFFA, 0x40C68120, 0xFFFFFFFA,
+            0x40C68130, 0xFFFFFFFA, 0x40C68140, 0xFFFFFFFA, 0x40C68150, 0xFFFFFFFA,
+            0x4183C000, 0x14, 0x43034000, 0x14"/>
+
+        <!-- Dual camera -->
+        <!--L CPU CORE 0 SCHED LOAD BOOST -->
+        <!--L CPU CORE 1 SCHED LOAD BOOST -->
+        <!--L CPU CORE 2 SCHED LOAD BOOST -->
+        <!--L CPU CORE 3 SCHED LOAD BOOST -->
+        <!--L CPU CORE 4 SCHED LOAD BOOST -->
+        <!--L CPU CORE 5 SCHED LOAD BOOST -->
+        <!--CPU-LLCC BWMON - Set sample_ms 20 -->
+        <!--LLCC-DDR BWMON - Set sample ms 20 -->
+        <Config
+            Id="0x00001334" Enable="true" Timeout="0" Target="sdmmagpie"
+            Resources="0x40C68100, 0xFFFFFFFA, 0x40C68110, 0xFFFFFFFA, 0x40C68120, 0xFFFFFFFA,
+            0x40C68130, 0xFFFFFFFA, 0x40C68140, 0xFFFFFFFA, 0x40C68150, 0xFFFFFFFA,
+            0x4183C000, 0x14, 0x43034000, 0x14"/>
 
         <!-- same settings for all the qvr power levels intentionally -->
         <!-- qvr level cpu1 gpu1 -->
@@ -122,7 +164,7 @@
         <!-- Min Big CPUs 2 -->
         <!-- Idefinite Duration -->
         <Config
-            Id="0x0000130A" Enable="true" Target="atoll" Timeout="0"
+            Id="0x0000130A" Enable="true" Target="sdmmagpie" Timeout="0"
             Resources="0x40800000, 0x326, 0x40804000, 0x879, 0x40800100, 0x240, 0x40804100, 0x4E0,
             0x42804000, 0x7, 0x42808000, 0x0, 0x41000000, 0x2"/>
 
@@ -136,7 +178,7 @@
         <!-- Min Big CPUs 2 -->
         <!-- Idefinite Duration -->
         <Config
-            Id="0x0000130B" Enable="true" Target="atoll" Timeout="0"
+            Id="0x0000130B" Enable="true" Target="sdmmagpie" Timeout="0"
             Resources="0x40800000, 0x326, 0x40804000, 0x879, 0x40800100, 0x240, 0x40804100, 0x4E0,
             0x42804000, 0x7, 0x42808000, 0x0, 0x41000000, 0x2"/>
 
@@ -150,7 +192,7 @@
         <!-- Min Big CPUs 2 -->
         <!-- Idefinite Duration -->
         <Config
-            Id="0x0000130C" Enable="true" Target="atoll" Timeout="0"
+            Id="0x0000130C" Enable="true" Target="sdmmagpie" Timeout="0"
             Resources="0x40800000, 0x326, 0x40804000, 0x879, 0x40800100, 0x240, 0x40804100, 0x4E0,
             0x42804000, 0x7, 0x42808000, 0x0, 0x41000000, 0x2"/>
 
@@ -164,7 +206,7 @@
         <!-- Min Big CPUs 2 -->
         <!-- Idefinite Duration -->
         <Config
-            Id="0x0000130D" Enable="true" Target="atoll" Timeout="0"
+            Id="0x0000130D" Enable="true" Target="sdmmagpie" Timeout="0"
             Resources="0x40800000, 0x326, 0x40804000, 0x879, 0x40800100, 0x240, 0x40804100, 0x4E0,
             0x42804000, 0x7, 0x42808000, 0x0, 0x41000000, 0x2"/>
 
@@ -178,7 +220,7 @@
         <!-- Min Big CPUs 2 -->
         <!-- Idefinite Duration -->
         <Config
-            Id="0x0000130E" Enable="true" Target="atoll" Timeout="0"
+            Id="0x0000130E" Enable="true" Target="sdmmagpie" Timeout="0"
             Resources="0x40800000, 0x326, 0x40804000, 0x879, 0x40800100, 0x240, 0x40804100, 0x4E0,
             0x42804000, 0x7, 0x42808000, 0x0, 0x41000000, 0x2"/>
 
@@ -192,7 +234,7 @@
         <!-- Min Big CPUs 2 -->
         <!-- Idefinite Duration -->
         <Config
-            Id="0x0000130F" Enable="true" Target="atoll" Timeout="0"
+            Id="0x0000130F" Enable="true" Target="sdmmagpie" Timeout="0"
             Resources="0x40800000, 0x326, 0x40804000, 0x879, 0x40800100, 0x240, 0x40804100, 0x4E0,
             0x42804000, 0x7, 0x42808000, 0x0, 0x41000000, 0x2"/>
 
@@ -206,7 +248,7 @@
         <!-- Min Big CPUs 2 -->
         <!-- Idefinite Duration -->
         <Config
-            Id="0x00001310" Enable="true" Target="atoll" Timeout="0"
+            Id="0x00001310" Enable="true" Target="sdmmagpie" Timeout="0"
             Resources="0x40800000, 0x326, 0x40804000, 0x879, 0x40800100, 0x240, 0x40804100, 0x4E0,
             0x42804000, 0x7, 0x42808000, 0x0, 0x41000000, 0x2"/>
 
@@ -220,7 +262,7 @@
         <!-- Min Big CPUs 2 -->
         <!-- Idefinite Duration -->
         <Config
-            Id="0x00001311" Enable="true" Target="atoll" Timeout="0"
+            Id="0x00001311" Enable="true" Target="sdmmagpie" Timeout="0"
             Resources="0x40800000, 0x326, 0x40804000, 0x879, 0x40800100, 0x240, 0x40804100, 0x4E0,
             0x42804000, 0x7, 0x42808000, 0x0, 0x41000000, 0x2"/>
 
@@ -234,50 +276,9 @@
         <!-- Min Big CPUs 2 -->
         <!-- Idefinite Duration -->
         <Config
-            Id="0x00001312" Enable="true" Target="atoll" Timeout="0"
+            Id="0x00001312" Enable="true" Target="sdmmagpie" Timeout="0"
             Resources="0x40800000, 0x326, 0x40804000, 0x879, 0x40800100, 0x240, 0x40804100, 0x4E0,
             0x42804000, 0x7, 0x42808000, 0x0, 0x41000000, 0x2"/>
 
-         <!-- sustained performance -->
-         <!-- B CPU - Cluster min freq uncapped -->
-         <!-- L CPU - Cluster min freq uncapped -->
-         <!-- B CPU - Cluster max freq ~1.22 GHz -->
-         <!-- L CPU - Cluster max freq ~1.22 Ghz -->
-         <!-- GPU - min freq 275Mhz -->
-         <!-- GPU - max freq 400Mhz -->
-         <!-- GPUBW freq uncapped -->
-         <Config
-             Id="0x00001206" Enable="true" Timeout="0" Target="atoll"
-             Resources="0x40800000, 0x0, 0x40800100, 0x0, 0x40804000, 0x4CC, 0x40804100, 0x4CC,
-             0X4280C000, 0x113, 0X42810000, 0x190, 0x42814000, 0x0"/>
-
-         <!-- vr mode -->
-         <!-- B CPU - Cluster min freq ~1.22 Ghz -->
-         <!-- L CPU - Cluster min freq ~0.940 Ghz -->
-         <!-- B CPU - Cluster max freq ~1.90 Ghz -->
-         <!-- L CPU - Cluster max freq ~1.70 Ghz -->
-         <!-- GPU - min freq 275Mhz -->
-         <!-- GPU - max freq 625Mhz -->
-         <!-- GPUBW uncapped -->
-         <Config
-             Id="0x00001207" Enable="true" Timeout="0" Target="atoll"
-             Resources="0x40800000, 0x4CC, 0x40800100, 0x3AC, 0x40804000, 0x76C, 0x40804100, 0x6C0,
-             0X4280C000, 0x113, 0X4280C000, 0x271, 0x42814000, 0x0"/>
-
-         <!-- vr mode sustained performance -->
-         <!-- B CPU - Cluster min freq ~1.22 Ghz -->
-         <!-- L CPU - Cluster min freq ~1.22 Ghz -->
-         <!-- B CPU - Cluster max freq ~1.22 Ghz -->
-         <!-- L CPU - Cluster max freq ~1.22 Ghz -->
-         <!-- GPU - min freq 400Mhz -->
-         <!-- GPU - max freq 400Mhz -->
-         <!-- GPUBW uncapped  -->
-         <Config
-             Id="0x00001301" Enable="true" Timeout="0" Target="atoll"
-             Resources="0x40800000, 0x4CC, 0x40800100, 0x4CC, 0x40804000, 0x4CC, 0x40804100, 0x4CC,
-             0X4280C000, 0x190, 0X42810000, 0x190, 0x42814000, 0x0"/>
-
     </Powerhint>
 </HintConfigs>
-
-
