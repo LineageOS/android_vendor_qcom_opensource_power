@@ -16,6 +16,24 @@
       "message": "Merge Conflict, only for info",
       "revId": "c72aaf231a8611266a418bdb981630fa04265ff7",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b674b0af_041c47ea",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 25732
+      },
+      "writtenOn": "2022-02-10T21:59:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0c6b80fb_7499956b",
+      "revId": "c72aaf231a8611266a418bdb981630fa04265ff7",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
