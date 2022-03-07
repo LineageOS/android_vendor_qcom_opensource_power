@@ -797,30 +797,34 @@
         <!-- camera open tunings-->
         <!-- MPCTLV3_ALL_CPUS_PWR_CLPS_DIS, 0x1 -->
         <!-- MPCTLV3_SCHED_BOOST, 0x1 -->
-        <!-- MPCTLV3_MAX_FREQ_CLUSTER_BIG_CORE_0, ~1.804 Ghz -->
-        <!-- MPCTLV3_MIN_FREQ_CLUSTER_BIG_CORE_0, ~1.804 Ghz -->
+        <!-- MPCTLV3_MAX_FREQ_CLUSTER_BIG_CORE_0, ~2.054 Ghz -->
+        <!-- MPCTLV3_MIN_FREQ_CLUSTER_BIG_CORE_0, ~2.054 Ghz -->
         <!-- MPCTLV3_MAX_FREQ_CLUSTER_LITTLE_CORE_0, ~1.651 Ghz -->
         <!-- MPCTLV3_MIN_FREQ_CLUSTER_LITTLE_CORE_0, ~1.651 Ghz -->
-        <!-- MPCTLV3_MIN_FREQ_CLUSTER_PLUS_CORE_0, ~2.169 Ghz -->
-        <!-- MPCTLV3_MAX_FREQ_CLUSTER_PLUS_CORE_0, ~2.169 Ghz-->
+        <!-- MPCTLV3_MIN_FREQ_CLUSTER_PLUS_CORE_0, ~2.4 Ghz -->
+        <!-- MPCTLV3_MAX_FREQ_CLUSTER_PLUS_CORE_0, ~2.4 Ghz-->
+        <!-- MPCTLV3_CPUCTL_FG_UCLAMP_LATENCY_SENSITIVE 1-->
         <Config
             Id="0x00001337" Enable="true" Timeout="0" Target="diwali"
-            Resources="0x40400000, 0x1, 0x40C00000, 0x1, 0x40804000, 0X70C, 0x40800000, 0X70C,
-            0x40804100, 0X673, 0x40800100, 0X673, 0x40800200, 0X879, 0x40804200, 0X879"/>
+            Resources="0x40400000, 0x1, 0x40C00000, 0x1, 0x40804000, 0X806, 0x40800000, 0X806,
+            0x40804100, 0X673, 0x40800100, 0X673, 0x40800200, 0X960, 0x40804200, 0X960,
+            0x40CEC000, 0x1"/>
 
         <!-- camera close tunings-->
         <!-- MPCTLV3_ALL_CPUS_PWR_CLPS_DIS, 0x1 -->
         <!-- MPCTLV3_SCHED_BOOST, 0x1 -->
-        <!-- MPCTLV3_MAX_FREQ_CLUSTER_BIG_CORE_0,  ~1.804 Ghz -->
-         <!-- MPCTLV3_MIN_FREQ_CLUSTER_BIG_CORE_0, ~1.804 Ghz -->
+        <!-- MPCTLV3_MAX_FREQ_CLUSTER_BIG_CORE_0,  ~2.054 Ghz -->
+         <!-- MPCTLV3_MIN_FREQ_CLUSTER_BIG_CORE_0, ~2.054 Ghz -->
          <!-- MPCTLV3_MAX_FREQ_CLUSTER_LITTLE_CORE_0, ~1.651 Ghz -->
          <!-- MPCTLV3_MIN_FREQ_CLUSTER_LITTLE_CORE_0, ~1.651 Ghz -->
-         <!-- MPCTLV3_MIN_FREQ_CLUSTER_PLUS_CORE_0, ~2.169 Ghz -->
-         <!-- MPCTLV3_MAX_FREQ_CLUSTER_PLUS_CORE_0, ~2.169 Ghz -->
+         <!-- MPCTLV3_MIN_FREQ_CLUSTER_PLUS_CORE_0, ~2.4 Ghz -->
+         <!-- MPCTLV3_MAX_FREQ_CLUSTER_PLUS_CORE_0, ~2.4 Ghz -->
+         <!-- MPCTLV3_CPUCTL_FG_UCLAMP_LATENCY_SENSITIVE 1-->
          <Config
             Id="0x00001338" Enable="true" Timeout="0" Target="diwali"
-            Resources="0x40400000, 0x1, 0x40C00000, 0x1, 0x40804000, 0X70C, 0x40800000, 0X70C,
-            0x40804100, 0X673, 0x40800100, 0X673, 0x40800200, 0X879, 0x40804200, 0X879"/>
+            Resources="0x40400000, 0x1, 0x40C00000, 0x1, 0x40804000, 0X806, 0x40800000, 0X806,
+            0x40804100, 0X673, 0x40800100, 0X673, 0x40800200, 0X960, 0x40804200, 0X960,
+            0x40CEC000, 0x1"/>
 
          <!-- camera snapshot tunings-->
          <!-- MPCTLV3_ALL_CPUS_PWR_CLPS_DIS, 0x1 -->
