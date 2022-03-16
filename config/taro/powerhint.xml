@@ -430,8 +430,8 @@
             0x40804100, 0XFFF, 0x40800100, 0XFFF, 0x40800200, 0XFFF, 0x40804200, 0XFFF"/>
         <Config
             Id="0x00001337" Enable="true" Timeout="0" Target="cape"
-            Resources="0x40400000, 0x1, 0x40C00000, 0x1, 0x40804000, 0X6E6, 0x40800000, 0X6E6,
-            0x40804100, 0X613, 0x40800100, 0X613, 0x40800200, 0X853, 0x40804200, 0X853"/>
+            Resources="0x40400000, 0x1, 0x40C00000, 0x1, 0x40804000, 0XFFF, 0x40800000, 0XFFF,
+            0x40804100, 0XFFF, 0x40800100, 0XFFF, 0x40800200, 0XFFF, 0x40804200, 0XFFF"/>
 
         <!-- camera close tunings-->
         <!-- MPCTLV3_ALL_CPUS_PWR_CLPS_DIS, 0x1 -->
@@ -448,8 +448,8 @@
             0x40804100, 0XFFF, 0x40800100, 0XFFF, 0x40800200, 0XFFF, 0x40804200, 0XFFF"/>
          <Config
             Id="0x00001338" Enable="true" Timeout="0" Target="cape"
-            Resources="0x40400000, 0x1, 0x40C00000, 0x1, 0x40804000, 0X6E6, 0x40800000, 0X6E6,
-            0x40804100, 0X613, 0x40800100, 0X613, 0x40800200, 0X853, 0x40804200, 0X853"/>
+            Resources="0x40400000, 0x1, 0x40C00000, 0x1, 0x40804000, 0XFFF, 0x40800000, 0XFFF,
+            0x40804100, 0XFFF, 0x40800100, 0XFFF, 0x40800200, 0XFFF, 0x40804200, 0XFFF"/>
 
          <!-- camera snapshot tunings-->
          <!-- MPCTLV3_ALL_CPUS_PWR_CLPS_DIS, 0x1 -->
@@ -464,7 +464,7 @@
 
          <Config
             Id="0x00001339" Enable="true" Timeout="0" Target="cape"
-            Resources="0x40400000, 0x1, 0x40800100, 0x420, 0x40800000, 0x4B9, 0x40C20000, 0X14,
+            Resources="0x40400000, 0x1, 0x40800100, 0x46C, 0x40800000, 0x52C, 0x40C20000, 0X14,
             0x40C1C000, 0X1E"/>
 
         <!-- decode 240 fps tunings-->
