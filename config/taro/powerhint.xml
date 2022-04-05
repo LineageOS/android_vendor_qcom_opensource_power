@@ -510,10 +510,11 @@
         <!--GROUP DOWNMIGRATE - 30 -->
         <!--UPMIGRATE - 35 85-->
         <!--DOWNMIGRATE - 30 80-->
+        <!--AB_SCALE - 50-->
         <Config
             Id="0x00001330" Enable="true" Timeout="0" Target="diwali"
             Resources="0x4183C000, 0x21, 0x41834000, 0x64, 0x41838000, 0, 0x43034000, 0x21,
-            0x43020000, 0x64, 0x43024000, 0, 0x41444100, 0, 0x41440100, 0x63, 0x40804100, 0x386, 0x41008000, 0, 0x40CF4000, 0x0023001E, 0x40CE0000, 0x0023001E, 0x40CE0200, 0x00550050 "/>
+            0x43020000, 0x64, 0x43024000, 0, 0x41444100, 0, 0x41440100, 0x63, 0x40804100, 0x386, 0x41008000, 0, 0x40CF4000, 0x0023001E, 0x40CE0000, 0x0023001E, 0x40CE0200, 0x00550050, 0x43048000, 0x32"/>
 
         <!--camera 30fps-->
         <!--CPU-LLC BWMON - Set sample_ms 33 -->
@@ -530,11 +531,12 @@
         <!--UPMIGRATE - 45 85 -->
         <!--DOWNMIGRATE - 40 85 -->
         <!--B CPU - Disable Core Control -->
+        <!--AB_SCALE - 50-->
         <Config
             Id="0x00001331" Enable="true" Timeout="0" Target="diwali"
             Resources="0x4183C000, 0x21, 0x41834000, 0x64, 0x41838000, 0, 0x43034000, 0x21,
             0x43020000, 0x64, 0x43024000, 0, 0x4303C000, 0x858B8 ,0x40804100, 0x386, 0x41444100, 0, 0x41444000, 0, 0x41440000, 0x63,
-            0x40CE0000, 0x002D0028, 0x40CE0200, 0x00550055, 0x41008000, 0"/>
+            0x40CE0000, 0x002D0028, 0x40CE0200, 0x00550055, 0x41008000, 0, 0x43048000, 0x32"/>
 
        <!--camera 60fps-->
         <!--CPU-LLC BWMON - Set sample_ms 16 -->
@@ -551,11 +553,12 @@
         <!--UPMIGRATE - 35 85-->
         <!--DOWNMIGRATE - 30 85-->
         <!--B CPU - Disable Core Control -->
+        <!--AB_SCALE - 50-->
         <Config
             Id="0x00001332" Enable="true" Timeout="0" Target="diwali"
             Resources="0x4183C000, 0x10, 0x41834000, 0x64, 0x41838000, 0, 0x43034000, 0x10,
             0x43020000, 0x64, 0x43024000, 0, 0x4303C000, 0x17BA38,  0x40804100, 0x446, 0x41444100, 0, 0x41444000, 0, 0x41440000, 0x63,
-            0x40CE0000, 0x0023001E, 0x40CE0200, 0x00550055, 0x41008000, 0"/>
+            0x40CE0000, 0x0023001E, 0x40CE0200, 0x00550055, 0x41008000, 0, 0x43048000, 0x32"/>
       
 	  <!-- camera HFR -->
         <!--CPU-LLC BWMON - Set sample_ms 16 -->
