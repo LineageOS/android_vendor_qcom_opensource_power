@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
 <!--
-/*Copyright (c) 2020-2021, The Linux Foundation. All rights reserved.
+/*Copyright (c) 2020-2022, The Linux Foundation. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are
@@ -368,6 +368,30 @@
         <!-- MPCTLV3_MIN_FREQ_CLUSTER_BIG_CORE_0, 0XA -->
         <Config
             Id="0X00001504" Enable="true" Timeout="0" Target="kalama"
+            Resources="0x40800000, 0XA"/>
+
+        <!-- psm light mode power hint-->
+        <!-- MPCTLV3_MIN_FREQ_CLUSTER_BIG_CORE_0, 0XA -->
+        <Config
+            Id="0x000015E0" Type="0x81" Enable="true" Timeout="0" Taget="kalama"
+            Resources="0x40800000, 0XA"/>
+
+        <!-- psm medium mode power hint-->
+        <!-- MPCTLV3_MIN_FREQ_CLUSTER_BIG_CORE_0, 0XA -->
+        <Config
+            Id="0x000015E0" Type="0x82" Enable="true" Timeout="0" Taget="kalama"
+            Resources="0x40800000, 0XA"/>
+
+        <!-- psm deep mode power hint-->
+        <!-- MPCTLV3_MIN_FREQ_CLUSTER_BIG_CORE_0, 0XA -->
+        <Config
+            Id="0x000015E0" Type="0x83" Enable="true" Timeout="0" Taget="kalama"
+            Resources="0x40800000, 0XA"/>
+
+        <!-- psm release mode power hint-->
+        <!-- MPCTLV3_MIN_FREQ_CLUSTER_BIG_CORE_0, 0XA -->
+        <Config
+            Id="0x000015E0" Type="0x80" Enable="true" Timeout="0" Taget="kalama"
             Resources="0x40800000, 0XA"/>
 
     </Powerhint>
