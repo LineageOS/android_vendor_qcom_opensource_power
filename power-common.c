@@ -49,6 +49,7 @@
 #include "power-common.h"
 
 static struct hint_handles handles[NUM_HINTS];
+static int handleER = 0;
 
 void power_init()
 {
@@ -112,6 +113,15 @@ void power_hint(power_hint_t hint, void *data)
         break;
         default:
         break;
+    }
+}
+
+void set_expensive_rendering(bool enabled)
+{
+    if (enabled) {
+        handleER = perf_hint_enable(PERF_HINT_EXPENSIVE_RENDERING, 0);
+    } else if (handleER > 0) {
+        release_request(handleER);
     }
 }
 
