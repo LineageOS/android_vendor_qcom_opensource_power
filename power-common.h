@@ -49,6 +49,8 @@ extern "C" {
 #define HINT_HANDLED (0)
 #define HINT_NONE (-1)
 
+#define PERF_HINT_EXPENSIVE_RENDERING 0x000010A5
+
 #include <hardware/power.h>
 
 enum CPU_GOV_CHECK {
@@ -60,6 +62,7 @@ enum CPU_GOV_CHECK {
 
 void power_init(void);
 void power_hint(power_hint_t hint, void *data);
+void set_expensive_rendering(bool enabled);
 void set_interactive(int on);
 
 #ifdef __cplusplus
