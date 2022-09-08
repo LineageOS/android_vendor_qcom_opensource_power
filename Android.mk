@@ -11,7 +11,7 @@ LOCAL_MODULE_RELATIVE_PATH := hw
 LOCAL_SHARED_LIBRARIES := liblog libcutils libdl libxml2 libbase libutils libbinder_ndk
 
 ifeq ($(call math_gt_or_eq, 33, $(PLATFORM_SDK_VERSION)), true)
-    LOCAL_SHARED_LIBRARIES += android.hardware.power-V1-ndk
+    LOCAL_SHARED_LIBRARIES += android.hardware.power-V3-ndk
 else
     LOCAL_SHARED_LIBRARIES += android.hardware.power-V1-ndk_platform
 endif
