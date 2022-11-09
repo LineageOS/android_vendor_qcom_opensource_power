@@ -99,11 +99,12 @@
         <!--B CPU core ctl min cpus 4 -->
         <!--AB_SCALE - 50 -->
         <!--CPU-DDR BWMON - io percent 100 -->
+        <!--CPU-LLC-DDR BWMON - Set min_freq 1555 -->
         <Config
             Id="0x00001332" Enable="true" Timeout="0" Target="parrot"
             Resources="0x40C68100, -10, 0x40C68000, -10, 0x43034000, 0x21, 0x40804100, 1497,
             0x40CE0000, 0x0023001E, 0x40CF4000, 0x0023001E, 0x41000000, 0x4, 0x43048000, 0x32,
-            0x43020000, 100"/>
+            0x43020000, 100, 0x4303C000, 0x17BA38"/>
 
         <!-- camera HFR -->
         <!--L CPU CORE 0 SCHED LOAD BOOST -->
