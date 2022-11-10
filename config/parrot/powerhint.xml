@@ -41,19 +41,19 @@
         <!-- decode 240 fps tunings-->
         <!--L CPU - max freq 700000 -->
          <Config
-            Id="0X00001505" Enable="true" Timeout="0" Target="parrot"
+            Id="0X00001505" Enable="true" Timeout="0" Target="parrot, ravelin"
             Resources="0x40804100, 0x2BC"/>
 
         <!-- video decode 30 fps non secure content tunings-->
         <!-- MPCTLV3_MIN_FREQ_CLUSTER_BIG_CORE_0, 0XA -->
         <Config
-            Id="0X00001502" Enable="true" Timeout="0" Target="parrot"
+            Id="0X00001502" Enable="true" Timeout="0" Target="parrot, ravelin"
             Resources="0x40800000, 0XA"/>
 
         <!-- video decode 30 fps secure content tunings-->
         <!-- MPCTLV3_MIN_FREQ_CLUSTER_BIG_CORE_0, 0XA -->
         <Config
-            Id="0X00001504" Enable="true" Timeout="0" Target="parrot"
+            Id="0X00001504" Enable="true" Timeout="0" Target="parrot, ravelin"
             Resources="0x40800000, 0XA"/>
 
         <!--camera preview -->
@@ -68,7 +68,7 @@
         <!--AB-SCALE - 50 -->
         <!--CPU-DDR BWMON - io percent 100 -->
         <Config
-            Id="0x00001330" Enable="true" Timeout="0" Target="parrot"
+            Id="0x00001330" Enable="true" Timeout="0" Target="parrot, ravelin"
             Resources="0x40C68100, -10, 0x40C68000, -10, 0x4143C100, 940, 0x41440100, 0x5F,
             0x43034000, 0x21, 0x40804100, 1497, 0x40CE0000, 0x002D0028, 0x40CF4000, 0x002D0028,
             0x41000000, 0x4, 0x43048000, 0x32, 0x43020000, 100"/>
@@ -85,7 +85,7 @@
         <!--AB_SCALE - 50 -->
         <!--CPU-DDR BWMON - io percent 100 -->
         <Config
-            Id="0x00001331" Enable="true" Timeout="0" Target="parrot"
+            Id="0x00001331" Enable="true" Timeout="0" Target="parrot, ravelin"
             Resources="0x40C68100, -10, 0x40C68000, -10, 0x4143C100, 940, 0x41440100, 0x5F,
             0x43034000, 0x21, 0x40800100, 940, 0x40804100, 1497, 0x40CE0000, 0x002D0028,
             0x40CF4000, 0x002D0028, 0x41000000, 0x4, 0x43048000, 0x32, 0x43020000, 100"/>
@@ -101,7 +101,7 @@
         <!--CPU-DDR BWMON - io percent 100 -->
         <!--CPU-LLC-DDR BWMON - Set min_freq 1555 -->
         <Config
-            Id="0x00001332" Enable="true" Timeout="0" Target="parrot"
+            Id="0x00001332" Enable="true" Timeout="0" Target="parrot, ravelin"
             Resources="0x40C68100, -10, 0x40C68000, -10, 0x43034000, 0x21, 0x40804100, 1497,
             0x40CE0000, 0x0023001E, 0x40CF4000, 0x0023001E, 0x41000000, 0x4, 0x43048000, 0x32,
             0x43020000, 100, 0x4303C000, 0x17BA38"/>
@@ -116,7 +116,7 @@
         <!--B CPU core ctl min cpus 4 -->
         <!--CPU-DDR BWMON - io percent 100 -->
         <Config
-            Id="0x00001333" Enable="true" Timeout="0" Target="parrot"
+            Id="0x00001333" Enable="true" Timeout="0" Target="parrot, ravelin"
             Resources="0x40C68100, -10, 0x40C68000, -10, 0x43034000, 0x21, 0x40800100, 0x459,
             0x40804100, 1497, 0x40CE0000, 0x0023001E, 0x40CF4000, 0x0023001E, 0x41000000, 0x4,
             0x43020000, 100"/>
@@ -130,7 +130,7 @@
         <!--B CPU core ctl min cpus 4 -->
         <!--CPU-DDR BWMON - io percent 100 -->
         <Config
-            Id="0x00001334" Enable="true" Timeout="0" Target="parrot"
+            Id="0x00001334" Enable="true" Timeout="0" Target="parrot, ravelin"
             Resources="0x40C68100, -10, 0x40C68000, -10, 0x43034000, 0x21, 0x40800100, 0x459,
             0x40804100, 1497, 0x41000000, 0x4, 0x43020000, 100"/>
 
@@ -144,7 +144,7 @@
         <!--AB_SCALE - 50 -->
         <!--CPU-DDR BWMON - io percent 100 -->
         <Config
-            Id="0x00001336" Enable="true" Timeout="0" Target="parrot"
+            Id="0x00001336" Enable="true" Timeout="0" Target="parrot, ravelin"
             Resources="0x40C68100, -10, 0x40C68000, -10, 0x4143C100, 940, 0x43034000, 0x21,
             0x40800100, 1113, 0x40804100, 1497, 0x41000000, 0x4, 0x43048000, 0x32, 0x43020000, 100"/>
 
@@ -159,7 +159,7 @@
         <!-- Min Big CPUs 2 -->
         <!-- Idefinite Duration -->
         <Config
-            Id="0x0000130A" Enable="true" Target="parrot" Timeout="0"
+            Id="0x0000130A" Enable="true" Target="parrot, ravelin" Timeout="0"
             Resources="0x40800000, 0x2B3, 0x40804000, 0x853, 0x40800100, 0x2B3, 0x40804100, 0x459,
             0x42804000, 0x7, 0x42808000, 0x0, 0x41000000, 0x2"/>
 
@@ -173,7 +173,7 @@
         <!-- Min Big CPUs 2 -->
         <!-- Idefinite Duration -->
         <Config
-            Id="0x0000130B" Enable="true" Target="parrot" Timeout="0"
+            Id="0x0000130B" Enable="true" Target="parrot, ravelin" Timeout="0"
             Resources="0x40800000, 0x2B3, 0x40804000, 0x853, 0x40800100, 0x2B3, 0x40804100, 0x459,
             0x42804000, 0x7, 0x42808000, 0x0, 0x41000000, 0x2"/>
 
@@ -187,7 +187,7 @@
         <!-- Min Big CPUs 2 -->
         <!-- Idefinite Duration -->
         <Config
-            Id="0x0000130C" Enable="true" Target="parrot" Timeout="0"
+            Id="0x0000130C" Enable="true" Target="parrot, ravelin" Timeout="0"
             Resources="0x40800000, 0x2B3, 0x40804000, 0x853, 0x40800100, 0x2B3, 0x40804100, 0x459,
             0x42804000, 0x7, 0x42808000, 0x0, 0x41000000, 0x2"/>
 
@@ -201,7 +201,7 @@
         <!-- Min Big CPUs 2 -->
         <!-- Idefinite Duration -->
         <Config
-            Id="0x0000130D" Enable="true" Target="parrot" Timeout="0"
+            Id="0x0000130D" Enable="true" Target="parrot, ravelin" Timeout="0"
             Resources="0x40800000, 0x2B3, 0x40804000, 0x853, 0x40800100, 0x2B3, 0x40804100, 0x459,
             0x42804000, 0x7, 0x42808000, 0x0, 0x41000000, 0x2"/>
 
@@ -215,7 +215,7 @@
         <!-- Min Big CPUs 2 -->
         <!-- Idefinite Duration -->
         <Config
-            Id="0x0000130E" Enable="true" Target="parrot" Timeout="0"
+            Id="0x0000130E" Enable="true" Target="parrot, ravelin" Timeout="0"
             Resources="0x40800000, 0x2B3, 0x40804000, 0x853, 0x40800100, 0x2B3, 0x40804100, 0x459,
             0x42804000, 0x7, 0x42808000, 0x0, 0x41000000, 0x2"/>
 
@@ -229,7 +229,7 @@
         <!-- Min Big CPUs 2 -->
         <!-- Idefinite Duration -->
         <Config
-            Id="0x0000130F" Enable="true" Target="parrot" Timeout="0"
+            Id="0x0000130F" Enable="true" Target="parrot, ravelin" Timeout="0"
             Resources="0x40800000, 0x2B3, 0x40804000, 0x853, 0x40800100, 0x2B3, 0x40804100, 0x459,
             0x42804000, 0x7, 0x42808000, 0x0, 0x41000000, 0x2"/>
 
@@ -243,7 +243,7 @@
         <!-- Min Big CPUs 2 -->
         <!-- Idefinite Duration -->
         <Config
-            Id="0x00001310" Enable="true" Target="parrot" Timeout="0"
+            Id="0x00001310" Enable="true" Target="parrot, ravelin" Timeout="0"
             Resources="0x40800000, 0x2B3, 0x40804000, 0x853, 0x40800100, 0x2B3, 0x40804100, 0x459,
             0x42804000, 0x7, 0x42808000, 0x0, 0x41000000, 0x2"/>
 
@@ -257,7 +257,7 @@
         <!-- Min Big CPUs 2 -->
         <!-- Idefinite Duration -->
         <Config
-            Id="0x00001311" Enable="true" Target="parrot" Timeout="0"
+            Id="0x00001311" Enable="true" Target="parrot, ravelin" Timeout="0"
             Resources="0x40800000, 0x2B3, 0x40804000, 0x853, 0x40800100, 0x2B3, 0x40804100, 0x459,
             0x42804000, 0x7, 0x42808000, 0x0, 0x41000000, 0x2"/>
 
@@ -271,7 +271,7 @@
         <!-- Min Big CPUs 2 -->
         <!-- Idefinite Duration -->
         <Config
-            Id="0x00001312" Enable="true" Target="parrot" Timeout="0"
+            Id="0x00001312" Enable="true" Target="parrot, ravelin" Timeout="0"
             Resources="0x40800000, 0x2B3, 0x40804000, 0x853, 0x40800100, 0x2B3, 0x40804100, 0x459,
             0x42804000, 0x7, 0x42808000, 0x0, 0x41000000, 0x2"/>
 
@@ -284,7 +284,7 @@
          <!-- GPU - max freq 500Mhz -->
          <!-- GPUBW freq uncapped -->
          <Config
-             Id="0x00001206" Enable="true" Timeout="0" Target="parrot"
+             Id="0x00001206" Enable="true" Timeout="0" Target="parrot, ravelin"
              Resources="0x40800000, 0x0, 0x40800100, 0x0, 0x40804000, 0x540, 0x40804100, 0x459,
              0X4280C000, 0x159, 0X42810000, 0x1F4, 0x42814000, 0x0"/>
 
@@ -297,7 +297,7 @@
          <!-- GPU - max freq 734Mhz -->
          <!-- GPUBW uncapped -->
          <Config
-             Id="0x00001207" Enable="true" Timeout="0" Target="parrot"
+             Id="0x00001207" Enable="true" Timeout="0" Target="parrot, ravelin"
              Resources="0x40800000, 0x4A6, 0x40800100, 0x3AC, 0x40804000, 0x76C, 0x40804100, 0x70C,
              0X4280C000, 0x159, 0X4280C000, 0x2DE, 0x42814000, 0x0"/>
 
@@ -310,7 +310,7 @@
          <!-- GPU - max freq 500Mhz -->
          <!-- GPUBW uncapped  -->
          <Config
-             Id="0x00001301" Enable="true" Timeout="0" Target="parrot"
+             Id="0x00001301" Enable="true" Timeout="0" Target="parrot, ravelin"
              Resources="0x40800000, 0x4A6, 0x40800100, 0x459, 0x40804000, 0x4A6, 0x40804100, 0x459,
              0X4280C000, 0x1F4, 0X42810000, 0x1F4, 0x42814000, 0x0"/>
 
@@ -322,7 +322,7 @@
          <!-- MPCTLV3_MAX_FREQ_CLUSTER_LITTLE_CORE_0, ~1.8 Ghz -->
          <!-- MPCTLV3_MIN_FREQ_CLUSTER_LITTLE_CORE_0, ~1.8 Ghz -->
          <Config
-             Id="0x00001337" Enable="true" Timeout="0" Target="parrot"
+             Id="0x00001337" Enable="true" Timeout="0" Target="parrot, ravelin"
              Resources="0x40400000, 0x1, 0x40C00000, 0x1, 0x40804000, 0X834, 0x40800000, 0X834,
              0x40804100, 0X708, 0x40800100, 0X708"/>
 
@@ -334,7 +334,7 @@
          <!-- MPCTLV3_MAX_FREQ_CLUSTER_LITTLE_CORE_0,~1.8 Ghz -->
          <!-- MPCTLV3_MIN_FREQ_CLUSTER_LITTLE_CORE_0, ~1.8 Ghz -->
          <Config
-             Id="0x00001338" Enable="true" Timeout="0" Target="parrot"
+             Id="0x00001338" Enable="true" Timeout="0" Target="parrot, ravelin"
              Resources="0x40400000, 0x1, 0x40C00000, 0x1, 0x40804000, 0X834, 0x40800000, 0X834,
              0x40804100, 0X708, 0x40800100, 0X708"/>
 
@@ -345,7 +345,7 @@
          <!-- MPCTLV3_SCHED_DOWNMIGRATE, 0x14 -->
          <!-- MPCTLV3_SCHED_UPMIGRATE, 0x1E -->
          <Config
-             Id="0x00001339" Enable="true" Timeout="0" Target="parrot"
+             Id="0x00001339" Enable="true" Timeout="0" Target="parrot, ravelin"
              Resources="0x40400000, 0x1, 0x40800100, 0x459, 0x40800000, 0x4A6, 0x40CE0000, 0x001E0014,"/>
 
     </Powerhint>
