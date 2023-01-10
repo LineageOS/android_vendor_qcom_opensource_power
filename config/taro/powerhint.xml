@@ -27,6 +27,11 @@
  * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
  * OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
  * IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ *
+ * Changes from Qualcomm Innovation Center are provided under the following license:
+ *
+ * Copyright (c) 2022 Qualcomm Innovation Center, Inc. All rights reserved.
+ * SPDX-License-Identifier: BSD-3-Clause-Clear
  */
 -->
 <HintConfigs>
@@ -369,7 +374,7 @@
         <Config
             Id="0x00001330" Enable="true" Timeout="0" Target="taro"
             Resources="0x4183C000, 0x21, 0x41834000, 0x64, 0x41838000, 0, 0x43034000, 0x21,
-            0x43020000, 0x64, 0x43024000, 0, 0x41444100, 0, 0x41440100, 0x63, 0x40804100, 0x2D9, 0x41008000, 0, 0x41008100, 0, 0x41008200, 0"/>
+            0x43020000, 0x64, 0x43024000, 0, 0x41444100, 0, 0x41440100, 0x63, 0x40804100, 0x34C, 0x41008000, 0, 0x41008100, 0, 0x41008200, 0"/>
 
         <!--L CPU - max freq 691200 -->
         <Config
