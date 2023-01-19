@@ -90,14 +90,14 @@
         <!--CPU-LLC-DDR BWMON - Set sample_ms 33 -->
         <!--CPU-LLC-DDR BWMON - Set io_percent 100 -->
         <!--CPU-LLC-DDR BWMON - Set hyst_length hist memory 0 -->
-        <!--CPU-LLC-DDR BWMON - Set min_freq 547 -->
+        <!--CPU-LLC-DDR BWMON - Set min_freq 1555 -->
         <!--CPU - Disable schedutil PL -->
         <!--CPU - Set hispeed load 99 -->
         <!--AB_SCALE - 50-->
         <Config
             Id="0x00001331" Enable="true" Timeout="0" Target="neo_la"
             Resources="0x4183C000, 0x21, 0x41834000, 0x64, 0x41838000, 0, 0x41848000, 0xE3C88, 0x43034000, 0x21,
-            0x43020000, 0x64, 0x43024000, 0, 0x4303C000, 0x858B8 , 0x41444000, 0, 0x41440000, 0x63, 0x43048000, 0x32"/>
+            0x43020000, 0x64, 0x43024000, 0, 0x4303C000, 0x17BA38 , 0x41444000, 0, 0x41440000, 0x63, 0x43048000, 0x32"/>
 
        <!--camera 60fps-->
         <!--CPU-LLC BWMON - Set sample_ms 16 -->
@@ -365,18 +365,20 @@
         <!-- MPCTLV3_SCHED_BOOST, 0x1 -->
         <!-- MPCTLV3_MAX_FREQ_CLUSTER_LITTLE_CORE_0, Max value -->
         <!-- MPCTLV3_MIN_FREQ_CLUSTER_LITTLE_CORE_0, Max value -->
+		<!--CPU-LLC-DDR BWMON - Set min_freq 1555 -->
         <Config
             Id="0x00001337" Enable="true" Timeout="0" Target="neo_la"
-            Resources="0x40400000, 0x1, 0x40C00000, 0x1, 0x40804000, 0XFFFF, 0x40800000, 0XFFFF"/>
+            Resources="0x40400000, 0x1, 0x40C00000, 0x1, 0x40804000, 0XFFFF, 0x40800000, 0XFFFF, 0x4303C000, 0x17BA38"/>
 
         <!-- camera close tunings-->
         <!-- MPCTLV3_ALL_CPUS_PWR_CLPS_DIS, 0x1 -->
         <!-- MPCTLV3_SCHED_BOOST, 0x1 -->
         <!-- MPCTLV3_MAX_FREQ_CLUSTER_LITTLE_CORE_0, Max value -->
         <!-- MPCTLV3_MIN_FREQ_CLUSTER_LITTLE_CORE_0, Max value -->
+		<!--CPU-LLC-DDR BWMON - Set min_freq 1555 -->
          <Config
             Id="0x00001338" Enable="true" Timeout="0" Target="neo_la"
-            Resources="0x40400000, 0x1, 0x40C00000, 0x1, 0x40804000, 0XFFFF, 0x40800000, 0XFFFF"/>
+            Resources="0x40400000, 0x1, 0x40C00000, 0x1, 0x40804000, 0XFFFF, 0x40800000, 0XFFFF, 0x4303C000, 0x17BA38"/>
 
          <!-- camera snapshot tunings-->
          <!-- MPCTLV3_ALL_CPUS_PWR_CLPS_DIS, 0x1 -->
