@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "03452a18_8d187abe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 14844
+      },
+      "writtenOn": "2023-02-11T19:04:03Z",
+      "side": 1,
+      "message": "Works fine on nx563j",
+      "revId": "ef6a4da95c7dee3a97bf2d950d07ffd95992cd38",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
