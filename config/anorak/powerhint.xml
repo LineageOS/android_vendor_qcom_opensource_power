@@ -88,14 +88,14 @@
         <!-- P CPU - PRIME CPU min freq ~.691 Ghz-->
         <!-- P CPU - PRIME CPU max freq ~1.9 Ghz -->
         <!-- GPU - min pwrlevel 5 (freq 285 Mhz) -->
-        <!-- GPU - max pwrlevel 5 (freq 285 Mhz) -->
+        <!-- GPU - max pwrlevel 0 (freq 681 Mhz) -->
         <!-- Min Big CPUs 3 -->
         <!-- Min Prime CPUs 1 -->
         <!-- Indefinite Duration -->
         <Config
             Id="0x0000130A" Enable="true" Target="anorak" Timeout="0"
             Resources="0x40800000, 0x2B3, 0x40804000, 0x780, 0x40800100, 0x253, 0x40804100, 0x506,
-            0x40800200, 0x2B3, 0x40804200, 0x780, 0x42804000, 0x5, 0x42808000, 0x5, 0x41000000, 0x3,
+            0x40800200, 0x2B3, 0x40804200, 0x780, 0x42804000, 0x5, 0x42808000, 0x0, 0x41000000, 0x3,
             0x41000200, 0x1"/>
 
         <!-- qvr level cpu1 gpu2 -->
@@ -106,14 +106,14 @@
         <!-- P CPU - PRIME CPU min freq ~.691 Ghz-->
         <!-- P CPU - PRIME CPU max freq ~1.9 Ghz -->
         <!-- GPU - min pwrlevel 5 (freq 285 Mhz) -->
-        <!-- GPU - max pwrlevel 5 (freq 285 Mhz) -->
+        <!-- GPU - max pwrlevel 0 (freq 681 Mhz) -->
         <!-- Min Big CPUs 3 -->
         <!-- Min Prime CPUs 1 -->
         <!-- Indefinite Duration -->
         <Config
             Id="0x0000130B" Enable="true" Target="anorak" Timeout="0"
             Resources="0x40800000, 0x2B3, 0x40804000, 0x780, 0x40800100, 0x253, 0x40804100, 0x506,
-            0x40800200, 0x2B3, 0x40804200, 0x780, 0x42804000, 0x5, 0x42808000, 0x5, 0x41000000, 0x3,
+            0x40800200, 0x2B3, 0x40804200, 0x780, 0x42804000, 0x5, 0x42808000, 0x0, 0x41000000, 0x3,
             0x41000200, 0x1"/>
 
         <!-- qvr level cpu1 gpu3 -->
@@ -124,14 +124,14 @@
         <!-- P CPU - PRIME CPU min freq ~.691 Ghz-->
         <!-- P CPU - PRIME CPU max freq ~1.9 Ghz -->
         <!-- GPU - min pwrlevel 5 (freq 285 Mhz) -->
-        <!-- GPU - max pwrlevel 5 (freq 285 Mhz) -->
+        <!-- GPU - max pwrlevel 0 (freq 681 Mhz) -->
         <!-- Min Big CPUs 3 -->
         <!-- Min Prime CPUs 1 -->
         <!-- Indefinite Duration -->
         <Config
             Id="0x0000130C" Enable="true" Target="anorak" Timeout="0"
             Resources="0x40800000, 0x2B3, 0x40804000, 0x780, 0x40800100, 0x253, 0x40804100, 0x506,
-            0x40800200, 0x2B3, 0x40804200, 0x780, 0x42804000, 0x5, 0x42808000, 0x5, 0x41000000, 0x3,
+            0x40800200, 0x2B3, 0x40804200, 0x780, 0x42804000, 0x5, 0x42808000, 0x0, 0x41000000, 0x3,
             0x41000200, 0x1"/>
 
         <!-- qvr level cpu2 gpu1 -->
@@ -142,14 +142,14 @@
         <!-- P CPU - PRIME CPU min freq ~.691 Ghz-->
         <!-- P CPU - PRIME CPU max freq ~1.9 Ghz -->
         <!-- GPU - min pwrlevel 5 (freq 285 Mhz) -->
-        <!-- GPU - max pwrlevel 5 (freq 285 Mhz) -->
+        <!-- GPU - max pwrlevel 0 (freq 681 Mhz) -->
         <!-- Min Big CPUs 3 -->
         <!-- Min Prime CPUs 1 -->
         <!-- Indefinite Duration -->
         <Config
             Id="0x0000130D" Enable="true" Target="anorak" Timeout="0"
             Resources="0x40800000, 0x2B3, 0x40804000, 0x780, 0x40800100, 0x253, 0x40804100, 0x506,
-            0x40800200, 0x2B3, 0x40804200, 0x780, 0x42804000, 0x5, 0x42808000, 0x5, 0x41000000, 0x3,
+            0x40800200, 0x2B3, 0x40804200, 0x780, 0x42804000, 0x5, 0x42808000, 0x0, 0x41000000, 0x3,
             0x41000200, 0x1"/>
 
         <!-- qvr level cpu2 gpu2 -->
@@ -160,14 +160,14 @@
         <!-- P CPU - PRIME CPU min freq ~.691 Ghz-->
         <!-- P CPU - PRIME CPU max freq ~1.9 Ghz -->
         <!-- GPU - min pwrlevel 5 (freq 285 Mhz) -->
-        <!-- GPU - max pwrlevel 5 (freq 285 Mhz) -->
+        <!-- GPU - max pwrlevel 0 (freq 681 Mhz) -->
         <!-- Min Big CPUs 3 -->
         <!-- Min Prime CPUs 1 -->
         <!-- Indefinite Duration -->
         <Config
             Id="0x0000130E" Enable="true" Target="anorak" Timeout="0"
             Resources="0x40800000, 0x2B3, 0x40804000, 0x780, 0x40800100, 0x253, 0x40804100, 0x506,
-            0x40800200, 0x2B3, 0x40804200, 0x780, 0x42804000, 0x5, 0x42808000, 0x5, 0x41000000, 0x3,
+            0x40800200, 0x2B3, 0x40804200, 0x780, 0x42804000, 0x5, 0x42808000, 0x0, 0x41000000, 0x3,
             0x41000200, 0x1"/>
 
         <!-- qvr level cpu2 gpu3 -->
@@ -178,14 +178,14 @@
         <!-- P CPU - PRIME CPU min freq ~.691 Ghz-->
         <!-- P CPU - PRIME CPU max freq ~1.9 Ghz -->
         <!-- GPU - min pwrlevel 5 (freq 285 Mhz) -->
-        <!-- GPU - max pwrlevel 5 (freq 285 Mhz) -->
+        <!-- GPU - max pwrlevel 0 (freq 681 Mhz) -->
         <!-- Min Big CPUs 3 -->
         <!-- Min Prime CPUs 1 -->
         <!-- Indefinite Duration -->
         <Config
             Id="0x0000130F" Enable="true" Target="anorak" Timeout="0"
             Resources="0x40800000, 0x2B3, 0x40804000, 0x780, 0x40800100, 0x253, 0x40804100, 0x506,
-            0x40800200, 0x2B3, 0x40804200, 0x780, 0x42804000, 0x5, 0x42808000, 0x5, 0x41000000, 0x3,
+            0x40800200, 0x2B3, 0x40804200, 0x780, 0x42804000, 0x5, 0x42808000, 0x0, 0x41000000, 0x3,
             0x41000200, 0x1"/>
 
         <!-- qvr level cpu3 gpu1 -->
@@ -196,14 +196,14 @@
         <!-- P CPU - PRIME CPU min freq ~.691 Ghz-->
         <!-- P CPU - PRIME CPU max freq ~1.9 Ghz -->
         <!-- GPU - min pwrlevel 5 (freq 285 Mhz) -->
-        <!-- GPU - max pwrlevel 5 (freq 285 Mhz) -->
+        <!-- GPU - max pwrlevel 0 (freq 681 Mhz) -->
         <!-- Min Big CPUs 3 -->
         <!-- Min Prime CPUs 1 -->
         <!-- Indefinite Duration -->
         <Config
             Id="0x00001310" Enable="true" Target="anorak" Timeout="0"
             Resources="0x40800000, 0x2B3, 0x40804000, 0x780, 0x40800100, 0x253, 0x40804100, 0x506,
-            0x40800200, 0x2B3, 0x40804200, 0x780, 0x42804000, 0x5, 0x42808000, 0x5, 0x41000000, 0x3,
+            0x40800200, 0x2B3, 0x40804200, 0x780, 0x42804000, 0x5, 0x42808000, 0x0, 0x41000000, 0x3,
             0x41000200, 0x1"/>
 
         <!-- qvr level cpu3 gpu2 -->
@@ -214,14 +214,14 @@
         <!-- P CPU - PRIME CPU min freq ~.691 Ghz-->
         <!-- P CPU - PRIME CPU max freq ~1.9 Ghz -->
         <!-- GPU - min pwrlevel 5 (freq 285 Mhz) -->
-        <!-- GPU - max pwrlevel 5 (freq 285 Mhz) -->
+        <!-- GPU - max pwrlevel 0 (freq 681 Mhz) -->
         <!-- Min Big CPUs 3 -->
         <!-- Min Prime CPUs 1 -->
         <!-- Indefinite Duration -->
         <Config
             Id="0x00001311" Enable="true" Target="anorak" Timeout="0"
             Resources="0x40800000, 0x2B3, 0x40804000, 0x780, 0x40800100, 0x253, 0x40804100, 0x506,
-            0x40800200, 0x2B3, 0x40804200, 0x780, 0x42804000, 0x5, 0x42808000, 0x5, 0x41000000, 0x3,
+            0x40800200, 0x2B3, 0x40804200, 0x780, 0x42804000, 0x5, 0x42808000, 0x0, 0x41000000, 0x3,
             0x41000200, 0x1"/>
 
         <!-- qvr level cpu3 gpu3 -->
@@ -232,14 +232,14 @@
         <!-- P CPU - PRIME CPU min freq ~.691 Ghz-->
         <!-- P CPU - PRIME CPU max freq ~1.9 Ghz -->
         <!-- GPU - min pwrlevel 5 (freq 285 Mhz) -->
-        <!-- GPU - max pwrlevel 5 (freq 285 Mhz) -->
+        <!-- GPU - max pwrlevel 0 (freq 681 Mhz) -->
         <!-- Min Big CPUs 3 -->
         <!-- Min Prime CPUs 1 -->
         <!-- Indefinite Duration -->
         <Config
             Id="0x00001312" Enable="true" Target="anorak" Timeout="0"
             Resources="0x40800000, 0x2B3, 0x40804000, 0x780, 0x40800100, 0x253, 0x40804100, 0x506,
-            0x40800200, 0x2B3, 0x40804200, 0x780, 0x42804000, 0x5, 0x42808000, 0x5, 0x41000000, 0x3,
+            0x40800200, 0x2B3, 0x40804200, 0x780, 0x42804000, 0x5, 0x42808000, 0x0, 0x41000000, 0x3,
             0x41000200, 0x1"/>
 
         <!--camera ZSLPreview-->
