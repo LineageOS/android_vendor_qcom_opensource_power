@@ -632,14 +632,13 @@
 
          <!-- camera close tunings-->
          <!-- MPCTLV3_ALL_CPUS_PWR_CLPS_DIS, 0x1 -->
-         <!-- MPCTLV3_SCHED_BOOST, 0x1 -->
          <!-- MPCTLV3_MAX_FREQ_CLUSTER_BIG_CORE_0, ~2.1 Ghz -->
          <!-- MPCTLV3_MIN_FREQ_CLUSTER_BIG_CORE_0, ~2.1 Ghz -->
          <!-- MPCTLV3_MAX_FREQ_CLUSTER_LITTLE_CORE_0,~1.8 Ghz -->
          <!-- MPCTLV3_MIN_FREQ_CLUSTER_LITTLE_CORE_0, ~1.8 Ghz -->
          <Config
              Id="0x00001338" Enable="true" Timeout="0" Target="ravelin"
-             Resources="0x40400000, 0x1, 0x40C00000, 0x1, 0x40804000, 0X834, 0x40800000, 0X834,
+             Resources="0x40400000, 0x1, 0x40804000, 0X834, 0x40800000, 0X834,
              0x40804100, 0X708, 0x40800100, 0X708"/>
 
          <!-- camera snapshot tunings-->
