@@ -106,6 +106,26 @@
             0x40CE0000, 0x0023001E, 0x40CF4000, 0x0023001E, 0x41000000, 0x4, 0x43048000, 0x32,
             0x43020000, 100, 0x4303C000, 0x17BA38"/>
 
+        <!-- camera sHDR -->
+        <!--L CPU SCHED LOAD BOOST -->
+        <!--B CPU SCHED LOAD BOOST -->
+        <!--L CPU Hispeed freq of 940Mhz -->
+        <!--L CPU - Set hispeed load 95 -->
+        <!--CPU-DDR BWMON - Set sample_ms 33 -->
+        <!--L CPU Min Freq 940Mhz, Max Freq 1.5Ghz -->
+        <!--Sched downmigrate/group_downmigrate 40, Upmigrate/group_upmigrate 45 -->
+        <!--B CPU core ctl min cpus 4 -->
+        <!--AB_SCALE - 50 -->
+        <!--CPU-DDR BWMON - io percent 100 -->
+        <!--CPU-LLC-DDR BWMON - Set min_freq 1555 -->
+        <Config
+            Id="0x00001340" Enable="true" Timeout="0" Target="parrot"
+            Resources="0x40C68100, -10, 0x40C68000, -10, 0x4143C100, 940, 0x41440100, 0x5F,
+            0x43034000, 0x21, 0x40800100, 940, 0x40804100, 1497, 0x40CE0000, 0x002D0028,
+            0x40CF4000, 0x002D0028, 0x41000000, 0x4, 0x43048000, 0x32, 0x43020000, 100,
+            0x4303C000, 0x17BA38"/>
+
+
         <!-- camera HFR -->
         <!--L CPU CORE 0 SCHED LOAD BOOST -->
         <!--B CPU SCHED LOAD BOOST -->
@@ -410,6 +430,26 @@
             Id="0x00001332" Enable="true" Timeout="0" Target="ravelin"
             Resources="0x40C68100, -10, 0x40C68000, -10, 0x43034000, 0x21, 0x40804100, 1804,
             0x41000100, 6, 0x43048000, 0x32, 0x43020000, 100, 0x4303C000, 0x17BA38"/>
+
+        <!-- camera sHDR -->
+        <!--L CPU SCHED LOAD BOOST -->
+        <!--B CPU SCHED LOAD BOOST -->
+        <!--L CPU Hispeed freq of 940Mhz -->
+        <!--L CPU - Set hispeed load 95 -->
+        <!--CPU-DDR BWMON - Set sample_ms 33 -->
+        <!--L CPU Min Freq 940Mhz, Max Freq 1.5Ghz -->
+        <!--Sched downmigrate/group_downmigrate 40, Upmigrate/group_upmigrate 45 -->
+        <!--B CPU core ctl min cpus 4 -->
+        <!--AB_SCALE - 50 -->
+        <!--CPU-DDR BWMON - io percent 100 -->
+        <!--CPU-LLC-DDR BWMON - Set min_freq 1555 -->
+        <Config
+            Id="0x00001340" Enable="true" Timeout="0" Target="ravelin"
+            Resources="0x40C68100, -10, 0x40C68000, -10, 0x4143C100, 940, 0x41440100, 0x5F,
+            0x43034000, 0x21, 0x40800100, 940, 0x40804100, 1497, 0x40CE0000, 0x002D0028,
+            0x40CF4000, 0x002D0028, 0x41000000, 0x4, 0x43048000, 0x32, 0x43020000, 100,
+            0x4303C000, 0x17BA38"/>
+
 
         <!-- camera HFR -->
         <!--L CPU CORE 0 SCHED LOAD BOOST -->
