@@ -108,7 +108,11 @@ LOCAL_INIT_RC := android.hardware.power-service.rc
 LOCAL_MODULE_TAGS := optional
 LOCAL_CFLAGS += -Wno-unused-parameter -Wno-unused-variable
 LOCAL_VENDOR_MODULE := true
+ifeq ($(PLATFORM_SDK_VERSION), 34)
+LOCAL_VINTF_FRAGMENTS := /vintf/sdk34/power.xml
+else
 LOCAL_VINTF_FRAGMENTS := power.xml
+endif
 include $(BUILD_EXECUTABLE)
 endif
 
