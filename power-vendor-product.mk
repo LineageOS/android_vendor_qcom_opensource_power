@@ -21,4 +21,6 @@ else ifeq ($(TARGET_BOARD_PLATFORM),kalama)
 PRODUCT_COPY_FILES += vendor/qcom/opensource/power/config/kalama/powerhint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.xml
 else ifeq ($(TARGET_BOARD_PLATFORM),pineapple)
 PRODUCT_COPY_FILES += vendor/qcom/opensource/power/config/pineapple/powerhint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.xml
+else ifeq ($(TARGET_BOARD_PLATFORM),crow)
+PRODUCT_COPY_FILES += vendor/qcom/opensource/power/config/crow/powerhint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.xml
 endif
