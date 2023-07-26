@@ -106,10 +106,6 @@ ifeq ($(call is-board-platform-in-list,qcs605), true)
 LOCAL_SRC_FILES += power-710.c
 endif
 
-ifeq ($(call is-board-platform-in-list,msmnile), true)
-LOCAL_SRC_FILES += power-msmnile.c
-endif
-
 endif # End of board specific list
 
 ifneq ($(TARGET_POWERHAL_MODE_EXT),)
