@@ -45,6 +45,13 @@ extern "C" {
 
 enum CPU_GOV_CHECK { CPU0 = 0, CPU1 = 1, CPU2 = 2, CPU3 = 3 };
 
+enum INTERACTION_STATE {
+    INTERACTION_STATE_UNINITIALIZED,
+    INTERACTION_STATE_IDLE,
+    INTERACTION_STATE_INTERACTION,
+    INTERACTION_STATE_WAITING,
+};
+
 void power_init(void);
 void power_hint(power_hint_t hint, void* data);
 bool is_expensive_rendering_supported();
