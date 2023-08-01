@@ -122,6 +122,12 @@ ndk::ScopedAStatus Power::isModeSupported(Mode type, bool* _aidl_return) {
 #endif
         case Mode::LAUNCH:
         case Mode::EXPENSIVE_RENDERING:
+            if (is_expensive_rendering_supported()) {
+                *_aidl_return = true;
+            } else {
+                *_aidl_return = false;
+            }
+            break;
         case Mode::INTERACTIVE:
         case Mode::SUSTAINED_PERFORMANCE:
         case Mode::FIXED_PERFORMANCE:

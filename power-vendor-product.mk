@@ -31,4 +31,6 @@ else ifeq ($(TARGET_BOARD_PLATFORM),neo)
 PRODUCT_COPY_FILES += vendor/qcom/opensource/power/config/neo/powerhint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.xml
 else ifeq ($(TARGET_BOARD_PLATFORM),anorak)
 PRODUCT_COPY_FILES += vendor/qcom/opensource/power/config/anorak/powerhint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.xml
+else ifeq ($(TARGET_BOARD_PLATFORM),pineapple)
+PRODUCT_COPY_FILES += vendor/qcom/opensource/power/config/pineapple/powerhint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.xml
 endif

@@ -47,6 +47,7 @@ enum CPU_GOV_CHECK { CPU0 = 0, CPU1 = 1, CPU2 = 2, CPU3 = 3 };
 
 void power_init(void);
 void power_hint(power_hint_t hint, void* data);
+bool is_expensive_rendering_supported();
 void set_expensive_rendering(bool enabled);
 void set_interactive(int on);
 

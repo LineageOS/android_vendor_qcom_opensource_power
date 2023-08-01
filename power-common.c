@@ -98,6 +98,13 @@ void power_hint(power_hint_t hint, void* data) {
     }
 }
 
+bool is_expensive_rendering_supported() {
+    char property[PROPERTY_VALUE_MAX];
+    strlcpy(property, perf_get_property("vendor.perf.expensive_rendering", "0").value,
+            PROPERTY_VALUE_MAX);
+    return atoi(property) == 1 ? true : false;
+}
+
 void set_expensive_rendering(bool enabled) {
     if (enabled) {
         handleER = perf_hint_enable(PERF_HINT_EXPENSIVE_RENDERING, 0);
