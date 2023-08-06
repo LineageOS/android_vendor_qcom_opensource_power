@@ -356,6 +356,13 @@
             0x43004000, 0x64, 0x43008000, 0, 0x40800100, 0x3E6, 0x41444100, 0, 0x41440100,
             0x63,0x43420000, 0xC8"/>
 
+        <!-- Expensive Rendering -->
+        <!-- GPU - min pwrlevel 9 (freq 315 Mhz) -->
+        <!-- GPU - max pwrlevel 5 (freq 540 Mhz) -->
+        <Config
+            Id="0x000010A5" Enable="true" Timeout="0" Target="lahaina"
+            Resources="0x42804000, 0x9, 0x42808000, 0x5"/>
+
         <!--camera preview -->
         <!--L CPU CORE 0 SCHED LOAD BOOST -->
         <!--L CPU CORE 1 SCHED LOAD BOOST -->
