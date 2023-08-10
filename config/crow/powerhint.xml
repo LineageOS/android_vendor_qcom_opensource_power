@@ -82,15 +82,15 @@
         <!--L CPU - Disable schedutil PL -->
         <!--B CPU - Disable schedutil PL -->
         <!--B CPU - Set hispeed load 99 -->
-        <!--UPMIGRATE - 45 85 -->
-        <!--DOWNMIGRATE - 40 85 -->
+        <!--UPMIGRATE - 35 85 -->
+        <!--DOWNMIGRATE - 30 85 -->
         <!--B CPU - Disable Core Control -->
         <!--AB_SCALE - 50-->
         <Config
             Id="0x00001331" Enable="true" Timeout="0" Target="crow"
             Resources="0x4183C000, 0x21, 0x41834000, 0x64, 0x41838000, 0, 0x41848000, 0xE3C88, 0x43034000, 0x21,
             0x43020000, 0x64, 0x43024000, 0, 0x4303C000, 0x858B8 ,0x40804100, 0x386, 0x41444100, 0, 0x41444000, 0, 0x41440000, 0x63,
-            0x40CE0000, 0x002D0028, 0x40CE0200, 0x00550055, 0x41008000, 0, 0x43048000, 0x32"/>
+            0x40CE0000, 0x0023001E, 0x40CE0200, 0x00550055, 0x41008000, 0, 0x43048000, 0x32"/>
 
         <!--camera 60fps-->
         <!--CPU-LLC BWMON - Set sample_ms 16 -->
@@ -360,29 +360,28 @@
         <!-- MPCTLV3_MIN_FREQ_CLUSTER_BIG_CORE_0, ~1.804 Ghz -->
         <!-- MPCTLV3_MAX_FREQ_CLUSTER_LITTLE_CORE_0, ~1.651 Ghz -->
         <!-- MPCTLV3_MIN_FREQ_CLUSTER_LITTLE_CORE_0, ~1.651 Ghz -->
-        <!-- MPCTLV3_MIN_FREQ_CLUSTER_PLUS_CORE_0, ~1.804 Ghz -->
-        <!-- MPCTLV3_MAX_FREQ_CLUSTER_PLUS_CORE_0, ~1.804 Ghz-->
+        <!-- MPCTLV3_MIN_FREQ_CLUSTER_PLUS_CORE_0, ~2.169 Ghz -->
+        <!-- MPCTLV3_MAX_FREQ_CLUSTER_PLUS_CORE_0, ~2.169 Ghz-->
         <!-- CPU-LLC BWMON - Set max freq 933mhz -->
         <Config
             Id="0x00001337" Enable="true" Timeout="0" Target="crow"
             Resources="0x40400000, 0x1, 0x40C00000, 0x1, 0x40804000, 0X70C, 0x40800000, 0X70C,
-            0x40804100, 0X673, 0x40800100, 0X673, 0x40800200, 0X70C, 0x40804200, 0X70C,
+            0x40804100, 0X673, 0x40800100, 0X673, 0x40800200, 0X879, 0x40804200, 0X879,
             0x41848000, 0xE3C88"/>
 
         <!-- camera close tunings-->
         <!-- MPCTLV3_ALL_CPUS_PWR_CLPS_DIS, 0x1 -->
-        <!-- MPCTLV3_SCHED_BOOST, 0x1 -->
         <!-- MPCTLV3_MAX_FREQ_CLUSTER_BIG_CORE_0,  ~1.804 Ghz -->
         <!-- MPCTLV3_MIN_FREQ_CLUSTER_BIG_CORE_0, ~1.804 Ghz -->
         <!-- MPCTLV3_MAX_FREQ_CLUSTER_LITTLE_CORE_0, ~1.651 Ghz -->
         <!-- MPCTLV3_MIN_FREQ_CLUSTER_LITTLE_CORE_0, ~1.651 Ghz -->
-        <!-- MPCTLV3_MIN_FREQ_CLUSTER_PLUS_CORE_0, ~1.804 Ghz -->
-        <!-- MPCTLV3_MAX_FREQ_CLUSTER_PLUS_CORE_0, ~1.804 Ghz -->
+        <!-- MPCTLV3_MIN_FREQ_CLUSTER_PLUS_CORE_0, ~2.169 Ghz -->
+        <!-- MPCTLV3_MAX_FREQ_CLUSTER_PLUS_CORE_0, ~2.169 Ghz -->
         <!-- CPU-LLC BWMON - Set max freq 933mhz -->
          <Config
             Id="0x00001338" Enable="true" Timeout="0" Target="crow"
-            Resources="0x40400000, 0x1, 0x40C00000, 0x1, 0x40804000, 0X70C, 0x40800000, 0X70C,
-            0x40804100, 0X673, 0x40800100, 0X673, 0x40800200, 0X70C, 0x40804200, 0X70C,
+            Resources="0x40400000, 0x1, 0x40804000, 0X70C, 0x40800000, 0X70C,
+            0x40804100, 0X673, 0x40800100, 0X673, 0x40800200, 0X879, 0x40804200, 0X879,
             0x41848000, 0xE3C88"/>
 
          <!-- camera snapshot tunings-->
