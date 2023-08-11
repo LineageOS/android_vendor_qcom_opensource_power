@@ -31,15 +31,3 @@ ndk::ScopedAStatus PowerHintSessionImpl::resume(){
 ndk::ScopedAStatus PowerHintSessionImpl::close(){
         return ndk::ScopedAStatus::ok();
 }
-#if (PLATFORM_SDK_VERSION >= 34)
-ndk::ScopedAStatus PowerHintSessionImpl::sendHint(aidl::android::hardware::power::SessionHint hint){
-        return ndk::ScopedAStatus::ok();
-}
-ndk::ScopedAStatus PowerHintSessionImpl::setThreads(const std::vector<int32_t>& threadIds){
-    if (threadIds.size() == 0) {
-        LOG(ERROR) << "Error: threadIds.size() shouldn't be " << threadIds.size();
-        return ndk::ScopedAStatus::fromExceptionCode(EX_ILLEGAL_ARGUMENT);
-    }
-    return ndk::ScopedAStatus::ok();
-}
-#endif
