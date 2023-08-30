@@ -174,7 +174,6 @@ const int kMaxLaunchDuration = 5000;         /* ms */
 
 static void process_interaction_hint(void* data) {
     static struct timespec s_previous_boost_timespec;
-    static int s_previous_duration = 0;
 
     struct timespec cur_boost_timespec;
     long long elapsed_time;
@@ -198,7 +197,6 @@ static void process_interaction_hint(void* data) {
         return;
     }
     s_previous_boost_timespec = cur_boost_timespec;
-    s_previous_duration = duration;
 
     if (duration >= kMinFlingDuration) {
         interaction(duration, ARRAY_SIZE(resources_interaction_fling_boost),
