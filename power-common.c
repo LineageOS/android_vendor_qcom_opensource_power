@@ -66,7 +66,6 @@ void power_init() {
 
 void process_interaction_hint(void* data) {
     static struct timespec s_previous_boost_timespec;
-    static int s_previous_duration = 0;
     static int prev_interaction_handle = -1;
 
     struct timespec cur_boost_timespec;
@@ -91,7 +90,6 @@ void process_interaction_hint(void* data) {
         return;
     }
     s_previous_boost_timespec = cur_boost_timespec;
-    s_previous_duration = duration;
 
     int interaction_handle =
             perf_hint_enable_with_type(VENDOR_HINT_SCROLL_BOOST, duration, SCROLL_VERTICAL);
