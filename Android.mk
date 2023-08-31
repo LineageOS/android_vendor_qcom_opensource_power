@@ -8,16 +8,7 @@ include $(CLEAR_VARS)
 
 LOCAL_MODULE_RELATIVE_PATH := hw
 # KEYSTONE(I1132378f14428bf511f3cea4f419e90a6e89f823,b/181709127)
-LOCAL_SHARED_LIBRARIES := liblog libcutils libdl libxml2 libbase libutils libbinder_ndk
-
-ifeq ($(call math_gt_or_eq, 33, $(PLATFORM_SDK_VERSION)), true)
-    LOCAL_SHARED_LIBRARIES += android.hardware.power-V3-ndk
-endif
-ifeq ($(call math_gt_or_eq, 34, $(PLATFORM_SDK_VERSION)), true)
-    LOCAL_SHARED_LIBRARIES += android.hardware.power-V4-ndk
-else
-    LOCAL_SHARED_LIBRARIES += android.hardware.power-V1-ndk_platform
-endif
+LOCAL_SHARED_LIBRARIES := liblog libcutils libdl libxml2 libbase libutils libbinder_ndk android.hardware.power-V3-ndk
 
 LOCAL_HEADER_LIBRARIES += libutils_headers
 LOCAL_HEADER_LIBRARIES += libhardware_headers
@@ -82,12 +73,6 @@ ifeq ($(call is-board-platform-in-list,qcs605), true)
 LOCAL_SRC_FILES += power-710.c
 endif
 
-ifeq ($(call is-board-platform-in-list,trinket), true)
-LOCAL_SHARED_LIBRARIES := liblog libcutils libdl libxml2
-LOCAL_SRC_FILES := power.c metadata-parser.c utils.c list.c hint-data.c powerhintparser.c
-LOCAL_SRC_FILES += power-6125.c
-endif
-
 ifeq ($(call is-board-platform-in-list,msmnile), true)
 LOCAL_SRC_FILES += power-msmnile.c
 endif
@@ -96,25 +81,11 @@ ifeq ($(TARGET_USES_INTERACTION_BOOST),true)
     LOCAL_CFLAGS += -DINTERACTION_BOOST
 endif
 
-ifeq ($(call is-board-platform-in-list,trinket), true)
-LOCAL_MODULE := power.qcom
-LOCAL_MODULE_TAGS := optional
-LOCAL_CFLAGS += -Wno-unused-parameter -Wno-unused-variable
-LOCAL_VENDOR_MODULE := true
-include $(BUILD_SHARED_LIBRARY)
-else
 LOCAL_MODULE := android.hardware.power-service
 LOCAL_INIT_RC := android.hardware.power-service.rc
 LOCAL_MODULE_TAGS := optional
 LOCAL_CFLAGS += -Wno-unused-parameter -Wno-unused-variable
 LOCAL_VENDOR_MODULE := true
-ifeq ($(PLATFORM_SDK_VERSION), 34)
-LOCAL_VINTF_FRAGMENTS := /vintf/sdk34/power.xml
-else
 LOCAL_VINTF_FRAGMENTS := power.xml
-endif
 include $(BUILD_EXECUTABLE)
-endif
-
-
 endif
