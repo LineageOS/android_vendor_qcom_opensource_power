@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b8e6001_dd5e2299",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 14048
+      },
+      "writtenOn": "2023-09-01T19:26:58Z",
+      "side": 1,
+      "message": "This service compiles against the v1 interface, updating only the vintf entry to 3 causes a vts failure.",
+      "revId": "a388f4d628289d7caa713e2219d4c52bc467b801",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
