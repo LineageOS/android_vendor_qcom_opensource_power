@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "32ccd6eb_81948de8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2023-09-03T14:13:36Z",
+      "side": 1,
+      "message": "The following HALs in device manifest are not declared in FCM \u003c\u003d level 7: \n  android.hardware.power.IPower/default (@1)\nERROR: files are incompatible: Device manifest and framework compatibility matrix are incompatible: HALs incompatible. Matrix level \u003d 7. Manifest level \u003d 7. The following requirements are no\nt met:\nandroid.hardware.power:\n    required: IPower/default (@2-3)\n    provided: IPower/default (@1)",
+      "revId": "61483564e4ae067fc779aff741811573626c8fc4",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
