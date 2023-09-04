@@ -16,6 +16,23 @@
       "message": "The following HALs in device manifest are not declared in FCM \u003c\u003d level 7: \n  android.hardware.power.IPower/default (@1)\nERROR: files are incompatible: Device manifest and framework compatibility matrix are incompatible: HALs incompatible. Matrix level \u003d 7. Manifest level \u003d 7. The following requirements are no\nt met:\nandroid.hardware.power:\n    required: IPower/default (@2-3)\n    provided: IPower/default (@1)",
       "revId": "61483564e4ae067fc779aff741811573626c8fc4",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "98ab7ce0_1797ef6c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 14048
+      },
+      "writtenOn": "2023-09-04T01:45:48Z",
+      "side": 1,
+      "message": "I did a diff of the power aidl interface v1 and v3, then grepped this repo for all of the added functions. Nothing matched. This repo as is does not support v3. So... don\u0027t know what to say. Either the repo needs to properly upgrade to v3 with all the necessary support or it needs to report v1 as that\u0027s all it supports.",
+      "revId": "61483564e4ae067fc779aff741811573626c8fc4",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
