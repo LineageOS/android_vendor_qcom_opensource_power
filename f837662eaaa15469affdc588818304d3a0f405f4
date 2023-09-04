@@ -16,6 +16,23 @@
       "message": "Goes along with https://review.lineageos.org/c/LineageOS/android_build_soong/+/365671.\n\nTested on salami.",
       "revId": "f837662eaaa15469affdc588818304d3a0f405f4",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "52bdb789_578b113e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 14048
+      },
+      "writtenOn": "2023-09-04T22:36:58Z",
+      "side": 1,
+      "message": "Builds and boots on moto sm8475, zeekr. Can\u0027t verify vts atm.",
+      "revId": "f837662eaaa15469affdc588818304d3a0f405f4",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
