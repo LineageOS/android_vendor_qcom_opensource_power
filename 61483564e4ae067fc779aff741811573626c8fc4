@@ -33,6 +33,24 @@
       "message": "I did a diff of the power aidl interface v1 and v3, then grepped this repo for all of the added functions. Nothing matched. This repo as is does not support v3. So... don\u0027t know what to say. Either the repo needs to properly upgrade to v3 with all the necessary support or it needs to report v1 as that\u0027s all it supports.",
       "revId": "61483564e4ae067fc779aff741811573626c8fc4",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4cbc94b8_627e0cf3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 27025
+      },
+      "writtenOn": "2023-09-04T14:49:31Z",
+      "side": 1,
+      "message": "28287: [T-Only] Add android.hardware.power-V3-ndk to VndkMustUseVendorVariantList | https://gerrit.aospa.co/c/AOSPA/android_build_soong/+/28287\n\nwe just added v3 to interface list to satisfy it for T, should be fine in U",
+      "parentUuid": "32ccd6eb_81948de8",
+      "revId": "61483564e4ae067fc779aff741811573626c8fc4",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
