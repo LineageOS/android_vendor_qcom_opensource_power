@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d5be548_7b137e52",
+        "filename": "power-common.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2023-09-05T13:52:25Z",
+      "side": 1,
+      "message": "Open bracket in the same line to align with the remaining code.",
+      "range": {
+        "startLine": 201,
+        "startChar": 0,
+        "endLine": 202,
+        "endChar": 1
+      },
+      "revId": "6625b2c9a3db25dc70aa0128038999d0a6a6faa1",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
