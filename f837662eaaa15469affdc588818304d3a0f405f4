@@ -33,6 +33,23 @@
       "message": "Builds and boots on moto sm8475, zeekr. Can\u0027t verify vts atm.",
       "revId": "f837662eaaa15469affdc588818304d3a0f405f4",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b563e5a0_97513da7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 11883
+      },
+      "writtenOn": "2023-09-08T10:18:21Z",
+      "side": 1,
+      "message": "how is qcom passing VTS lol",
+      "revId": "f837662eaaa15469affdc588818304d3a0f405f4",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
