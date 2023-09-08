@@ -50,6 +50,24 @@
       "message": "how is qcom passing VTS lol",
       "revId": "f837662eaaa15469affdc588818304d3a0f405f4",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "35927837_783e9021",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 19282
+      },
+      "writtenOn": "2023-09-08T14:31:08Z",
+      "side": 1,
+      "message": "Just saw this today when running VTS 😄\n\n```\nFor android.hardware.power.IPower/default, manifest declares version 3, but the actual version is 1. Exempted for shipping FCM version 4. (b/178458001, b/199190514)\n```",
+      "parentUuid": "b563e5a0_97513da7",
+      "revId": "f837662eaaa15469affdc588818304d3a0f405f4",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ],
   "submitRequirementResults": []
