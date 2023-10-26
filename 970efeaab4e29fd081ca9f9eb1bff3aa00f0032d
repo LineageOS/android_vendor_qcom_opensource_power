@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b682effb_2c4f6baf",
+        "filename": "android.hardware.power-service-qti.rc",
+        "patchSetId": 7
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2023-10-26T13:22:08Z",
+      "side": 1,
+      "message": "idle_time or idle_state?",
+      "range": {
+        "startLine": 7,
+        "startChar": 49,
+        "endLine": 7,
+        "endChar": 58
+      },
+      "revId": "970efeaab4e29fd081ca9f9eb1bff3aa00f0032d",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
