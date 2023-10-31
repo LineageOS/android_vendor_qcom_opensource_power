@@ -1,4 +1,22 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d86aaddf_a87db279",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 14734
+      },
+      "writtenOn": "2023-10-31T19:52:10Z",
+      "side": 1,
+      "message": "This change re-added unused variable removed in I08138ce1ac72dbabd74b5a644a7fba71ab138866",
+      "revId": "0034df33f53c5f81eea8826984e3cb4ca1d5b632",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ],
   "submitRequirementResults": []
 }
