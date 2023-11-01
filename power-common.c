@@ -86,7 +86,7 @@ void process_interaction_hint(void* data) {
     // don't hint if it's been less than 250ms since last boost
     // also detect if we're doing anything resembling a fling
     // support additional boosting in case of flings
-    if (elapsed_time < 250000 && duration <= 750) {
+    if (elapsed_time < 250000 && duration <= kMinInteractiveDuration) {
         return;
     }
     s_previous_boost_timespec = cur_boost_timespec;
