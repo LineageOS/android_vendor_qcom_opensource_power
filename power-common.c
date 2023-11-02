@@ -72,7 +72,7 @@ static int mEventFd = 0;
 const int kWaitDuration = 100;            /* ms */
 const int kMaxLaunchDuration = 5000;      /* ms */
 const int kMaxInteractiveDuration = 5000; /* ms */
-const int kMinInteractiveDuration = 500;  /* ms */
+const int kMinInteractiveDuration = 1000;  /* ms */
 
 static struct timespec s_previous_boost_timespec;
 static int s_previous_duration = 0;
