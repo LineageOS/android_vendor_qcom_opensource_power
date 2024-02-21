@@ -620,5 +620,11 @@
             0x40800100, 1113, 0x43034000, 0x32, 0x43020000, 0x64, 0x43014000, 0x0, 0x41000100, 6,
             0x40CEC000, 0x1, 0x40CA8000, 0x1"/>
 
+        <!-- Expensive Rendering -->
+        <!-- GPU - min pwrlevel 2 (freq 650 Mhz) -->
+        <Config
+            Id="0x000010A5" Enable="true" Timeout="0" Target="blair"
+            Resources="0x42804000, 0x2"/>
+
     </Powerhint>
 </HintConfigs>
