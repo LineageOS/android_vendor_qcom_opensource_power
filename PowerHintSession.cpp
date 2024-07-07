@@ -172,7 +172,7 @@ bool isSessionActive(PowerHintSessionImpl* session) {
 
 std::shared_ptr<aidl::android::hardware::power::IPowerHintSession> setPowerHintSession(
         int32_t tgid, int32_t uid, const std::vector<int32_t>& threadIds, int64_t durationNanos) {
-    LOG(INFO) << "setPowerHintSession ";
+    LOG(DEBUG) << "setPowerHintSession ";
     std::shared_ptr<aidl::android::hardware::power::IPowerHintSession> mPowerSession =
             ndk::SharedRefBase::make<PowerHintSessionImpl>(tgid, uid, threadIds, durationNanos);
 
@@ -282,7 +282,7 @@ double PowerHintSessionImpl::nextSupportedFPS(double fps) {
 
 ndk::ScopedAStatus PowerHintSessionImpl::updateTargetWorkDuration(int64_t in_targetDurationNanos) {
     // TODO: top app is game check
-    LOG(INFO) << "PowerHintSessionImpl::updateTargetWorkDuration: " << in_targetDurationNanos;
+    LOG(DEBUG) << "PowerHintSessionImpl::updateTargetWorkDuration: " << in_targetDurationNanos;
     if (in_targetDurationNanos <= 0) {
         LOG(ERROR) << "Invalid target work duration";
         return ndk::ScopedAStatus::fromExceptionCode(EX_ILLEGAL_ARGUMENT);
@@ -300,7 +300,7 @@ ndk::ScopedAStatus PowerHintSessionImpl::updateTargetWorkDuration(int64_t in_tar
 ndk::ScopedAStatus PowerHintSessionImpl::reportActualWorkDuration(
         const std::vector<::aidl::android::hardware::power::WorkDuration>& in_durations) {
     // TODO: top app is game check
-    LOG(INFO) << "PowerHintSessionImpl::reportActualWorkDuration: ";
+    LOG(DEBUG) << "PowerHintSessionImpl::reportActualWorkDuration: ";
     int64_t targetWorkDurationNanos = mTargetWorkDurationNanos;
     if (targetWorkDurationNanos == -1 || in_durations.empty()) {
         return ndk::ScopedAStatus::ok();
@@ -312,7 +312,7 @@ ndk::ScopedAStatus PowerHintSessionImpl::reportActualWorkDuration(
         }
     }
     if (mDebug)
-        LOG(INFO) << "actual = " << actualWorkDurationNanos
+        LOG(DEBUG) << "actual = " << actualWorkDurationNanos
                   << " ns, target = " << targetWorkDurationNanos
                   << " ns, last_boost = " << mTLBoostSum;
     if (actualWorkDurationNanos >= mThresholdNanos) {
@@ -330,7 +330,7 @@ ndk::ScopedAStatus PowerHintSessionImpl::reportActualWorkDuration(
 }
 
 ndk::ScopedAStatus PowerHintSessionImpl::pause() {
-    LOG(INFO) << "PowerHintSessionImpl::pause ";
+    LOG(DEBUG) << "PowerHintSessionImpl::pause ";
     if (isSessionAlive(this)) {
         sendHint(aidl::android::hardware::power::SessionHint::CPU_LOAD_RESET);
         setSessionActivity(this, false);
@@ -339,7 +339,7 @@ ndk::ScopedAStatus PowerHintSessionImpl::pause() {
 }
 
 ndk::ScopedAStatus PowerHintSessionImpl::resume() {
-    LOG(INFO) << "PowerHintSessionImpl::resume ";
+    LOG(DEBUG) << "PowerHintSessionImpl::resume ";
     if (isSessionAlive(this)) {
         sendHint(aidl::android::hardware::power::SessionHint::CPU_LOAD_RESUME);
         setSessionActivity(this, true);
@@ -348,7 +348,7 @@ ndk::ScopedAStatus PowerHintSessionImpl::resume() {
 }
 
 ndk::ScopedAStatus PowerHintSessionImpl::close() {
-    LOG(INFO) << "PowerHintSessionImpl::close ";
+    LOG(DEBUG) << "PowerHintSessionImpl::close ";
 
     if (isSessionAlive(this)) {
         sendHint(aidl::android::hardware::power::SessionHint::CPU_LOAD_RESET);
@@ -365,7 +365,7 @@ ndk::ScopedAStatus PowerHintSessionImpl::close() {
 
 ndk::ScopedAStatus PowerHintSessionImpl::sendHint(
         aidl::android::hardware::power::SessionHint hint) {
-    LOG(INFO) << "PowerHintSessionImpl::sendHint ";
+    LOG(DEBUG) << "PowerHintSessionImpl::sendHint ";
     if (!isSessionActive(this)) return ndk::ScopedAStatus::fromExceptionCode(EX_ILLEGAL_STATE);
     switch (hint) {
         case aidl::android::hardware::power::SessionHint::CPU_LOAD_UP:
@@ -389,7 +389,7 @@ ndk::ScopedAStatus PowerHintSessionImpl::sendHint(
     return ndk::ScopedAStatus::ok();
 }
 ndk::ScopedAStatus PowerHintSessionImpl::setThreads(const std::vector<int32_t>& threadIds) {
-    LOG(INFO) << "PowerHintSessionImpl::setThreads "
+    LOG(DEBUG) << "PowerHintSessionImpl::setThreads "
               << printThreads(threadIds, static_cast<int>(threadIds.size()));
     if (threadIds.size() == 0) {
         LOG(ERROR) << "Threads list is empty";
@@ -413,7 +413,7 @@ ndk::ScopedAStatus PowerHintSessionImpl::setMode(aidl::android::hardware::power:
     // TODO: top app is game check
     switch (mode) {
         case aidl::android::hardware::power::SessionMode::POWER_EFFICIENCY:
-            LOG(INFO) << "PowerHintSessionImpl::setMode: mode = POWER_EFFICIENCY, enabled = "
+            LOG(DEBUG) << "PowerHintSessionImpl::setMode: mode = POWER_EFFICIENCY, enabled = "
                       << enabled;
             releaseLowCpuUtil();
             if (enabled) {
