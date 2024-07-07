@@ -157,13 +157,11 @@ void PowerHintSessionImpl::resumeThreadPipelining() {
 }
 
 ndk::ScopedAStatus PowerHintSessionImpl::updateTargetWorkDuration(int64_t in_targetDurationNanos) {
-    LOG(INFO) << "updateTargetWorkDuration " << in_targetDurationNanos;
     return ndk::ScopedAStatus::ok();
 }
 
 ndk::ScopedAStatus PowerHintSessionImpl::reportActualWorkDuration(
         const std::vector<::aidl::android::hardware::power::WorkDuration>& in_durations) {
-    LOG(INFO) << "reportActualWorkDuration ";
     return ndk::ScopedAStatus::ok();
 }
 
