@@ -223,6 +223,8 @@ ndk::ScopedAStatus PowerHintSessionImpl::sendHint(
         case aidl::android::hardware::power::SessionHint::POWER_EFFICIENCY:
             perfBoost(-20, LOAD_DOWN);
             break;
+        default:
+            break;
     }
     return ndk::ScopedAStatus::ok();
 }
