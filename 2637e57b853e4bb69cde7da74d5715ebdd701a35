@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7b6b039_099add99",
+        "filename": "Power.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 10067
+      },
+      "writtenOn": "2025-01-30T11:47:49Z",
+      "side": 1,
+      "message": "```suggestion\n        while (stubQueue.readBlocking(\u0026data, 1, 0));\n```",
+      "range": {
+        "startLine": 209,
+        "startChar": 8,
+        "endLine": 210,
+        "endChar": 9
+      },
+      "revId": "2637e57b853e4bb69cde7da74d5715ebdd701a35",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "656fdf44_070f5e1e",
+        "filename": "Power.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 10067
+      },
+      "writtenOn": "2025-01-30T11:47:49Z",
+      "side": 1,
+      "message": "```suggestion\n    ndk::ScopedAStatus createHintSessionWithConfig(\n```",
+      "revId": "2637e57b853e4bb69cde7da74d5715ebdd701a35",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf65019f_62f407b0",
+        "filename": "Power.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 10067
+      },
+      "writtenOn": "2025-01-30T11:47:49Z",
+      "side": 1,
+      "message": "```suggestion\n    ndk::ScopedAStatus getSessionChannel(int32_t tgid, int32_t uid,\n                                         ChannelConfig* _aidl_return) override;\n    ndk::ScopedAStatus closeSessionChannel(int32_t tgid, int32_t uid) override;\n```",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 77
+      },
+      "revId": "2637e57b853e4bb69cde7da74d5715ebdd701a35",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7a7d389_336f224d",
+        "filename": "PowerHintSession.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 10067
+      },
+      "writtenOn": "2025-01-30T11:47:49Z",
+      "side": 1,
+      "message": "```suggestion\n    return ndk::ScopedAStatus::ok();\n```",
+      "revId": "2637e57b853e4bb69cde7da74d5715ebdd701a35",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
