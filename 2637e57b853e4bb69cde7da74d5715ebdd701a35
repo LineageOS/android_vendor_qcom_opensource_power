@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f56b5540_254a3bcb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 10258
+      },
+      "writtenOn": "2025-01-30T11:54:21Z",
+      "side": 1,
+      "message": "this snippet is extracted from vendor/qcom/opensource/power found in asus code release, we can wait for CLO",
+      "revId": "2637e57b853e4bb69cde7da74d5715ebdd701a35",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b7b6b039_099add99",
