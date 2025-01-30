@@ -222,6 +222,8 @@ ndk::ScopedAStatus PowerHintSessionImpl::sendHint(
         case aidl::android::hardware::power::SessionHint::POWER_EFFICIENCY:
             perfBoost(-20, LOAD_DOWN);
             break;
+        default:
+            break;
     }
     return ndk::ScopedAStatus::ok();
 }
@@ -242,5 +244,14 @@ ndk::ScopedAStatus PowerHintSessionImpl::setThreads(const std::vector<int32_t>& 
     mThreadIds = threadIds;
     mThreadHandle = setThreadPipelining(mThreadIds);
 
+    return ndk::ScopedAStatus::ok();
+}
+
+ndk::ScopedAStatus PowerHintSessionImpl::setMode(aidl::android::hardware::power::SessionMode mode, bool enabled) {
+	return ndk::ScopedAStatus::ok();
+}
+
+ndk::ScopedAStatus PowerHintSessionImpl::getSessionConfig(aidl::android::hardware::power::SessionConfig* _aidl_return) {
+    _aidl_return->id = 1;
     return ndk::ScopedAStatus::ok();
 }

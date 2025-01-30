@@ -11,9 +11,10 @@ LOCAL_SHARED_LIBRARIES := \
     libcutils \
     libdl \
     libbase \
+    libfmq \
     libutils \
     libbinder_ndk \
-    android.hardware.power-V4-ndk
+    android.hardware.power-V5-ndk
 
 LOCAL_HEADER_LIBRARIES := \
     libhardware_headers
@@ -91,7 +92,7 @@ include $(BUILD_EXECUTABLE)
 ifeq ($(TARGET_BOARD_PLATFORM), sun)
 include $(CLEAR_VARS)
 
-LOCAL_SHARED_LIBRARIES := liblog libcutils libdl libxml2 libbase libutils libbinder_ndk android.hardware.power-V4-ndk libbinder libclang_rt.ubsan_standalone
+LOCAL_SHARED_LIBRARIES := libfmq liblog libcutils libdl libxml2 libbase libutils libbinder_ndk android.hardware.power-V5-ndk libbinder libclang_rt.ubsan_standalone
 LOCAL_HEADER_LIBRARIES += libutils_headers
 LOCAL_HEADER_LIBRARIES += libhardware_headers
 LOCAL_SRC_FILES := power-common.c metadata-parser.c utils.c list.c hint-data.c powerhintparser.c Power.cpp fuzzer.cpp PowerHintSession.cpp
