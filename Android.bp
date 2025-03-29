@@ -6,6 +6,9 @@ cc_library_headers {
 
 cc_binary {
     name: "android.hardware.power-service-qti",
+    defaults: [
+        "android.hardware.power-ndk_shared",
+    ],
     init_rc: ["android.hardware.power-service-qti.rc"],
     relative_install_path: "hw",
     vendor: true,
@@ -63,7 +66,6 @@ cc_binary {
         "libfmq",
         "libutils",
         "libbinder_ndk",
-        "android.hardware.power-V5-ndk",
     ],
 
     static_libs: select(soong_config_variable("qtipower", "mode_ext_lib"), {
@@ -77,6 +79,9 @@ cc_binary {
 
 cc_fuzz {
     name: "aidl_fuzzer_power_service",
+    defaults: [
+        "android.hardware.power-ndk_shared",
+    ],
     vendor: true,
 
     cflags: [
@@ -113,7 +118,6 @@ cc_fuzz {
         "libbase",
         "libutils",
         "libbinder_ndk",
-        "android.hardware.power-V5-ndk",
         "libbinder",
         "libclang_rt.ubsan_standalone",
     ],
