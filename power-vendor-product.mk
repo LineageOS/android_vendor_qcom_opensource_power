@@ -1,6 +1,5 @@
 #Power product definitions
 PRODUCT_PACKAGES += android.hardware.power-service-qti
-PRODUCT_PACKAGES += android.hardware.power-impl
 
 #Powerhint File
 ifeq ($(TARGET_BOARD_PLATFORM),msm8937)
