@@ -41,6 +41,30 @@
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1c8d036_9205a67d",
+        "filename": "Power.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2025-04-12T21:19:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b7b6b039_099add99",
+      "range": {
+        "startLine": 209,
+        "startChar": 8,
+        "endLine": 210,
+        "endChar": 9
+      },
+      "revId": "2637e57b853e4bb69cde7da74d5715ebdd701a35",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "656fdf44_070f5e1e",
@@ -136,6 +160,24 @@
       "writtenOn": "2025-01-30T11:47:49Z",
       "side": 1,
       "message": "```suggestion\n    return ndk::ScopedAStatus::ok();\n```",
+      "revId": "2637e57b853e4bb69cde7da74d5715ebdd701a35",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf7f03fe_79841967",
+        "filename": "PowerHintSession.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2025-04-12T21:19:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e7a7d389_336f224d",
       "revId": "2637e57b853e4bb69cde7da74d5715ebdd701a35",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
