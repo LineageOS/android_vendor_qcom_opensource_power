@@ -15,6 +15,7 @@
 #define MIN_BOOST -200
 
 #include <android-base/logging.h>
+#include "android/binder_auto_utils.h"
 #define LOG_TAG "QTI PowerHAL"
 
 std::unordered_map<PowerHintSessionImpl*, int32_t> mPowerHintSessions;
@@ -242,5 +243,14 @@ ndk::ScopedAStatus PowerHintSessionImpl::setThreads(const std::vector<int32_t>& 
     mThreadIds = threadIds;
     mThreadHandle = setThreadPipelining(mThreadIds);
 
+    return ndk::ScopedAStatus::ok();
+}
+
+ndk::ScopedAStatus PowerHintSessionImpl::setMode(aidl::android::hardware::power::SessionMode mode, bool enabled) {
+	return ndk::ScopedAStatus::ok();
+}
+
+ndk::ScopedAStatus PowerHintSessionImpl::getSessionConfig(aidl::android::hardware::power::SessionConfig* _aidl_return) {
+    _aidl_return->id = 1;
     return ndk::ScopedAStatus::ok();
 }
