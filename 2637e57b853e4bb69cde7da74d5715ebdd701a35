@@ -58,6 +58,24 @@
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "813a6ca7_77b316ef",
+        "filename": "Power.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2025-04-12T21:19:15Z",
+      "side": 1,
+      "message": "Moved to tag merge commit.",
+      "parentUuid": "656fdf44_070f5e1e",
+      "revId": "2637e57b853e4bb69cde7da74d5715ebdd701a35",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cf65019f_62f407b0",
@@ -71,6 +89,30 @@
       "writtenOn": "2025-01-30T11:47:49Z",
       "side": 1,
       "message": "```suggestion\n    ndk::ScopedAStatus getSessionChannel(int32_t tgid, int32_t uid,\n                                         ChannelConfig* _aidl_return) override;\n    ndk::ScopedAStatus closeSessionChannel(int32_t tgid, int32_t uid) override;\n```",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 77
+      },
+      "revId": "2637e57b853e4bb69cde7da74d5715ebdd701a35",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0267b6ad_b908fe36",
+        "filename": "Power.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2025-04-12T21:19:15Z",
+      "side": 1,
+      "message": "Moved to tag merge commit.",
+      "parentUuid": "cf65019f_62f407b0",
       "range": {
         "startLine": 59,
         "startChar": 0,
