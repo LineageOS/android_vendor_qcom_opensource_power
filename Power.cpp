@@ -105,7 +105,7 @@ ndk::ScopedAStatus Power::setMode(Mode type, bool enabled) {
             break;
         case Mode::SUSTAINED_PERFORMANCE:
         case Mode::FIXED_PERFORMANCE:
-            power_hint(POWER_HINT_SUSTAINED_PERFORMANCE, NULL);
+            power_hint(POWER_HINT_SUSTAINED_PERFORMANCE, enabled ? &enabled : NULL);
             break;
         default:
             LOG(INFO) << "Mode " << static_cast<int32_t>(type) << "Not Supported";
