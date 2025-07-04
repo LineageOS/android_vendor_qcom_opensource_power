@@ -38,6 +38,9 @@
 
 #include <android-base/file.h>
 #include <android-base/logging.h>
+#include <fmq/AidlMessageQueue.h>
+#include <fmq/EventFlag.h>
+#include <thread>
 
 #include <aidl/android/hardware/power/BnPower.h>
 
@@ -45,10 +48,14 @@
 #include <android/binder_manager.h>
 #include <android/binder_process.h>
 
+using ::aidl::android::hardware::common::fmq::MQDescriptor;
+using ::aidl::android::hardware::common::fmq::SynchronizedReadWrite;
 using ::aidl::android::hardware::power::BnPower;
 using ::aidl::android::hardware::power::Boost;
+using ::aidl::android::hardware::power::ChannelMessage;
 using ::aidl::android::hardware::power::IPower;
 using ::aidl::android::hardware::power::Mode;
+using ::android::AidlMessageQueue;
 
 using ::ndk::ScopedAStatus;
 using ::ndk::SharedRefBase;
@@ -146,8 +153,7 @@ ndk::ScopedAStatus Power::isModeSupported(Mode type, bool* _aidl_return) {
 }
 
 ndk::ScopedAStatus Power::setBoost(Boost type, int32_t durationMs) {
-    LOG(VERBOSE) << "Power setBoost: " << static_cast<int32_t>(type)
-                 << ", duration: " << durationMs;
+    LOG(INFO) << "Power setBoost: " << static_cast<int32_t>(type) << ", duration: " << durationMs;
     switch (type) {
         case Boost::INTERACTION:
             power_hint(POWER_HINT_INTERACTION, &durationMs);
@@ -182,7 +188,35 @@ ndk::ScopedAStatus Power::createHintSession(int32_t tgid, int32_t uid,
         *_aidl_return = nullptr;
         return ndk::ScopedAStatus::fromExceptionCode(EX_ILLEGAL_ARGUMENT);
     }
-    *_aidl_return = setPowerHintSession(tgid, uid, threadIds);
+    *_aidl_return = setPowerHintSession(tgid, uid, threadIds, durationNanos);
+    return ndk::ScopedAStatus::ok();
+}
+
+ndk::ScopedAStatus Power::createHintSessionWithConfig(
+        int32_t tgid, int32_t uid, const std::vector<int32_t>& threadIds, int64_t durationNanos,
+        SessionTag, SessionConfig* config, std::shared_ptr<IPowerHintSession>* _aidl_return) {
+    auto out = createHintSession(tgid, uid, threadIds, durationNanos, _aidl_return);
+    static_cast<PowerHintSessionImpl*>(_aidl_return->get())->getSessionConfig(config);
+    return out;
+}
+
+ndk::ScopedAStatus Power::getSessionChannel(int32_t, int32_t, ChannelConfig* _aidl_return) {
+    static AidlMessageQueue<ChannelMessage, SynchronizedReadWrite> stubQueue{20, true};
+    static std::thread stubThread([&] {
+        ChannelMessage data;
+        // This loop will only run while there is data waiting
+        // to be processed, and blocks on a futex all other times
+        while (stubQueue.readBlocking(&data, 1, 0)) {
+        }
+    });
+    _aidl_return->channelDescriptor = stubQueue.dupeDesc();
+    _aidl_return->readFlagBitmask = 0x01;
+    _aidl_return->writeFlagBitmask = 0x02;
+    _aidl_return->eventFlagDescriptor = std::nullopt;
+    return ndk::ScopedAStatus::ok();
+}
+
+ndk::ScopedAStatus Power::closeSessionChannel(int32_t, int32_t) {
     return ndk::ScopedAStatus::ok();
 }
 
