@@ -51,4 +51,8 @@ else ifeq ($(TARGET_BOARD_PLATFORM),niobe)
 PRODUCT_COPY_FILES += vendor/qcom/opensource/power/config/niobe/powerhint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.xml
 else ifeq ($(TARGET_BOARD_PLATFORM),parrot)
 PRODUCT_COPY_FILES += vendor/qcom/opensource/power/config/parrot/powerhint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.xml
+else ifeq ($(TARGET_BOARD_PLATFORM),neo61)
+PRODUCT_COPY_FILES += vendor/qcom/opensource/power/config/neo61/powerhint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.xml
+else ifeq ($(TARGET_BOARD_PLATFORM),seraph)
+PRODUCT_COPY_FILES += vendor/qcom/opensource/power/config/seraph/powerhint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.xml
 endif
