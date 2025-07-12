@@ -3,3 +3,122 @@ cc_library_headers {
     vendor_available: true,
     export_include_dirs: ["."],
 }
+
+cc_binary {
+    name: "android.hardware.power-service-qti",
+    init_rc: ["android.hardware.power-service-qti.rc"],
+    relative_install_path: "hw",
+    vendor: true,
+
+    vintf_fragments: ["power.xml"],
+
+    cflags: [
+        "-Wall",
+        "-Wextra",
+        "-Werror",
+        "-Wno-unused-parameter",
+        "-Wno-unused-variable",
+    ] + select(soong_config_variable("qtipower", "interaction_boost"), {
+        "true": ["-DINTERACTION_BOOST"],
+        default: [],
+    }) + select(soong_config_variable("qtipower", "mode_ext_lib"), {
+        any @ lib: ["-DMODE_EXT"],
+        default: [],
+    }) + select(soong_config_variable("qtipower", "set_interactive_ext_lib"), {
+        any @ lib: ["-DSET_INTERACTIVE_EXT"],
+        default: [],
+    }) + select(soong_config_variable("qtipower", "tap_to_wake_node"), {
+        any @ node: ["-DTAP_TO_WAKE_NODE=\"" + node + "\""],
+        default: [],
+    }),
+
+    srcs: [
+        "power-common.c",
+        "metadata-parser.c",
+        "utils.c",
+        "list.c",
+        "hint-data.c",
+        "Power.cpp",
+        "main.cpp",
+        "PowerHintSession.cpp",
+    ] + select(soong_config_variable("ANDROID", "target_board_platform"), {
+        "msm8996": ["power-8996.c"],
+        "msm8937": ["power-8937.c"],
+        "msm8953": ["power-8953.c"],
+        "msm8998": ["power-8998.c"],
+        "sdm660": ["power-660.c"],
+        "sdm845": ["power-845.c"],
+        default: [],
+    }),
+
+    header_libs: ["libhardware_headers"],
+
+    shared_libs: [
+        "android.hardware.common-V2-ndk",
+        "android.hardware.common.fmq-V1-ndk",
+        "liblog",
+        "libcutils",
+        "libdl",
+        "libbase",
+        "libfmq",
+        "libutils",
+        "libbinder_ndk",
+        "android.hardware.power-V5-ndk",
+    ],
+
+    static_libs: select(soong_config_variable("qtipower", "mode_ext_lib"), {
+        any @ lib: [lib],
+        default: [],
+    }) + select(soong_config_variable("qtipower", "set_interactive_ext_lib"), {
+        any @ lib: [lib],
+        default: [],
+    }),
+}
+
+cc_fuzz {
+    name: "aidl_fuzzer_power_service",
+    vendor: true,
+
+    cflags: [
+        "-Wno-unused-parameter",
+        "-Wno-unused-variable",
+    ] + select(soong_config_variable("qtipower", "interaction_boost"), {
+        "true": ["-DINTERACTION_BOOST"],
+        default: [],
+    }),
+
+    srcs: [
+        "power-common.c",
+        "metadata-parser.c",
+        "utils.c",
+        "list.c",
+        "hint-data.c",
+        "Power.cpp",
+        "fuzzer.cpp",
+        "PowerHintSession.cpp",
+    ],
+
+    header_libs: [
+        "libhardware_headers",
+        "libutils_headers",
+    ],
+
+    shared_libs: [
+        "android.hardware.common-V2-ndk",
+        "android.hardware.common.fmq-V1-ndk",
+        "libfmq",
+        "liblog",
+        "libcutils",
+        "libdl",
+        "libbase",
+        "libutils",
+        "libbinder_ndk",
+        "android.hardware.power-V5-ndk",
+        "libbinder",
+        "libclang_rt.ubsan_standalone",
+    ],
+
+    static_libs: [
+        "libbinder_random_parcel",
+    ],
+}
