@@ -3,6 +3,8 @@
  * SPDX-License-Identifier: BSD-3-Clause-Clear
  */
 
+#define LOG_TAG "QTI PowerHAL"
+
 #include "PowerHintSession.h"
 #include "hint-data.h"
 #include "performance.h"
@@ -30,7 +32,6 @@
 
 #include <android-base/logging.h>
 #include "android/binder_auto_utils.h"
-#define LOG_TAG "QTI PowerHAL"
 
 std::unordered_map<PowerHintSessionImpl*, int32_t> mPowerHintSessions;
 std::mutex mSessionLock;
