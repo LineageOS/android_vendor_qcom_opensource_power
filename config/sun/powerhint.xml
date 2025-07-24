@@ -702,12 +702,13 @@
         <!--DOWNMIGRATE - 30 85-->
         <!--B CPU - Disable Core Control -->
         <!--AB_SCALE DDR/LLCC - 50-->
+        <!--Sibling Disable-->
         <Config
             Id="0x00001332" Enable="true" Timeout="0" Target="kera"
             Resources="0x4183C000, 0x10, 0x41834000, 0x96, 0x41838000, 0, 0x43034000, 0x10,
             0x43020000, 0x96, 0x43024000, 0, 0x4303C000, 0x14A780, 0x40804100, 0x386,
             0x41444100, 0, 0x41444000, 0, 0x41440000, 0x63, 0x40CE0000, 0x0023001E, 0x40CE0200,
-            0x00550055, 0x41008000, 0, 0x43048000, 0x32, 0x41878000, 0x32"/>
+            0x00550055, 0x41008000, 0, 0x43048000, 0x32, 0x41878000, 0x32, 0x43C70000, 0xFFFF"/>
 
         <!-- camera HFR -->
         <!--CPU-LLC BWMON - Set sample_ms 16 -->
