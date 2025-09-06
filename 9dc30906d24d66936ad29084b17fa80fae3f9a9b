@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1bb2f1ad_be559251",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2025-09-06T23:53:58Z",
+      "side": 1,
+      "message": "Luca, do you see any cons doing this? Otherwise, I would require this: https://review.lineageos.org/c/LineageOS/android_hardware_oplus/+/450291",
+      "revId": "9dc30906d24d66936ad29084b17fa80fae3f9a9b",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
