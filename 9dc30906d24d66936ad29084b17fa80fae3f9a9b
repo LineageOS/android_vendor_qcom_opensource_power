@@ -34,6 +34,24 @@
       "parentUuid": "1bb2f1ad_be559251",
       "revId": "9dc30906d24d66936ad29084b17fa80fae3f9a9b",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "72959af0_13583067",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2025-09-06T23:58:47Z",
+      "side": 1,
+      "message": "V6 is now the default.",
+      "parentUuid": "5e6d1915_c756cbe9",
+      "revId": "9dc30906d24d66936ad29084b17fa80fae3f9a9b",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
