@@ -59,6 +59,13 @@ class Power : public BnPower {
     ndk::ScopedAStatus getSessionChannel(int32_t tgid, int32_t uid,
                                          ChannelConfig* _aidl_return) override;
     ndk::ScopedAStatus closeSessionChannel(int32_t tgid, int32_t uid) override;
+    ndk::ScopedAStatus getSupportInfo(SupportInfo* _aidl_return) override;
+    ndk::ScopedAStatus getCpuHeadroom(const CpuHeadroomParams& params,
+                                      CpuHeadroomResult* _aidl_return) override;
+    ndk::ScopedAStatus getGpuHeadroom(const GpuHeadroomParams& params,
+                                      GpuHeadroomResult* _aidl_return) override;
+    ndk::ScopedAStatus sendCompositionData(const std::vector<CompositionData>& data) override;
+    ndk::ScopedAStatus sendCompositionUpdate(const CompositionUpdate& update) override;
 };
 
 }  // namespace impl
