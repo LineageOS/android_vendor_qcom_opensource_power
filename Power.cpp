@@ -226,6 +226,61 @@ ndk::ScopedAStatus Power::getHintSessionPreferredRate(int64_t* outNanoseconds) {
     return ndk::ScopedAStatus::ok();
 }
 
+template <class T>
+constexpr size_t enum_size() {
+    return static_cast<size_t>(*(ndk::enum_range<T>().end() - 1)) + 1;
+}
+
+template <class E>
+int64_t bitsForEnum() {
+    return static_cast<int64_t>(std::bitset<enum_size<E>()>().set().to_ullong());
+}
+
+ndk::ScopedAStatus Power::getSupportInfo(SupportInfo* _aidl_return) {
+    LOG(INFO) << "Power getSupportInfo";
+    static SupportInfo supportInfo = {.usesSessions = false,
+                                      .boosts = bitsForEnum<Boost>(),
+                                      .modes = bitsForEnum<Mode>(),
+                                      .sessionHints = 0,
+                                      .sessionModes = 0,
+                                      .sessionTags = 0,
+                                      .compositionData =
+                                              {
+                                                      .isSupported = false,
+                                                      .disableGpuFences = false,
+                                                      .maxBatchSize = 1,
+                                                      .alwaysBatch = false,
+                                              },
+                                      .headroom = {
+                                              .isCpuSupported = false,
+                                              .isGpuSupported = false,
+                                              .cpuMinIntervalMillis = 0,
+                                              .gpuMinIntervalMillis = 0,
+                                      }};
+    *_aidl_return = supportInfo;
+    return ndk::ScopedAStatus::ok();
+}
+
+ndk::ScopedAStatus Power::getCpuHeadroom(const CpuHeadroomParams&, CpuHeadroomResult*) {
+    LOG(INFO) << "Power getCpuHeadroom";
+    return ndk::ScopedAStatus::fromExceptionCode(EX_UNSUPPORTED_OPERATION);
+}
+
+ndk::ScopedAStatus Power::getGpuHeadroom(const GpuHeadroomParams&, GpuHeadroomResult*) {
+    LOG(INFO) << "Power getGpuHeadroom";
+    return ndk::ScopedAStatus::fromExceptionCode(EX_UNSUPPORTED_OPERATION);
+}
+
+ndk::ScopedAStatus Power::sendCompositionData(const std::vector<CompositionData>&) {
+    LOG(INFO) << "Power sendCompositionData";
+    return ndk::ScopedAStatus::ok();
+}
+
+ndk::ScopedAStatus Power::sendCompositionUpdate(const CompositionUpdate&) {
+    LOG(INFO) << "Power sendCompositionUpdate";
+    return ndk::ScopedAStatus::ok();
+}
+
 }  // namespace impl
 }  // namespace power
 }  // namespace hardware
