@@ -69,6 +69,23 @@
       "message": "Yea, this is not enough. HAL update is required.",
       "revId": "9dc30906d24d66936ad29084b17fa80fae3f9a9b",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "80c75cc2_7ec99935",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 19979
+      },
+      "writtenOn": "2025-09-07T00:27:47Z",
+      "side": 1,
+      "message": "https://git.codelinaro.org/clo/la/platform/vendor/qcom-opensource/power/-/commit/75f626201724faad1c019a70191e04f09bc83c32",
+      "revId": "9dc30906d24d66936ad29084b17fa80fae3f9a9b",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
