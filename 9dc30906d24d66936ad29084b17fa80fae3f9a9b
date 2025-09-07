@@ -86,6 +86,23 @@
       "message": "https://git.codelinaro.org/clo/la/platform/vendor/qcom-opensource/power/-/commit/75f626201724faad1c019a70191e04f09bc83c32",
       "revId": "9dc30906d24d66936ad29084b17fa80fae3f9a9b",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c57bb3c_1b54bfcb",
+        "filename": "Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2025-09-07T11:03:25Z",
+      "side": 1,
+      "message": "Here too, I guess.",
+      "revId": "9dc30906d24d66936ad29084b17fa80fae3f9a9b",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
