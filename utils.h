@@ -55,6 +55,11 @@ void interaction(int duration, int num_args, int opt_list[]);
 int interaction_with_handle(int lock_handle, int duration, int num_args, int opt_list[]);
 int perf_hint_enable(int hint_id, int duration);
 int perf_hint_enable_with_type(int hint_id, int duration, int type);
+int send_perf_hint(int hint_id, const char* pkg, int duration, int type);
+int send_perf_get_feedback(int hint_id, const char* pkg);
+int send_perf_get_feedback_extn(int hint_id, const char* pkg, int numArgs, int list[]);
+int send_perf_event(int event_id, const char* pkg, int numArgs, int list[]);
+const char* send_perf_sync_request(int hint_id);
 
 long long calc_timespan_us(struct timespec start, struct timespec end);
 int get_soc_id(void);
@@ -65,4 +70,4 @@ PropVal perf_get_property(const char* prop, const char* def_val);
 }
 #endif
 
-#endif //__UTILS_H__
+#endif  //__UTILS_H__

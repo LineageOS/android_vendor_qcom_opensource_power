@@ -44,10 +44,22 @@ else ifeq ($(TARGET_BOARD_PLATFORM),canoe)
 PRODUCT_COPY_FILES += vendor/qcom/opensource/power/config/canoe/powerhint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.xml
 else ifeq ($(TARGET_BOARD_PLATFORM),blair)
 PRODUCT_COPY_FILES += vendor/qcom/opensource/power/config/pitti/powerhint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.xml
+else ifeq ($(TARGET_BOARD_PLATFORM),malabar)
+PRODUCT_COPY_FILES += vendor/qcom/opensource/power/config/malabar/powerhint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.xml
+else ifeq ($(TARGET_BOARD_PLATFORM),bourtzi)
+PRODUCT_COPY_FILES += vendor/qcom/opensource/power/config/bourtzi/powerhint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.xml
 else ifeq ($(TARGET_BOARD_PLATFORM),volcano)
 PRODUCT_COPY_FILES += vendor/qcom/opensource/power/config/volcano/powerhint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.xml
 else ifeq ($(TARGET_BOARD_PLATFORM),niobe)
 PRODUCT_COPY_FILES += vendor/qcom/opensource/power/config/niobe/powerhint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.xml
 else ifeq ($(TARGET_BOARD_PLATFORM),parrot)
 PRODUCT_COPY_FILES += vendor/qcom/opensource/power/config/parrot/powerhint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.xml
+else ifeq ($(TARGET_BOARD_PLATFORM),chora)
+PRODUCT_COPY_FILES += vendor/qcom/opensource/power/config/chora/powerhint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.xml
+else ifeq ($(TARGET_BOARD_PLATFORM),bengal)
+PRODUCT_COPY_FILES += vendor/qcom/opensource/power/config/bengal/powerhint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.xml
+else ifeq ($(TARGET_BOARD_PLATFORM),seraph)
+PRODUCT_COPY_FILES += vendor/qcom/opensource/power/config/seraph/powerhint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.xml
+else ifeq ($(TARGET_BOARD_PLATFORM),pikachu)
+PRODUCT_COPY_FILES += vendor/qcom/opensource/power/config/pikachu/powerhint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.xml
 endif
