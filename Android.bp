@@ -56,8 +56,10 @@ cc_binary {
 
     header_libs: [
         "libhardware_headers",
-        "display_intf_headers",
-    ],
+    ] + select(soong_config_variable("qtidisplay", "headers_namespace"), {
+        any @ flag_val: ["//" + flag_val + ":display_intf_headers"],
+        default: [],
+    }),
 
     shared_libs: [
         "android.hardware.common-V2-ndk",
@@ -69,9 +71,13 @@ cc_binary {
         "libfmq",
         "libutils",
         "libbinder_ndk",
-        "libdisplayconfig.qti",
-        "vendor.qti.hardware.display.config-V12-ndk",
-    ],
+    ] + select(soong_config_variable("qtidisplay", "libdisplayconfig_qti_namespace"), {
+        any @ flag_val: ["//" + flag_val + ":libdisplayconfig.qti"],
+        default: [],
+    }) + select(soong_config_variable("qtidisplay", "headers_namespace"), {
+        any @ flag_val: ["//" + flag_val + ":vendor.qti.hardware.display.config-V12-ndk"],
+        default: [],
+    }),
 
     static_libs: select(soong_config_variable("qtipower", "mode_ext_lib"), {
         any @ lib: [lib],
