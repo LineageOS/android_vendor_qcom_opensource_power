@@ -5,6 +5,8 @@ PRODUCT_PACKAGES += android.hardware.power-impl
 #Powerhint File
 ifeq ($(TARGET_BOARD_PLATFORM),msm8937)
 PRODUCT_COPY_FILES += vendor/qcom/opensource/power/config/msm8937/powerhint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.xml
+else ifeq ($(TARGET_BOARD_PLATFORM),msm8952)
+PRODUCT_COPY_FILES += vendor/qcom/opensource/power/config/msm8952/powerhint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.xml
 else ifeq ($(TARGET_BOARD_PLATFORM),msm8953)
 PRODUCT_COPY_FILES += vendor/qcom/opensource/power/config/msm8953/powerhint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.xml
 else ifeq ($(TARGET_BOARD_PLATFORM),sdm660)
