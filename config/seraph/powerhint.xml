@@ -135,6 +135,50 @@
             Resources="0x4183C000, 0x21, 0x41834000, 0x64, 0x41838000, 0, 0x41848000, 0xAD570, 0x43034000, 0x21,
             0x43020000, 0x64, 0x43024000, 0, 0x4303C000, 0x17BA38 , 0x41444000, 0, 0x41440000, 0x63, 0x43048000, 0x32"/>
 
+	<!--3k30- 3k camera 30fps-->
+        <!--CPU-LLC BWMON - Set sample_ms 33 -->
+        <!--CPU-LLC BWMON - Set io_percent 100 -->
+        <!--CPU-LLC BWMON - Set hyst_length hist memory 0 -->
+        <!--CPU-LLC BWMON - Set max freq 933mhz -->
+        <!--CPU-LLC-DDR BWMON - Set sample_ms 33 -->
+        <!--CPU-LLC-DDR BWMON - Set io_percent 100 -->
+        <!--CPU-LLC-DDR BWMON - Set hyst_length hist memory 0 -->
+        <!--CPU-LLC-DDR BWMON - Set min_freq 1555 -->
+        <!--CPU - Disable schedutil PL -->
+        <!--CPU - Set hispeed load 99 -->
+        <!--AB_SCALE - 50-->
+        <Config
+		Id="0x00001406" Enable="true" Timeout="0" Target="seraph"
+		Resources="0x4183C000, 0x21, 0x41834000, 0x64, 0x41838000, 0, 0x41848000, 0xE3C88, 0x43034000, 0x21,
+		0x43020000, 0x64, 0x43024000, 0, 0x4303C000, 0x17BA38 , 0x41444000, 0, 0x41440000, 0x63, 0x43048000, 0x32"/>
+
+        <!--3k30- 3k camera 30fps-->
+        <!--CPU-LLC BWMON - Set sample_ms 33 -->
+        <!--CPU-LLC BWMON - Set io_percent 100 -->
+        <!--CPU-LLC BWMON - Set hyst_length hist memory 0 -->
+        <!--CPU-LLC BWMON - Set max freq 933mhz -->
+        <!--CPU-LLC-DDR BWMON - Set sample_ms 33 -->
+        <!--CPU-LLC-DDR BWMON - Set io_percent 100 -->
+        <!--CPU-LLC-DDR BWMON - Set hyst_length hist memory 0 -->
+        <!--CPU-LLC-DDR BWMON - Set min_freq 1555 -->
+        <!--CPU - Disable schedutil PL -->
+        <!--CPU - Set hispeed load 99 -->
+        <!--AB_SCALE - 50-->
+        <Config
+                Id="0x00001406" Enable="true" Timeout="0" Target="pikachu"
+                Resources="0x4183C000, 0x21, 0x41834000, 0x64, 0x41838000, 0, 0x41848000, 0xE3C88, 0x43034000, 0x21,
+                0x43020000, 0x64, 0x43024000, 0, 0x4303C000, 0x17BA38 , 0x41444000, 0, 0x41440000, 0x63, 0x43048000, 0x32"/>
+
+        <!-- camera wakelock-->
+	<!-- CAMERA_HAL_RBSC_SYNC_WL, 0 -->
+	<Config
+            Id="0x00001407" Enable="true" Timeout="0" Target="seraph"
+		Resources="0x42C44000, 0x0"/>
+	<!-- camera wakelock-->
+        <!-- CAMERA_HAL_RBSC_SYNC_WL, 0 -->
+        <Config
+            Id="0x00001407" Enable="true" Timeout="0" Target="pikachu"
+                Resources="0x42C44000, 0x0"/>
        <!--camera 60fps-->
         <!--CPU MIN FREQ LITTLE CORE 0 - 960MHZ-->
     	<!--CPU-LLC BWMON - Set sample_ms 16 -->
