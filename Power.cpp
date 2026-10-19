@@ -51,6 +51,7 @@ static const char* pkg = "QTI PowerHAL";
 
 #include <android-base/file.h>
 #include <android-base/logging.h>
+#include <android-base/strings.h>
 #include <fmq/AidlMessageQueue.h>
 #include <fmq/EventFlag.h>
 #include <thread>
@@ -103,7 +104,12 @@ ndk::ScopedAStatus Power::setMode(Mode type, bool enabled) {
     switch (type) {
 #ifdef TAP_TO_WAKE_NODE
         case Mode::DOUBLE_TAP_TO_WAKE:
-            ::android::base::WriteStringToFile(enabled ? "1" : "0", TAP_TO_WAKE_NODE, true);
+            for (const auto& node : ::android::base::Split(TAP_TO_WAKE_NODE, " ")) {
+                if (!node.empty() &&
+                    !::android::base::WriteStringToFile(enabled ? "1" : "0", node, true)) {
+                    PLOG(ERROR) << "Failed to update double tap to wake: " << node;
+                }
+            }
             break;
 #else
         case Mode::DOUBLE_TAP_TO_WAKE:
