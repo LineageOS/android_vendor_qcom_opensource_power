@@ -22,6 +22,30 @@
       },
       "revId": "b464d90897bffcbce6709b26383baa8d23bbee24",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "76a380d5_c89d0212",
+        "filename": "Power.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 10067
+      },
+      "writtenOn": "2026-10-19T19:52:30Z",
+      "side": 1,
+      "message": "`,` won\u0027t work and `;` seems worse.",
+      "parentUuid": "9ca4778a_36095ad3",
+      "range": {
+        "startLine": 107,
+        "startChar": 77,
+        "endLine": 107,
+        "endChar": 80
+      },
+      "revId": "b464d90897bffcbce6709b26383baa8d23bbee24",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
